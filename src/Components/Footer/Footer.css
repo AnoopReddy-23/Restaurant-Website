@@ -1,0 +1,33 @@
+.footer {
+    /* position: absolute;
+    bottom: 0;
+    width: 100%; */
+    /* Set the fixed height of the footer here */
+    height: 50px;
+    /* line-height: 60px; */
+    color: azure;
+   
+  }
+
+ 
+.box-container .box .list{
+    list-style-type: none;    
+}
+
+.box-container a{
+    text-decoration: none;
+    color: cornsilk;
+}
+
+.box-container a:hover{
+    text-decoration: underline;
+}
+
+.credit{
+    font-size: 1.5rem;
+}
+
+span{
+    color:crimson ;
+}
+
