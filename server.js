@@ -16,6 +16,7 @@ require('dotenv').config()
 //import userApp and productApp
 const userApp=require('./APIS/userApi');
 const productApp=require('./APIS/productApi');
+const cartApp=require('./APIS/cartApi')
 
 
 //DB connection URL
@@ -33,10 +34,12 @@ mclient.connect(DBurl)
     //create collection objects
     let userCollectionObject=dbObj.collection("usercollection");
     let productCollectionObject=dbObj.collection("productcollection");
+    let cartCollectionObject=dbObj.collection("cartCollectionObject")
 
     //sharing collection objects with API's
     app.set("userCollectionObject", userCollectionObject) 
     app.set("productCollectionObject", productCollectionObject)
+    app.set("cartCollectionObject", cartCollectionObject)
 
     console.log("DB connection success")
 })
@@ -47,6 +50,7 @@ mclient.connect(DBurl)
 //use middleware to execute for a specific path
 app.use('/user-api',userApp)
 app.use('/product-api',productApp)
+app.use('/cart-api',cartApp)
 
 
 //dealing with page refersh
