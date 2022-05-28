@@ -39,8 +39,12 @@ function Login() {
     }
   }
 
+
   //this to be executed when either isSuccess or isError changed
   useEffect(()=>{
+    if(isError){
+      alert(errMsg)
+    }
     if(isSuccess && sample==="user"){
         //console.log(sample);
         navigate("/userdashboard");

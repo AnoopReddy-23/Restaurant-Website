@@ -38,6 +38,7 @@ let userSlice=createSlice({
         }
     },
     extraReducers:{
+        
         //track life cycle of promise returned bt createAsyncThunk function
         [userLogin.pending]:(state,action)=>{
             state.isLoading=true;

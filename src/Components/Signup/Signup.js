@@ -98,7 +98,6 @@ function Signup() {
             {errors.photo && <p className='text-danger'>*Profile pic is required</p>}
           </Form.Group>
 
-
           {/* Button */}
           <Button variant="primary" type="submit">
             Submit <GoSignIn />
