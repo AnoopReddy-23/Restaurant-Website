@@ -1,7 +1,7 @@
 import React from 'react'
 import {useState,useEffect} from 'react'
 import axios from 'axios'
-import Card from '../Card/Cards'
+import CartCard from '../CartCard/CartCard'
 import { useSelector } from 'react-redux'
 
 function Cart() {
@@ -31,7 +31,7 @@ function Cart() {
       
       <div className='mt-5 row'>
         {
-          products.map((item)=><Card key={item._id} item={item} />
+          products.map((item)=><CartCard key={item._id} item={item} />
         )}
       </div>
 

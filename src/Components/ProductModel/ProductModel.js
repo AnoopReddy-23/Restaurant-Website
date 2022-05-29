@@ -3,7 +3,7 @@ import {Modal,Button} from 'react-bootstrap'
 
 function ProductModel(props) {
   return (
-    <div>
+    <div className='bg-muted'>
         <Modal
                 {...props}
                 size="lg"
@@ -17,10 +17,10 @@ function ProductModel(props) {
             </Modal.Header>
             <Modal.Body>
                 <div className="row">
-                    <div className="col-10 col-md-3">
-                        <img src={props.item.foodImg} alt="" className='w-100' />
+                    <div className="col-10 col-lg-5 mx-auto">
+                        <img src={props.item.foodImg} alt="" className='w-100 d-block mx-auto align-self-center' />
                     </div>
-                    <div className="col-10 col-md-7">
+                    <div className="col-10 col-lg-7 mx-auto">
                         <h2><span>Rs.</span>{props.item.cost}</h2>
                         <h2>{props.item.foodType}</h2>
                         <p className="lead">{props.item.description}</p>

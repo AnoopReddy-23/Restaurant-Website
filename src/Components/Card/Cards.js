@@ -1,6 +1,6 @@
 import React, {useState} from 'react'
 import {Card,Button} from 'react-bootstrap'
-import './Card.css'
+//import './Card.css'
 import ProductModel from '../ProductModel/ProductModel'
 
 function Cards({ item, handleClick }) {
@@ -8,8 +8,7 @@ function Cards({ item, handleClick }) {
   const [modalShow, setModalShow] = useState(false);
 
   return (
-    <>
-      <div className='mx-auto col-10 col-md-5 col-lg-4 '>
+    <div>
         <Card style={{ width: "18rem" }} className='mx-auto mt-5 card'>
                   <Card.Body className='card-body'>
                     <Card.Img src={item.foodImg} className='card-img'/>
@@ -21,7 +20,6 @@ function Cards({ item, handleClick }) {
                     <Button variant="primary" onClick={()=>setModalShow(true)}>View Product</Button>
                 </Card.Footer>
         </Card>
-      </div>
 
       <ProductModel
         item={item}
@@ -29,7 +27,7 @@ function Cards({ item, handleClick }) {
         onHide={() => setModalShow(false)}
         handleClick={handleClick}
         />
-    </>
+    </div>
   )
 }
 
