@@ -41,7 +41,8 @@ function Viewproducts() {
       
       <div className='mt-5 row'>
         {
-          products.map((item)=><Card key={item._id} item={item} handleClick={handleClick}/>
+          products.map((item)=>
+          <Card key={item._id} item={item} handleClick={handleClick}/>
         )}
       </div>
 
