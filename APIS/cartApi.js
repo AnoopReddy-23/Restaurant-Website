@@ -86,4 +86,18 @@ cartApp.get('/getcartitems', expressAsyncHandler(async (request,response)=>{
 }))
 
 
+//create route to handle '/remove-product' path
+cartApp.delete('/remove-cartitem/:id', expressAsyncHandler(async (request,response)=>{
+
+    //get productCollectionObject from app.js
+    let cartCollectionObject=request.app.get("cartCollectionObject");
+    //get productId from url param
+    let pid=(+request.params.id)
+    //delete the product
+    await cartCollectionObject.deleteOne({productId:pid})
+    //send response
+    response.send({message:"Product deleted"})
+}))
+
+
 module.exports=cartApp;
