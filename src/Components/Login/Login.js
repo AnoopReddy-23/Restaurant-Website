@@ -16,7 +16,7 @@ function Login() {
   let {userObj,isError,isLoading,isSuccess,errMsg}=useSelector(state=>state.user)
 
   //get dispatch function
-  let dispatch=useDpispatch()
+  let dispatch=useDispatch()
 
   //get navigate function
   let navigate=useNavigate()
