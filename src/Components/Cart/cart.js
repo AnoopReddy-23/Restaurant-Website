@@ -30,7 +30,9 @@ function Cart() {
       const ind=products.indexOf(item)
       const arr=products
       arr[ind].count +=d;
-      
+      //http put req (updating the quantity)
+      axios.put('http://localhost:4000/cart-api/update-cartitem', arr[ind])
+      setProducts([...arr])
 
       if(arr[ind].count==0){
         //delete req
@@ -43,7 +45,7 @@ function Cart() {
       let response=axios.delete(`http://localhost:4000/cart-api/remove-cartitem/${food}`)
       //console.log(response)
       const arr=products.filter((item)=>item.food!=food)
-      setProducts(arr)
+      setProducts([...arr])
     }
 
   return (
