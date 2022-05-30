@@ -87,14 +87,14 @@ cartApp.get('/getcartitems', expressAsyncHandler(async (request,response)=>{
 
 
 //create route to handle '/remove-product' path
-cartApp.delete('/remove-cartitem/:id', expressAsyncHandler(async (request,response)=>{
+cartApp.delete('/remove-cartitem/:food', expressAsyncHandler(async (request,response)=>{
 
     //get productCollectionObject from app.js
     let cartCollectionObject=request.app.get("cartCollectionObject");
     //get productId from url param
-    let pid=(+request.params.id)
+    let pfood=request.params.food
     //delete the product
-    await cartCollectionObject.deleteOne({productId:pid})
+    await cartCollectionObject.deleteOne({food:pfood})
     //send response
     response.send({message:"Product deleted"})
 }))

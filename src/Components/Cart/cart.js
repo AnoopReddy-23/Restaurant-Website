@@ -30,20 +30,19 @@ function Cart() {
       const ind=products.indexOf(item)
       const arr=products
       arr[ind].count +=d;
+      
 
       if(arr[ind].count==0){
         //delete req
-        axios.delete('/cart-api/remove-product/item.food')
-        .then(response=>alert(response.data.message))
-        .catch(error=>alert(error))
-        setProducts([...arr])
+        handleRemove(item.food)
       }
     }
 
-    const handleRemove=(id)=>{
-      let response=axios.delete(`http://localhost:4000/cart-api/remove-cartitem/${id}`)
-      alert(response.data.message)
-      const arr=products.filter((item)=>item._id!=id)
+    const handleRemove=(food)=>{
+      //delete req
+      let response=axios.delete(`http://localhost:4000/cart-api/remove-cartitem/${food}`)
+      //console.log(response)
+      const arr=products.filter((item)=>item.food!=food)
       setProducts(arr)
     }
 

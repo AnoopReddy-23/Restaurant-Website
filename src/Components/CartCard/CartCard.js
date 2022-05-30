@@ -23,7 +23,7 @@ function CartCard({item, handleChange, handleRemove}) {
           </div>
         </Card.Body>
         <Card.Footer>
-          <Button onClick={()=>handleRemove(item._id)}>Remove</Button>
+          <Button onClick={()=>handleRemove(item.food)}>Remove</Button>
         </Card.Footer>
       </Card>
     </div>
