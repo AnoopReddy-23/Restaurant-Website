@@ -5,7 +5,7 @@ function CartCard({item, handleChange, handleRemove}) {
 
   
   return (
-    <div>
+    <>
       <Card className='mx-4 mt-3'>
         <Card.Body className='row'>
           <div className="col-4 mx-auto">
@@ -25,7 +25,7 @@ function CartCard({item, handleChange, handleRemove}) {
           </div>
         </Card.Body>
       </Card>
-    </div>
+    </>
   )
 }
 

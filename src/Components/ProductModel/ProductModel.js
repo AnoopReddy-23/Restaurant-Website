@@ -3,7 +3,7 @@ import {Modal,Button} from 'react-bootstrap'
 
 function ProductModel(props) {
   return (
-    <div className='bg-muted'>
+    <>
         <Modal
                 {...props}
                 size="lg"
@@ -32,7 +32,7 @@ function ProductModel(props) {
                 <Button onClick={()=>props.handleClick(props.item)}>ADD TO CART</Button>
             </Modal.Footer>
         </Modal>
-    </div>
+    </>
   )
 }
 

@@ -49,7 +49,7 @@ function Signup() {
   }
 
   return (
-    <div>
+    <>
       <h1 className='text-warning text-center'>SignUp</h1>
       <img src={signup} alt="signup image" width="300px" className='mx-auto d-none d-sm-block border border-2 border-light p-3 m-3'/>
       <div className="row">
@@ -106,7 +106,7 @@ function Signup() {
 
         </div>
       </div>
-    </div>
+    </>
   )
 }
 

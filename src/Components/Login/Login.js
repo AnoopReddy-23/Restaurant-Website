@@ -56,7 +56,7 @@ function Login() {
   }, [isSuccess, isError]);
 
   return (
-    <div>
+    <>
       <h1 className='text-warning text-center'>Login</h1>
       <img src={login} alt="login image" width="300px" className='d-block mx-auto border border-2 border-light p-3 m-3'/>
       <div className="row">
@@ -103,7 +103,7 @@ function Login() {
           </Form>
         </div>
       </div>
-    </div>
+    </>
   )
 }
 

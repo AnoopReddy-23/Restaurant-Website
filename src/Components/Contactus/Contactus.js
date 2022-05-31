@@ -4,7 +4,8 @@ import branches from '../../images/branches.jpg'
 
 function Contactus() {
   return (
-    <div className='container'>
+    <>
+      <div className='container'>
       <h1>History</h1>
       <div className="aboutRes bg-light p-3 m-3">
         <div className="row">
@@ -57,6 +58,7 @@ function Contactus() {
         <p>Paradise has several successful Outlets in Hyderabad, Bengaluru, Chennai, Visakhapatnam, Vijaywada and Gurugram. We have a clear blueprint for future growth not only in existing cities, but also in new cities including New Delhi, Pune, Kolkata, Guntur and Warangal. We are also exploring new Restaurants in multiple formats to meet the evolving needs of the new generation.</p>
       </div>
     </div>
+    </>
   )
 }
 

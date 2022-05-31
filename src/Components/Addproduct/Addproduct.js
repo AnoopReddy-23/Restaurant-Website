@@ -47,7 +47,7 @@ function Addproduct() {
   }
 
   return (
-    <div>
+    <>
       <h1 className='text-warning text-center'>Add Product</h1>
       <img src={addProduct} alt="signup image" width="300px" className='mx-auto d-none d-sm-block border border-2 border-light p-3 m-3'/>
       <div className="row">
@@ -128,7 +128,7 @@ function Addproduct() {
         </div>
       </div>
       
-    </div>
+    </>
   )
 }
 

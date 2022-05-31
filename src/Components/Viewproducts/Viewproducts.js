@@ -35,7 +35,7 @@ function Viewproducts() {
 
 
   return (
-    <div>
+    <>
       
       <div className='mt-5 row'>
         {
@@ -46,7 +46,7 @@ function Viewproducts() {
         )}
       </div>
 
-    </div>
+    </>
   )
 }
 

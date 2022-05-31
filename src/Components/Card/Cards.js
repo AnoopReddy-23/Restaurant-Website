@@ -8,7 +8,7 @@ function Cards({ item, handleClick }) {
   const [modalShow, setModalShow] = useState(false);
 
   return (
-    <div>
+    <>
         <Card style={{ width: "18rem" }} className='mx-auto mt-5 card'>
                   <Card.Body className='card-body'>
                     <Card.Img src={item.foodImg} className='card-img'/>
@@ -27,7 +27,7 @@ function Cards({ item, handleClick }) {
         onHide={() => setModalShow(false)}
         handleClick={handleClick}
         />
-    </div>
+    </>
   )
 }
 
