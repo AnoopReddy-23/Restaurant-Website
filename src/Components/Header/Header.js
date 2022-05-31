@@ -15,6 +15,7 @@ import Cart from '../Cart/Cart'
 import Products from '../Viewproducts/Viewproducts'
 import Admindashboard from '.././Admindashboard/Admindashboard'
 import Addproduct from '../Addproduct/Addproduct'
+import logo from '../../images/logo2.jpg'
 
 function Header() {
 
@@ -38,9 +39,9 @@ function Header() {
 
   return (
     <>
-      <Navbar collapseOnSelect bg="dark" expand="sm" variant='dark'>
+      <Navbar collapseOnSelect bg="dark" expand="sm" variant='dark' sticky="top">
           <Container>
-            <Navbar.Brand href="#home">Restaurant</Navbar.Brand>
+            <Navbar.Brand href='#'><img src={logo} alt="Logo" className='logo '/> Restaurant</Navbar.Brand>
             <Navbar.Toggle aria-controls="responsive-navbar-nav" />
             <Navbar.Collapse id="responsive-navbar-nav">
               <Nav className="ms-auto navbar">

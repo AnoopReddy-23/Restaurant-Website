@@ -1,3 +1,5 @@
+
+
 .active{
     background-color: rgb(189, 65, 86);
     color:white;
@@ -7,12 +9,7 @@
     border-radius: 3px;
   }
   
-  a{
-    color:aliceblue;
-    text-decoration: none;
-  }
-  
-  a:hover{
-    color:forestgreen;
-  }
-  
+
+  .logo{
+    max-height: 50px;
+}
