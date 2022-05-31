@@ -55,22 +55,20 @@ cartApp.post('/create-cart',expressAsyncHandler(async (request,response)=>{
     let cartCollectionObject=request.app.get("cartCollectionObject");
     //get productObj from request
     let cartObj=request.body;
-    // //search for user by username
-    // let productOfDB=await productCollectionObject.findOne({food:productObj.food});
-    // //if product existed
-    // if(productOfDB!==null){
-    //     response.send({message:"Item is already added!!"})
-    // }
-    // else{
-        // //add profile image link to newUserObj
-        // productObj.foodImg=request.file.path
-        // //remove photo property
-        // delete productObj.foodphoto
+    delete cartObj._id;
+    //search for user by username
+    let productOfDB=await cartCollectionObject.findOne({food:cartObj.food,username:cartObj.username});
+    //console.log(productOfDB)
+    //if product existed
+    if(productOfDB!==null){
+        response.send({message:"Item is already added!!"})
+    }
+    if(productOfDB===null){
         //insert productObj
         await cartCollectionObject.insertOne(cartObj)
         //sending response
         response.send({message:'Item added to cart Successfully!'})
-    //}
+    }
 }))
 
 
