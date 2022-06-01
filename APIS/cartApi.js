@@ -55,7 +55,6 @@ cartApp.post('/create-cart',expressAsyncHandler(async (request,response)=>{
     let cartCollectionObject=request.app.get("cartCollectionObject");
     //get productObj from request
     let cartObj=request.body;
-    delete cartObj._id;
     //search for user by username
     let productOfDB=await cartCollectionObject.findOne({food:cartObj.food,username:cartObj.username});
     //console.log(productOfDB)
@@ -84,18 +83,22 @@ cartApp.get('/getcartitems', expressAsyncHandler(async (request,response)=>{
 }))
 
 
-//create route to handle '/update-cartitem' path
+
+//create route to handle '/update-user' path
 cartApp.put('/update-cartitem',expressAsyncHandler(async (request,response)=>{
     //get userCollectionObject from app.js
     let cartCollectionObject=request.app.get("cartCollectionObject");
     //get modified user Obj from request
-    let modifieditem=request.body;
+    let modifiedItem=request.body;
+    //console.log(modifiedItem)
+    delete modifiedItem._id
     //update the user
-    await cartCollectionObject.updateOne({food:modifieditem.food},{$set:{...modifieditem}})
+    await cartCollectionObject.updateOne({username:modifiedItem.username,food:modifiedItem.food},{$set:{...modifiedItem}})
     //send response
-    response.send({message:"product details Modified",payload:modifieditem})
+    response.send({message:"Producter details Modified"})
     
 }))
+
 
 //create route to handle '/remove-cartitem' path
 cartApp.delete('/remove-cartitem/:food', expressAsyncHandler(async (request,response)=>{

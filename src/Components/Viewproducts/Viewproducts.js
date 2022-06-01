@@ -27,6 +27,8 @@ function Viewproducts() {
         item.username=userObj.username
         //count of item
         item.count=1
+        //delete id
+        delete item._id;
         //http post req
         axios.post('http://localhost:4000/cart-api/create-cart',item)
         .then(response=>alert(response.data.message))

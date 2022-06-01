@@ -26,14 +26,19 @@ function Cart() {
     },[])
 
 
-    const handleChange=(item,d)=>{
+    const handleChange=async (item,d)=>{
+      let quantity=0;
       const ind=products.indexOf(item)
       const arr=products
-      arr[ind].count +=d;
+      quantity+=arr[ind].count;
+      quantity+=d;
+      arr[ind].count=quantity;
       //http put req (updating the quantity)
-      axios.put('http://localhost:4000/cart-api/update-cartitem', arr[ind])
+      //console.log(item)
+      let response=await axios.put('/cart-api/update-cartitem', arr[ind])
+      alert(response.data.message)
+      //console.log(response)
       setProducts([...arr])
-
       if(arr[ind].count==0){
         //delete req
         handleRemove(item.food)
@@ -49,7 +54,7 @@ function Cart() {
     }
 
   return (
-    <>
+    <div>
       
       <div className='mt-5 row'>
         {
@@ -57,7 +62,7 @@ function Cart() {
         )}
       </div>
 
-    </>
+    </div>
   )
 }
 
