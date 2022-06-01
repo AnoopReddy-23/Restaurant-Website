@@ -7,6 +7,7 @@ import { useSelector } from 'react-redux'
 function Cart() {
 
     let [products,setProducts]=useState([])
+    let [price,setPrice]=useState(0)
 
     //state from store
     let {userObj}=useSelector(state=>state.user)
@@ -25,6 +26,11 @@ function Cart() {
       fetchProducts()
     },[])
 
+    const handlePrice=()=>{
+      let ans=0;
+      products.map((item)=>(ans+=item.count*(+item.cost)))
+      setPrice(ans)
+    }
 
     const handleChange=async (item,d)=>{
       let quantity=0;
@@ -43,6 +49,7 @@ function Cart() {
         //delete req
         handleRemove(item.food)
       }
+      handlePrice()
     }
 
     const handleRemove=(food)=>{
@@ -51,7 +58,12 @@ function Cart() {
       //console.log(response)
       const arr=products.filter((item)=>item.food!=food)
       setProducts([...arr])
+      handlePrice()
     }
+
+    useEffect(()=>
+      handlePrice()
+    )
 
   return (
     <div>
@@ -60,6 +72,10 @@ function Cart() {
         {
           products.map((item)=><CartCard key={item._id} item={item} handleChange={handleChange} handleRemove={handleRemove}/>
         )}
+      </div>
+      <div className="row text-center">
+        <span>Total Price of Products is </span>
+        <span className='text-danger'>Rs.{price}/-</span>
       </div>
 
     </div>
