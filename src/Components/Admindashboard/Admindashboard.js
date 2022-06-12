@@ -15,6 +15,9 @@ function Admindashboard() {
           <Nav.Item>
               <Nav.Link to="products" as={NavLink}>Products</Nav.Link>
           </Nav.Item>
+          <Nav.Item>
+              <Nav.Link to="orders" as={NavLink}>Orders</Nav.Link>
+          </Nav.Item>
           </Nav>
           {/* outlet */}
           <div className="mt-3">

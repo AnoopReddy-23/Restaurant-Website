@@ -15,6 +15,7 @@ import Cart from '../Cart/Cart'
 import Products from '../Viewproducts/Viewproducts'
 import Admindashboard from '.././Admindashboard/Admindashboard'
 import Addproduct from '../Addproduct/Addproduct'
+import Orders from '../Orders/Orders'
 import logo from '../../images/logo2.jpg'
 
 function Header() {
@@ -107,6 +108,7 @@ function Header() {
             <Route path="profile" element={<Userprofile />} />
             <Route path="addproduct" element={<Addproduct />} />
             <Route path="products" element={<Products />} />
+            <Route path="orders" element={<Orders />} />
             {/* Navigating to profile when child path is empty */}
             <Route path="" element={<Navigate to="profile" replace={true} />} />
           </Route>
