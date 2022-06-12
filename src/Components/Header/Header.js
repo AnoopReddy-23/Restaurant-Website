@@ -40,12 +40,12 @@ function Header() {
 
   return (
     <>
-      <Navbar collapseOnSelect bg="dark" expand="sm" variant='dark' sticky="top">
+      <Navbar collapseOnSelect bg="dark" expand="sm" variant='dark'>
           <Container>
             <Navbar.Brand href='#'><img src={logo} alt="Logo" className='logo '/> Restaurant</Navbar.Brand>
             <Navbar.Toggle aria-controls="responsive-navbar-nav" />
             <Navbar.Collapse id="responsive-navbar-nav">
-              <Nav className="ms-auto navbar">
+              <Nav className="ms-auto">
               {isSuccess !== true ? (
                 <>
                   {/* These links can be visible when no user logged in */}

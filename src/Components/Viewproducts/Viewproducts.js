@@ -2,12 +2,19 @@ import {useState,useEffect} from 'react'
 import axios from 'axios'
 import Card from '../Card/Cards'
 import {useSelector} from 'react-redux'
-
+import {Nav,Navbar,Container,Offcanvas} from 'react-bootstrap'
+import {NavLink} from 'react-router-dom'
+import './Viewproducts.css'
 
 function Viewproducts() {
 
     let [products,setProducts]=useState([])
-    let [cartitem,setCartItem]=useState([])
+    let [starters,setStarters]=useState([])
+    let [riceAndBiryani,setRiceAndBiryani]=useState([])
+    let [snacks,setSnacks]=useState([])
+    let [drinks,setDrinks]=useState([])
+    let [desert,setDesert]=useState([])
+    let newArray;
     
     let {userObj} = useSelector(state=>state.user)
 
@@ -15,7 +22,16 @@ function Viewproducts() {
       const fetchProducts=async ()=>{
         let response=await axios.get('/product-api/getproducts')
         let productList=response.data.payload
-        setProducts(productList)
+        newArray= productList.filter((item=> item.foodType==="starters"))
+        setStarters(newArray)
+        newArray= productList.filter((item=> item.foodType==="riceAndBiryani"))
+        setRiceAndBiryani(newArray)
+        newArray= productList.filter((item=> item.foodType==="snacks"))
+        setSnacks(newArray)
+        newArray= productList.filter((item=> item.foodType==="drinks"))
+        setDrinks(newArray)
+        newArray= productList.filter((item=> item.foodType==="desert"))
+        setDesert(newArray)
       }
       fetchProducts()
     },[])
@@ -37,18 +53,96 @@ function Viewproducts() {
 
 
   return (
-    <>
+    <div className='text-center'>
+
+     <div className="row ">
+          <div className="menu">
+            <Navbar className='col-5 col-md-4 col-lg-3 ms-auto' bg="info" expand="false" fixed='bottom'>
+              <Container>
+                <Navbar.Brand href='#' className='text-end'>Menu</Navbar.Brand>
+                <Navbar.Toggle aria-controls="responsive-navbar-nav" />
+                <Navbar.Collapse id="responsive-navbar-nav">
+                  <Nav className="ms-auto">
+                    <Nav.Item>
+                      <Nav.Link eventKey={1}  href='#starters'>Starters</Nav.Link>
+                    </Nav.Item>
+                    <Nav.Item>
+                      <Nav.Link eventKey={2}  href="#riceAndBiryani">Rice and Biryani</Nav.Link>
+                    </Nav.Item>
+                    <Nav.Item>
+                      <Nav.Link eventKey={3}  href="#snacks">Snacks</Nav.Link>
+                    </Nav.Item>
+                    <Nav.Item>
+                      <Nav.Link eventKey={4}  href="#drinks">Drinks</Nav.Link>
+                    </Nav.Item>
+                    <Nav.Item>
+                      <Nav.Link eventKey={5}  href="#deserts">Deserts</Nav.Link>
+                    </Nav.Item>
+                      
+                  </Nav>
+                </Navbar.Collapse>
+              </Container>
+            </Navbar>
+          </div>
+     </div>
+
       
+      {/* starters */}
       <div className='mt-5 row'>
+        <h1 id='starters'>Starters</h1>
         {
-          products.map((item)=>
+          starters.map((item)=>
             <div className='mx-auto col-10 col-md-5 col-lg-4 '>
               <Card key={item._id} item={item} handleClick={handleClick}/>
             </div>
         )}
       </div>
 
-    </>
+      {/* rice and biryani */}
+      <div className='mt-5 row'>
+        <h1 id='riceAndBiryani'>Rice and Biryani</h1>
+        {
+          riceAndBiryani.map((item)=>
+            <div className='mx-auto col-10 col-md-5 col-lg-4 '>
+              <Card key={item._id} item={item} handleClick={handleClick}/>
+            </div>
+        )}
+      </div>
+
+      {/* snacks */}
+      <div className='mt-5 row'>
+        <h1 id='snacks'>Snacks</h1>
+        {
+          snacks.map((item)=>
+            <div className='mx-auto col-10 col-md-5 col-lg-4 '>
+              <Card key={item._id} item={item} handleClick={handleClick}/>
+            </div>
+        )}
+      </div>
+
+      {/* drinks */}
+      <div className='mt-5 row'>
+        <h1 id='drinks'>Drinks</h1>
+        {
+          drinks.map((item)=>
+            <div className='mx-auto col-10 col-md-5 col-lg-4 '>
+              <Card key={item._id} item={item} handleClick={handleClick}/>
+            </div>
+        )}
+      </div>
+
+      {/* deserts */}
+      <div className='mt-5 row'>
+        <h1 id='deserts'>Deserts</h1>
+        {
+          desert.map((item)=>
+            <div className='mx-auto col-10 col-md-5 col-lg-4 '>
+              <Card key={item._id} item={item} handleClick={handleClick}/>
+            </div>
+        )}
+      </div>
+
+    </div>
   )
 }
 

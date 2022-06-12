@@ -9,7 +9,7 @@ function Cards({ item, handleClick }) {
 
   return (
     <>
-        <Card style={{ width: "18rem" }} className='mx-auto mt-5 card'>
+        <Card style={{ width: "18rem" }} className='mx-auto mt-3 card'>
                   <Card.Body className='card-body'>
                     <Card.Img src={item.foodImg} className='card-img'/>
                     <Card.Title>{item.food}</Card.Title>
