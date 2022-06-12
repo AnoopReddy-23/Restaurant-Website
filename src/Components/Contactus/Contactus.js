@@ -5,7 +5,7 @@ import branches from '../../images/branches.jpg'
 function Contactus() {
   return (
     <>
-      <div className='container'>
+      <div className='container text-center'>
       <h1>History</h1>
       <div className="aboutRes bg-light p-3 m-3">
         <div className="row">

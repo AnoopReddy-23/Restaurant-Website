@@ -3,6 +3,7 @@ import {useState,useEffect} from 'react'
 import axios from 'axios'
 import CartCard from '../CartCard/CartCard'
 import { useSelector } from 'react-redux'
+import {Button} from 'react-bootstrap'
 
 function Cart() {
 
@@ -66,9 +67,9 @@ function Cart() {
     )
 
   return (
-    <div>
+    <div> 
       
-      <div className='mt-5 row'>
+      <div className='mt-5 mx-5 row'>
         {
           products.map((item)=><CartCard key={item._id} item={item} handleChange={handleChange} handleRemove={handleRemove}/>
         )}
@@ -76,6 +77,7 @@ function Cart() {
       <div className="row text-center">
         <span>Total Price of Products is </span>
         <span className='text-danger'>Rs.{price}/-</span>
+        <Button className="bg-success p-3 mt-3 col-4 mx-auto">CheckOut</Button>
       </div>
 
     </div>
