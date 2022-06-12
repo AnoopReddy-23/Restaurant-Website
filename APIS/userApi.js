@@ -87,19 +87,27 @@ userApp.post('/login',expressAsyncHandler(async (request,response)=>{
     }
     //if userOfDB exited
     else{
-        //compare passwords
-        let status=await bcryptjs.compare(newCredObj.password,userOfDB.password)
-        //if passwords not matched
-        if(status==false){
-            response.send({message:"Invalid Password"})
+        if(newCredObj.userType===userOfDB.usertype){
+
+            //compare passwords
+            let status=await bcryptjs.compare(newCredObj.password,userOfDB.password)
+            //if passwords not matched
+            if(status==false){
+                response.send({message:"Invalid Password"})
+            }
+            //if passwords matched
+            else{
+                console.log(userOfDB)
+                //create token
+                let token=jwt.sign({username:userOfDB.username},process.env.SECRET_KEY,{expiresIn:60})
+                //send token
+                response.send({message:"Login Success",payload:token,userObj:userOfDB})
+            }
         }
-        //if passwords matched
         else{
-            //create token
-            let token=jwt.sign({username:userOfDB.username},process.env.SECRET_KEY,{expiresIn:60})
-            //send token
-            response.send({message:"Login Success",payload:token,userObj:userOfDB})
+            response.send({message:"Wrong UserType"});
         }
+        
     }
 }))
 
@@ -126,6 +134,8 @@ userApp.post('/create-user',upload.single("photo"),expressAsyncHandler(async (re
         newUserObj.profileImg=request.file.path
         //remove photo property
         delete newUserObj.photo
+        //add usertype
+        newUserObj.usertype="user";
         //insert new user obj
         await userCollectionObject.insertOne(newUserObj)
         //send response

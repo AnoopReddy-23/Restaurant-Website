@@ -13,7 +13,7 @@ export const userLogin=createAsyncThunk('loginuser', async(userCredObj,thunkApi)
         return data.userObj
     }
     //if login is not successful
-    if(data.message==="Invalid username" || data.message=="Invalid Password"){
+    if(data.message==="Invalid username" || data.message=="Invalid Password"|| data.message=="Wrong UserType" ){
         return thunkApi.rejectWithValue(data)
     }
 })
