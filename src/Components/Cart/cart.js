@@ -77,7 +77,7 @@ function Cart() {
       <div className="row text-center">
         <span>Total Price of Products is </span>
         <span className='text-danger'>Rs.{price}/-</span>
-        <Button className="bg-success p-3 mt-3 col-4 mx-auto">CheckOut</Button>
+        <Button className="bg-success p-3 mt-3 col-4 mx-auto" onClick={()=>console.log(products,price)}>CheckOut</Button>
       </div>
 
     </div>
