@@ -15,3 +15,8 @@
   .menu{
     display: flex;
   } */
+
+  .menu-items .row{
+    background-color: azure;
+    padding: 18px;
+  }

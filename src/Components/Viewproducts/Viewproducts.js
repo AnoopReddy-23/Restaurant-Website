@@ -86,62 +86,74 @@ function Viewproducts() {
           </div>
      </div>
 
+      <div className="menu-items">
+            {/* starters */}
+          <div className='mt-5 row'>
+            <h1 className='food' id='starters'>
+              <span>Starters</span>
+              </h1>
+            {
+              starters.map((item)=>
+                <div className='mx-auto col-12 col-md-6 col-lg-4 container-fluid'>
+                  <Card key={item._id} item={item} handleClick={handleClick}/>
+                </div>
+            )}
+          </div>
+
+          {/* rice and biryani */}
+          <div className='mt-5 row'>
+            <h1 className='food' id='riceAndBiryani'>
+              <span>Rice and Biryani</span>
+            </h1>
+            {
+              riceAndBiryani.map((item)=>
+                <div className='mx-auto col-10 col-md-5 col-lg-4 '>
+                  <Card key={item._id} item={item} handleClick={handleClick}/>
+                </div>
+            )}
+          </div>
+
+          {/* snacks */}
+          <div className='mt-5 row'>
+            <h1 className='food' id='snacks'>
+              <span>Snacks</span>
+            </h1>
+            {
+              snacks.map((item)=>
+                <div className='mx-auto col-10 col-md-5 col-lg-4 '>
+                  <Card key={item._id} item={item} handleClick={handleClick}/>
+                </div>
+            )}
+          </div>
+
+          {/* drinks */}
+          <div className='mt-5 row'>
+            <h1 className='food' id='drinks'>
+              <span>Drinks</span>
+            </h1>
+            {
+              drinks.map((item)=>
+                <div className='mx-auto col-10 col-md-5 col-lg-4 '>
+                  <Card key={item._id} item={item} handleClick={handleClick}/>
+                </div>
+            )}
+          </div>
+
+          {/* deserts */}
+          <div className='mt-5 row'>
+            <h1 className='food' id='deserts'>
+              <span>Deserts</span>
+            </h1>
+            {
+              desert.map((item)=>
+                <div className='mx-auto col-10 col-md-5 col-lg-4 '>
+                  <Card key={item._id} item={item} handleClick={handleClick}/>
+                </div>
+            )}
+          </div>
+
+      </div>
       
-      {/* starters */}
-      <div className='mt-5 row'>
-        <h1 id='starters'>Starters</h1>
-        {
-          starters.map((item)=>
-            <div className='mx-auto col-10 col-md-5 col-lg-4 '>
-              <Card key={item._id} item={item} handleClick={handleClick}/>
-            </div>
-        )}
-      </div>
-
-      {/* rice and biryani */}
-      <div className='mt-5 row'>
-        <h1 id='riceAndBiryani'>Rice and Biryani</h1>
-        {
-          riceAndBiryani.map((item)=>
-            <div className='mx-auto col-10 col-md-5 col-lg-4 '>
-              <Card key={item._id} item={item} handleClick={handleClick}/>
-            </div>
-        )}
-      </div>
-
-      {/* snacks */}
-      <div className='mt-5 row'>
-        <h1 id='snacks'>Snacks</h1>
-        {
-          snacks.map((item)=>
-            <div className='mx-auto col-10 col-md-5 col-lg-4 '>
-              <Card key={item._id} item={item} handleClick={handleClick}/>
-            </div>
-        )}
-      </div>
-
-      {/* drinks */}
-      <div className='mt-5 row'>
-        <h1 id='drinks'>Drinks</h1>
-        {
-          drinks.map((item)=>
-            <div className='mx-auto col-10 col-md-5 col-lg-4 '>
-              <Card key={item._id} item={item} handleClick={handleClick}/>
-            </div>
-        )}
-      </div>
-
-      {/* deserts */}
-      <div className='mt-5 row'>
-        <h1 id='deserts'>Deserts</h1>
-        {
-          desert.map((item)=>
-            <div className='mx-auto col-10 col-md-5 col-lg-4 '>
-              <Card key={item._id} item={item} handleClick={handleClick}/>
-            </div>
-        )}
-      </div>
-
     </div>
   )
 }

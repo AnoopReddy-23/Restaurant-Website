@@ -1,10 +1,11 @@
 import React from 'react'
 import {Modal,Button} from 'react-bootstrap'
+import './ProductModel.css'
 
 function ProductModel(props) {
   return (
     <>
-        <Modal
+        <Modal 
                 {...props}
                 size="lg"
                 aria-labelledby="contained-modal-title-vcenter"
@@ -15,7 +16,7 @@ function ProductModel(props) {
                     {props.item.food}
                 </Modal.Title>
             </Modal.Header>
-            <Modal.Body>
+            <Modal.Body >
                 <div className="row">
                     <div className="col-10 col-lg-5 mx-auto">
                         <img src={props.item.foodImg} alt="" className='w-100 d-block mx-auto align-self-center' />

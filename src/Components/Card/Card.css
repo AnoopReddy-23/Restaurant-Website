@@ -1,7 +1,61 @@
-.card .card-body .card-img{
-    height: 50%;
+.menu-item .card .card-body .card-img{
+    max-height: 10rem;
     width: 100%;
-    border-radius: 10px;
-    padding: 0;
-    margin: 0;
+    overflow: hidden;
+    border-radius: 2rem;
+    object-fit: cover;
 }
+
+
+.menu-item .card .card-body .card-title{
+    text-align: center;
+    font-size: 1.5rem;
+    line-height: 2rem;
+    letter-spacing: 0.1rem;
+}
+
+.menu-item .card .card-body .card-price{
+    color: #fc4958;
+}
+
+.menu-item .card .card-body .card-type{
+    text-align: center;
+    font-size: 1.3rem;
+    line-height: 2rem;
+    letter-spacing: 0.1rem;
+}
+
+.menu-item .card{
+    height: 100%;
+    border-radius: 4px;
+    background-image: url("E:/REACT APPS/restaurant/src/images/menu2.jpg");
+    background-size: cover;
+    box-shadow: 0 6px 10px rgba(0,0,0,.08), 0 0 6px rgba(0,0,0,.05);
+    transition: .3s transform cubic-bezier(.155,1.105,.295,1.12),.3s box-shadow,.3s -webkit-transform cubic-bezier(.155,1.105,.295,1.12);
+    /* padding: 14px 80px 18px 36px; */
+    cursor: pointer;
+}
+
+.menu-item .card:hover{
+    transform: scale(1.05);
+    box-shadow: 0 10px 20px rgba(0,0,0,.12), 0 4px 8px rgba(0,0,0,.06);
+}
+
+.menu-item .card .card-footer .card-button{
+    border: none;
+    display: block;
+    padding: 1rem 2rem;
+    font-size: 1.2rem;
+    color: white;
+    border-radius: 4rem;
+    transition: 0.5s ease-in-out;
+    cursor: pointer;
+    background: linear-gradient(to right, #fc4958, #e85d04);
+    text-transform: uppercase;
+}
+
+
+.menu-item .card .card-footer .card-button:hover{
+    background: linear-gradient(to right, #e85d04, #fc4958);
+}
+
