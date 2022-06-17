@@ -1,6 +1,7 @@
 import {createSlice,createAsyncThunk} from '@reduxjs/toolkit'
 import axios from 'axios'
 
+//http req to get products
 export const getProducts=createAsyncThunk('productsdata', async()=>{
     let response=await axios.get('/product-api/getproducts')
     return response.data.payload        
@@ -33,7 +34,7 @@ let productSlice=createSlice({
             state.isError=true;
             state.isLoading=false;
             state.isSuccess=false;
-            state.errMsg=action.payload.message;
+            state.errMsg=action.error.message;
         }
     }
 })

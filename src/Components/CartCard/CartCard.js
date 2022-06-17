@@ -21,7 +21,7 @@ function CartCard({item, handleChange, handleRemove}) {
             <Button className='m-1'>{item.count}</Button>
             <Button className='bg-warning' onClick={()=>handleChange(item,-1)}>-</Button>
             <br />
-            <Button className='p-2 bg-danger' onClick={()=>handleRemove(item.food)}>Remove</Button>
+            <Button className='p-2 bg-danger' onClick={()=>handleRemove(item._id)}>Remove</Button>
           </div>
         </Card.Body>
       </Card>

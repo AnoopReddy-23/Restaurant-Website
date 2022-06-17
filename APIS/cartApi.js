@@ -14,6 +14,7 @@ require('dotenv').config()
 var cloudinary=require('cloudinary').v2
 const {CloudinaryStorage}=require('multer-storage-cloudinary')
 const multer=require('multer')
+const { ObjectId } = require('mongodb')
 
 //configure cloudinary
 cloudinary.config({
@@ -101,14 +102,18 @@ cartApp.put('/update-cartitem',expressAsyncHandler(async (request,response)=>{
 
 
 //create route to handle '/remove-cartitem' path
-cartApp.delete('/remove-cartitem/:food', expressAsyncHandler(async (request,response)=>{
+cartApp.delete('/remove-cartitem/:id', expressAsyncHandler(async (request,response)=>{
 
     //get productCollectionObject from app.js
     let cartCollectionObject=request.app.get("cartCollectionObject");
     //get productId from url param
-    let pfood=request.params.food
+    //let pid=request.params.id
     //delete the product
-    await cartCollectionObject.deleteOne({food:pfood})
+    await cartCollectionObject.deleteOne({_id:new ObjectId(request.params.id)})
+    
+    // console.log(res)
+    // let products=await cartCollectionObject.find().toArray() 
+    // console.log(pid,products)
     //send response
     response.send({message:"Product deleted"})
 }))

@@ -6,6 +6,8 @@ import {NavLink} from 'react-router-dom'
 import './Viewproducts.css'
 import { useSelector,useDispatch } from 'react-redux'
 import {getProducts} from '../../Slices/productSlice'
+import {CartItems} from '../../Slices/cartSlice'
+
 
 function Viewproducts() {
 
@@ -25,7 +27,8 @@ function Viewproducts() {
     let newArray;
     
     useEffect(()=>{
-        dispatch(getProducts())
+        dispatch(getProducts());
+        dispatch(CartItems());
     },[])
 
     //this to be executed when either isSuccess or isError changed
@@ -50,6 +53,9 @@ function Viewproducts() {
 
 
     const handleClick=(item)=>{
+      //cartSlice
+      dispatch(CartItems())
+
         //console.log(item)
         //console.log(Object.isExtensible(item))
         //setCartItem(item)
@@ -73,8 +79,13 @@ function Viewproducts() {
         //console.log(item,obj)
         // http post req
         axios.post('http://localhost:4000/cart-api/create-cart',obj)
-        .then(response=>alert(response.data.message))
+        .then(response=>{
+          alert(response.data.message)
+          //cartSlice
+          dispatch(CartItems())
+        })
         .catch(error=>alert(error))
+
     }
 
 

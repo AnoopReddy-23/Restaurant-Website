@@ -2,8 +2,9 @@ import React from 'react'
 import {useState,useEffect} from 'react'
 import axios from 'axios' 
 import CartCard from '../CartCard/CartCard'
-import { useSelector } from 'react-redux'
 import {Button} from 'react-bootstrap'
+import { useSelector,useDispatch } from 'react-redux'
+import {CartItems} from '../../Slices/cartSlice'
 
 function Cart() {
 
@@ -12,20 +13,28 @@ function Cart() {
 
     //state from store
     let {userObj}=useSelector(state=>state.user)
+    //products from store  
+    let {cartItems,isError,isSuccess,errMsg}=useSelector(state=>state.cart)
+
+    //dispatch fun
+    let dispatch=useDispatch()
     
     useEffect(()=>{
-      const fetchProducts=async ()=>{
-        //http get req
-        let response=await axios.get('/cart-api/getcartitems')
-        let productList=response.data.payload
-        //getting the cart products only that belongs to the user logged in
-        let newArray= productList.filter((item=> item.username===userObj.username))
-        setProducts(newArray)
-        //console.log(productList)
-        //console.log(newArray)
-      }
-      fetchProducts()
+      dispatch(CartItems())
     },[])
+
+
+    //this to be executed when either isSuccess or isError changed
+    useEffect(()=>{
+      if(isError){
+        alert(errMsg)
+      }
+      if(isSuccess){
+        //getting the cart products only that belongs to the user logged in
+        let newArray= cartItems.filter((item=> item.username===userObj.username))
+        setProducts(newArray)
+      }
+    }, [isSuccess, isError]);
 
     const handlePrice=()=>{
       let ans=0;
@@ -37,29 +46,35 @@ function Cart() {
       let quantity=0;
       const ind=products.indexOf(item)
       const arr=products
-      quantity+=arr[ind].count;
+      const obj={
+        ...arr[ind]
+      };
+      quantity+=obj.count;
       quantity+=d;
-      arr[ind].count=quantity;
+      obj.count=quantity;
       //http put req (updating the quantity)
       //console.log(item)
-      let response=await axios.put('/cart-api/update-cartitem', arr[ind])
+      let response=await axios.put('/cart-api/update-cartitem', obj)
       alert(response.data.message)
       //console.log(response)
+      arr[ind]=obj
       setProducts([...arr])
       if(arr[ind].count==0){
         //delete req
-        handleRemove(item.food)
+        handleRemove(item._id)
       }
       handlePrice()
     }
 
-    const handleRemove=(food)=>{
+    const handleRemove=(id)=>{
       //delete req
-      let response=axios.delete(`http://localhost:4000/cart-api/remove-cartitem/${food}`)
-      //console.log(response)
-      const arr=products.filter((item)=>item.food!=food)
+      let response=axios.delete(`http://localhost:4000/cart-api/remove-cartitem/${id}`)
+      //console.log(id)
+      const arr=products.filter((item)=>item._id!=id)
       setProducts([...arr])
       handlePrice()
+
+      //dispatch(CartItems())
     }
 
     useEffect(()=>
