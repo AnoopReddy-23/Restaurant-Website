@@ -97,7 +97,7 @@ userApp.post('/login',expressAsyncHandler(async (request,response)=>{
             }
             //if passwords matched
             else{
-                console.log(userOfDB)
+                //console.log(userOfDB)
                 //create token
                 let token=jwt.sign({username:userOfDB.username},process.env.SECRET_KEY,{expiresIn:60})
                 //send token

@@ -50,19 +50,31 @@ function Viewproducts() {
 
 
     const handleClick=(item)=>{
-        // console.log(item)
+        //console.log(item)
+        //console.log(Object.isExtensible(item))
         //setCartItem(item)
+
+        const obj={
+          ...item
+        };
+        
         //adding username to the item
-        //item.username=userObj.username
+        obj.username=userObj.username
+
+        //count of obj
+        obj.count=1
+
         // delete id
-        // delete item._id;
-        console.log(item)
-        //count of item
-        // item.count=1
+        delete obj._id;
+        delete obj.foodType;
+        delete obj.description
+        //console.log(obj)
+        
+        //console.log(item,obj)
         // http post req
-        // axios.post('http://localhost:4000/cart-api/create-cart',item)
-        // .then(response=>alert(response.data.message))
-        // .catch(error=>alert(error))
+        axios.post('http://localhost:4000/cart-api/create-cart',obj)
+        .then(response=>alert(response.data.message))
+        .catch(error=>alert(error))
     }
 
 
