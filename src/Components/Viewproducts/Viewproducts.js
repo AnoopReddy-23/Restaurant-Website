@@ -10,7 +10,9 @@ import {getProducts} from '../../Slices/productSlice'
 function Viewproducts() {
 
     //products from store  
-    let {products}=useSelector(state=>state.product)
+    let {products,isError,isSuccess,errMsg}=useSelector(state=>state.product)
+    //userObj from store
+    let {userObj} = useSelector(state=>state.user)
 
     //dispatch fun
     let dispatch=useDispatch()
@@ -22,36 +24,45 @@ function Viewproducts() {
     let [desert,setDesert]=useState([])
     let newArray;
     
-    let {userObj} = useSelector(state=>state.user)
-
     useEffect(()=>{
         dispatch(getProducts())
-        console.log(products)
-        newArray= products.filter((item=> item.foodType==="starters"))
-        setStarters(newArray)
-        newArray= products.filter((item=> item.foodType==="riceAndBiryani"))
-        setRiceAndBiryani(newArray)
-        newArray= products.filter((item=> item.foodType==="snacks"))
-        setSnacks(newArray)
-        newArray= products.filter((item=> item.foodType==="drinks"))
-        setDrinks(newArray)
-        newArray= products.filter((item=> item.foodType==="desert"))
-        setDesert(newArray)
     },[])
+
+    //this to be executed when either isSuccess or isError changed
+      useEffect(()=>{
+        if(isError){
+          alert(errMsg)
+        }
+        if(isSuccess){
+          //console.log(products)
+          newArray= products.filter((item=> item.foodType==="starters"))
+          setStarters(newArray)
+          newArray= products.filter((item=> item.foodType==="riceAndBiryani"))
+          setRiceAndBiryani(newArray)
+          newArray= products.filter((item=> item.foodType==="snacks"))
+          setSnacks(newArray)
+          newArray= products.filter((item=> item.foodType==="drinks"))
+          setDrinks(newArray)
+          newArray= products.filter((item=> item.foodType==="desert"))
+          setDesert(newArray)
+        }
+      }, [isSuccess, isError]);
+
 
     const handleClick=(item)=>{
         // console.log(item)
         //setCartItem(item)
         //adding username to the item
-        item.username=userObj.username
+        //item.username=userObj.username
+        // delete id
+        // delete item._id;
+        console.log(item)
         //count of item
-        item.count=1
-        //delete id
-        delete item._id;
-        //http post req
-        axios.post('http://localhost:4000/cart-api/create-cart',item)
-        .then(response=>alert(response.data.message))
-        .catch(error=>alert(error))
+        // item.count=1
+        // http post req
+        // axios.post('http://localhost:4000/cart-api/create-cart',item)
+        // .then(response=>alert(response.data.message))
+        // .catch(error=>alert(error))
     }
 
 
