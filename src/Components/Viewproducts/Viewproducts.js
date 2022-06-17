@@ -1,14 +1,20 @@
 import {useState,useEffect} from 'react'
 import axios from 'axios'
 import Card from '../Card/Cards'
-import {useSelector} from 'react-redux'
 import {Nav,Navbar,Container,Offcanvas} from 'react-bootstrap'
 import {NavLink} from 'react-router-dom'
 import './Viewproducts.css'
+import { useSelector,useDispatch } from 'react-redux'
+import {getProducts} from '../../Slices/productSlice'
 
 function Viewproducts() {
 
-    let [products,setProducts]=useState([])
+    //products from store  
+    let {products}=useSelector(state=>state.product)
+
+    //dispatch fun
+    let dispatch=useDispatch()
+
     let [starters,setStarters]=useState([])
     let [riceAndBiryani,setRiceAndBiryani]=useState([])
     let [snacks,setSnacks]=useState([])
@@ -19,21 +25,18 @@ function Viewproducts() {
     let {userObj} = useSelector(state=>state.user)
 
     useEffect(()=>{
-      const fetchProducts=async ()=>{
-        let response=await axios.get('/product-api/getproducts')
-        let productList=response.data.payload
-        newArray= productList.filter((item=> item.foodType==="starters"))
+        dispatch(getProducts())
+        console.log(products)
+        newArray= products.filter((item=> item.foodType==="starters"))
         setStarters(newArray)
-        newArray= productList.filter((item=> item.foodType==="riceAndBiryani"))
+        newArray= products.filter((item=> item.foodType==="riceAndBiryani"))
         setRiceAndBiryani(newArray)
-        newArray= productList.filter((item=> item.foodType==="snacks"))
+        newArray= products.filter((item=> item.foodType==="snacks"))
         setSnacks(newArray)
-        newArray= productList.filter((item=> item.foodType==="drinks"))
+        newArray= products.filter((item=> item.foodType==="drinks"))
         setDrinks(newArray)
-        newArray= productList.filter((item=> item.foodType==="desert"))
+        newArray= products.filter((item=> item.foodType==="desert"))
         setDesert(newArray)
-      }
-      fetchProducts()
     },[])
 
     const handleClick=(item)=>{
