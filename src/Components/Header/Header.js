@@ -10,6 +10,8 @@ import Userdashboard from '../Userdashboard/Userdashboard'
 import { useDispatch, useSelector } from 'react-redux'
 import {useNavigate,Navigate} from 'react-router-dom'
 import {clearLoginStatus} from '../../Slices/userSlics'
+import {clearProductsData} from '../../Slices/productSlice'
+import {clearCartItems} from '../../Slices/cartSlice'
 import Userprofile from '../Userprofile/Userprofile'
 import Cart from '../Cart/Cart'
 import Products from '../Viewproducts/Viewproducts'
@@ -35,6 +37,8 @@ function Header() {
   const  userLogout=()=>{
     localStorage.clear();
     dispath(clearLoginStatus());
+    dispath(clearProductsData());
+    dispath(clearCartItems());
     navigate("/login");
   }
 

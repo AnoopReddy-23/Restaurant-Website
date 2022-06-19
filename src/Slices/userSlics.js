@@ -30,7 +30,7 @@ let userSlice=createSlice({
     reducers:{
         clearLoginStatus:(state)=>{
             state.isError=false;
-            state.userObj=null;
+            state.userObj={};
             state.isLoading=false;
             state.isSuccess=false;
             state.errMsg='';

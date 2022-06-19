@@ -7,6 +7,7 @@ export const getProducts=createAsyncThunk('productsdata', async()=>{
     return response.data.payload        
 })
 
+
 let productSlice=createSlice({
     name:'product',
     initialState:{
@@ -16,7 +17,16 @@ let productSlice=createSlice({
         isSuccess:false,
         errMsg:'',
     },
-    reducers:{},
+    reducers:{
+        clearProductsData:(state)=>{
+            state.isError=false;
+            state.products=[];
+            state.isLoading=false;
+            state.isSuccess=false;
+            state.errMsg='';
+            return state;
+        }
+    },
     extraReducers:{
 
         //track life cycle of promise returned bt createAsyncThunk function
@@ -40,6 +50,6 @@ let productSlice=createSlice({
 })
 
 //export action creator
-export const {}=productSlice.actions
+export const {clearProductsData}=productSlice.actions
 //export reducer
 export default productSlice.reducer

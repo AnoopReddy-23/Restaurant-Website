@@ -9,6 +9,7 @@ export const CartItems=createAsyncThunk('cartproductsdata', async()=>{
         
 })
 
+
 let cartSlice=createSlice({
     name:'cart',
     initialState:{
@@ -18,7 +19,16 @@ let cartSlice=createSlice({
         isSuccess:false,
         errMsg:'',
     },
-    reducers:{},
+    reducers:{
+        clearCartItems:(state)=>{
+            state.isError=false;
+            state.cartItems=[];
+            state.isLoading=false;
+            state.isSuccess=false;
+            state.errMsg='';
+            return state;
+        }
+    },
     extraReducers:{
          //track life cycle of promise returned bt createAsyncThunk function
          [CartItems.pending]:(state,action)=>{
@@ -42,6 +52,6 @@ let cartSlice=createSlice({
 })
 
 //export action creator
-export const {}=cartSlice.actions
+export const {clearCartItems}=cartSlice.actions
 //export reducer
 export default cartSlice.reducer
