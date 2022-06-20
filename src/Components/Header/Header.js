@@ -18,6 +18,7 @@ import Products from '../Viewproducts/Viewproducts'
 import Admindashboard from '.././Admindashboard/Admindashboard'
 import Addproduct from '../Addproduct/Addproduct'
 import Orders from '../Orders/Orders'
+import Gallery from '../Gallery/Gallery'
 import logo from '../../images/logo2.jpg'
 
 function Header() {
@@ -46,7 +47,7 @@ function Header() {
     <>
       <Navbar collapseOnSelect bg="dark" expand="sm" variant='dark'>
           <Container>
-            <Navbar.Brand href='#'><img src={logo} alt="Logo" className='logo '/> Restaurant</Navbar.Brand>
+            <Navbar.Brand href='#' className='me-auto'><img src={logo} alt="Logo" className='logo '/> Restaurant</Navbar.Brand>
             <Navbar.Toggle aria-controls="responsive-navbar-nav" />
             <Navbar.Collapse id="responsive-navbar-nav">
               <Nav className="ms-auto">
@@ -72,7 +73,13 @@ function Header() {
                   </Nav.Item>
 
                   <Nav.Item>
-                    <Nav.Link eventKey={4} as={NavLink} to="/contactus">
+                    <Nav.Link eventKey={4} as={NavLink} to="/gallery">
+                      Gallery
+                    </Nav.Link>
+                  </Nav.Item>
+
+                  <Nav.Item>
+                    <Nav.Link eventKey={5} as={NavLink} to="/contactus">
                       AboutUs
                     </Nav.Link>
                   </Nav.Item>
@@ -100,6 +107,7 @@ function Header() {
         <Route path='/' element={<Home />}/>
         <Route path='/signup' element={<Signup />}/>
         <Route path='/login' element={<Login />}/>
+        <Route path='/gallery' element={<Gallery />}/>
         <Route path='/contactus' element={<Contactus />}/>
         <Route path='/userdashboard' element={<Userdashboard />} >
             <Route path="profile" element={<Userprofile />} />
