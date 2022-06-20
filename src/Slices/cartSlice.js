@@ -3,8 +3,8 @@ import axios from 'axios'
 
 
 //http req to get products
-export const CartItems=createAsyncThunk('cartproductsdata', async()=>{
-    let response=await axios.get('/cart-api/getcartitems')
+export const CartItems=createAsyncThunk('cartproductsdata', async(name)=>{
+    let response=await axios.get(`http://localhost:4000/cart-api/getcartitems/${name}`)
     return response.data.payload
         
 })

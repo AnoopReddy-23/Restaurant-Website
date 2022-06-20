@@ -20,7 +20,7 @@ function Cart() {
     let dispatch=useDispatch()
     
     useEffect(()=>{
-      dispatch(CartItems())
+      dispatch(CartItems(userObj.username))
     },[])
 
 
@@ -64,6 +64,7 @@ function Cart() {
         handleRemove(item._id)
       }
       handlePrice()
+      dispatch(CartItems(userObj.username))
     }
 
     const handleRemove=(id)=>{
@@ -74,7 +75,7 @@ function Cart() {
       setProducts([...arr])
       handlePrice()
 
-      //dispatch(CartItems())
+      dispatch(CartItems(userObj.username))
     }
 
     useEffect(()=>

@@ -28,7 +28,7 @@ function Viewproducts() {
     
     useEffect(()=>{
         dispatch(getProducts());
-        dispatch(CartItems());
+        dispatch(CartItems(userObj.username));
     },[])
 
     //this to be executed when either isSuccess or isError changed
@@ -54,7 +54,7 @@ function Viewproducts() {
 
     const handleClick=(item)=>{
       //cartSlice
-      dispatch(CartItems())
+      dispatch(CartItems(userObj.username));
 
         //console.log(item)
         //console.log(Object.isExtensible(item))
@@ -82,10 +82,9 @@ function Viewproducts() {
         .then(response=>{
           alert(response.data.message)
           //cartSlice
-          dispatch(CartItems())
+          dispatch(CartItems(userObj.username));
         })
         .catch(error=>alert(error))
-
     }
 
 

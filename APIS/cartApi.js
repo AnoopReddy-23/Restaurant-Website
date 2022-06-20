@@ -73,12 +73,13 @@ cartApp.post('/create-cart',expressAsyncHandler(async (request,response)=>{
 
 
 //create route to handle '/getcartitems' path   
-cartApp.get('/getcartitems', expressAsyncHandler(async (request,response)=>{
+cartApp.get('/getcartitems/:name', expressAsyncHandler(async (request,response)=>{
    
     //get productCollectionObject from app.js
     let cartCollectionObject=request.app.get("cartCollectionObject");
     //read all products
-    let products=await cartCollectionObject.find().toArray()  //converts the cursors to array
+    let products=await cartCollectionObject.find({username:(request.params.name)}).toArray()  //converts the cursors to array
+    //console.log(products)
     //sending response
     response.send({message:'All products',payload:products})
 }))
