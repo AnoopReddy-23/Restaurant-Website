@@ -9,24 +9,31 @@ import img7 from '../images/gallery7.jpg'
 
 export const data=[
     {
-        img:img1
+        img:img1,
+        text:"Mushroom"
     },
     {
-        img:img2
+        img:img2,
+        text:"Omlett"
     },
     {
-        img:img3
+        img:img3,
+        text:"Carrot"
     },
     {
-        img:img4
+        img:img4,
+        text:"Pumpkin"
     },
     {
-        img:img5
+        img:img5,
+        text:"Groundnut"
     },
     {
-        img:img6
+        img:img6,
+        text:"Frankie"
     },
     {
-        img:img7
+        img:img7,
+        text:"FoodItem"
     }
 ]

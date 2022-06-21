@@ -1,9 +1,6 @@
-.gallery h3{
+.gallery h1{
     font-size: large;
     font-weight: bolder;
-    padding: 6px;
-}
-
-.gallery img{
-    height: 100%;
+    padding: 12px;
+    margin: 6px;
 }
