@@ -5,6 +5,7 @@ import Home from '../Home/Home'
 import Signup from '../Signup/Signup'
 import Login from '../Login/Login'
 import Contactus from '../Contactus/Contactus'
+import LoginSignup from '../LoginSignup/LoginSignup'
 import './Hearder.css'
 import Userdashboard from '../Userdashboard/Userdashboard'
 import { useDispatch, useSelector } from 'react-redux'
@@ -23,7 +24,7 @@ import logo from '../../images/logo2.jpg'
 import {RiAccountCircleFill} from 'react-icons/ri'
 import {AiFillHome} from 'react-icons/ai'
 import {FcGallery,FcAbout} from 'react-icons/fc'
-
+import {MdSwitchAccount} from 'react-icons/md'
 
 
 function Header() {
@@ -61,30 +62,24 @@ function Header() {
                   {/* These links can be visible when no user logged in */}
                   <Nav.Item>
                     <Nav.Link eventKey={1} as={NavLink} to="/">
-                      <AiFillHome className='text-primary'/> Home
+                      <AiFillHome fill='orange'/> Home
                     </Nav.Link>
                   </Nav.Item>
 
                   <Nav.Item>
-                    <Nav.Link eventKey={2} as={NavLink} to="/signup">
-                      Signup
+                    <Nav.Link eventKey={2} as={NavLink} to="/login">
+                      <MdSwitchAccount color='blue'/> Login/Signup
                     </Nav.Link>
                   </Nav.Item>
 
                   <Nav.Item>
-                    <Nav.Link eventKey={3} as={NavLink} to="/login">
-                      Login
-                    </Nav.Link>
-                  </Nav.Item>
-
-                  <Nav.Item>
-                    <Nav.Link eventKey={4} as={NavLink} to="/gallery">
+                    <Nav.Link eventKey={3} as={NavLink} to="/gallery">
                      <FcGallery/> Gallery
                     </Nav.Link>
                   </Nav.Item>
 
                   <Nav.Item>
-                    <Nav.Link eventKey={5} as={NavLink} to="/contactus">
+                    <Nav.Link eventKey={4} as={NavLink} to="/contactus">
                       <FcAbout/> AboutUs
                     </Nav.Link>
                   </Nav.Item>
@@ -117,8 +112,12 @@ function Header() {
       {/* Routes */}
       <Routes>
         <Route path='/' element={<Home />}/>
-        <Route path='/signup' element={<Signup />}/>
-        <Route path='/login' element={<Login />}/>
+        <Route path='/login' element={<LoginSignup />} >
+            <Route path='signup' element={<Signup />}/>
+            <Route path='login' element={<Login />}/>
+            {/* Navigating to cart when child path is empty */}
+            <Route path="" element={<Navigate to="login" replace={true} />} />
+        </Route>
         <Route path='/gallery' element={<Gallery />}/>
         <Route path='/contactus' element={<Contactus />}/>
         <Route path="profile" element={<Userprofile />} />

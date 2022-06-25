@@ -2,7 +2,6 @@ import React from 'react'
 import {useForm} from 'react-hook-form'
 import {Form, Button} from 'react-bootstrap'
 import {MdLogin} from 'react-icons/md'
-import login from '../../images/login.svg'
 import {useDispatch,useSelector} from 'react-redux'
 import {useNavigate} from 'react-router-dom'
 import {useEffect,useState} from 'react'
@@ -51,11 +50,8 @@ function Login() {
 
   return (
     <>
-      <h1 className='text-warning text-center'>Login</h1>
-      <img src={login} alt="login image" width="300px" className='d-block mx-auto border border-2 border-light p-3 m-3'/>
-      <div className="row">
-        <div className="col-10 col-sm-8 col-md-6 mx-auto">
-          <Form onSubmit={handleSubmit(onFormSubmit)}>
+        <div className="col-10 col-sm-8 mx-auto border border-2">
+          <Form onSubmit={handleSubmit(onFormSubmit)} className='p-3' >
 
             {/* usertype */}
             <Form.Group className="mb-3">
@@ -96,7 +92,6 @@ function Login() {
             </Button>
           </Form>
         </div>
-      </div>
     </>
   )
 }

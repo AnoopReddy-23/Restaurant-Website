@@ -1,7 +1,6 @@
 import React from 'react'
 import {useForm} from 'react-hook-form'
-import {Form, Button} from 'react-bootstrap'
-import signup from '../../images/signup.svg'
+import {Form, Button,Card} from 'react-bootstrap'
 import {GoSignIn} from 'react-icons/go'
 import axios from 'axios'
 import {useNavigate} from 'react-router-dom'
@@ -50,12 +49,9 @@ function Signup() {
 
   return (
     <>
-      <h1 className='text-warning text-center'>SignUp</h1>
-      <img src={signup} alt="signup image" width="300px" className='mx-auto d-none d-sm-block border border-2 border-light p-3 m-3'/>
-      <div className="row">
-        <div className="col-10 col-sm-8 col-md-6 mx-auto">
+      <div className="col-10 col-sm-8 mx-auto border border-2">
         {/* form */}
-        <Form onSubmit={handleSubmit(onFormSubmit)}>
+        <Form onSubmit={handleSubmit(onFormSubmit)} className='p-3'>
           {/* username */}
           <Form.Group className="mb-3">
             <Form.Label>Username</Form.Label>
@@ -105,7 +101,6 @@ function Signup() {
         </Form>
 
         </div>
-      </div>
     </>
   )
 }
