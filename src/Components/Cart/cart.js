@@ -13,7 +13,7 @@ function Cart() {
 
     //state from store
     let {userObj}=useSelector(state=>state.user)
-    //products from store  
+    //cartproducts from store  
     let {cartItems,isError,isSuccess,errMsg}=useSelector(state=>state.cart)
 
     //dispatch fun

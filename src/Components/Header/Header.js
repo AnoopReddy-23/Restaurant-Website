@@ -20,6 +20,11 @@ import Addproduct from '../Addproduct/Addproduct'
 import Orders from '../Orders/Orders'
 import Gallery from '../Gallery/Gallery'
 import logo from '../../images/logo2.jpg'
+import {RiAccountCircleFill} from 'react-icons/ri'
+import {AiFillHome} from 'react-icons/ai'
+import {FcGallery,FcAbout} from 'react-icons/fc'
+
+
 
 function Header() {
 
@@ -45,7 +50,7 @@ function Header() {
 
   return (
     <>
-      <Navbar collapseOnSelect bg="dark" expand="sm" variant='dark'>
+      <Navbar collapseOnSelect bg="dark" expand="md" variant='dark'>
           <Container>
             <Navbar.Brand href='#' className='me-auto'><img src={logo} alt="Logo" className='logo '/> Restaurant</Navbar.Brand>
             <Navbar.Toggle aria-controls="responsive-navbar-nav" />
@@ -56,7 +61,7 @@ function Header() {
                   {/* These links can be visible when no user logged in */}
                   <Nav.Item>
                     <Nav.Link eventKey={1} as={NavLink} to="/">
-                      Home
+                      <AiFillHome className='text-primary'/> Home
                     </Nav.Link>
                   </Nav.Item>
 
@@ -74,13 +79,13 @@ function Header() {
 
                   <Nav.Item>
                     <Nav.Link eventKey={4} as={NavLink} to="/gallery">
-                      Gallery
+                     <FcGallery/> Gallery
                     </Nav.Link>
                   </Nav.Item>
 
                   <Nav.Item>
                     <Nav.Link eventKey={5} as={NavLink} to="/contactus">
-                      AboutUs
+                      <FcAbout/> AboutUs
                     </Nav.Link>
                   </Nav.Item>
                 </>
@@ -88,8 +93,15 @@ function Header() {
                 <>
                   {/* This dropdown is visible only when a user is logged in */}
                   <NavDropdown title={userObj.username} id="collasible-nav-dropdown">
+                    <NavDropdown.Item>
+                      <Nav.Item>
+                        <Nav.Link  as={NavLink} to="/profile" className='text-dark'>
+                          Profile <span className='text-dark'><RiAccountCircleFill size={20}/></span>
+                        </Nav.Link>
+                      </Nav.Item>
+                    </NavDropdown.Item>
+                    <NavDropdown.Divider />
                     <NavDropdown.Item>Change password</NavDropdown.Item>
-
                     <NavDropdown.Divider />
                     <NavDropdown.Item onClick={userLogout}>
                       Logout
@@ -109,20 +121,19 @@ function Header() {
         <Route path='/login' element={<Login />}/>
         <Route path='/gallery' element={<Gallery />}/>
         <Route path='/contactus' element={<Contactus />}/>
+        <Route path="profile" element={<Userprofile />} />
         <Route path='/userdashboard' element={<Userdashboard />} >
-            <Route path="profile" element={<Userprofile />} />
             <Route path="cart" element={<Cart />} />
             <Route path="products" element={<Products />} />
-            {/* Navigating to profile when child path is empty */}
-            <Route path="" element={<Navigate to="profile" replace={true} />} />
+            {/* Navigating to cart when child path is empty */}
+            <Route path="" element={<Navigate to="cart" replace={true} />} />
         </Route>
         <Route path="/admindashboard" element={<Admindashboard />} >
-            <Route path="profile" element={<Userprofile />} />
             <Route path="addproduct" element={<Addproduct />} />
             <Route path="products" element={<Products />} />
             <Route path="orders" element={<Orders />} />
-            {/* Navigating to profile when child path is empty */}
-            <Route path="" element={<Navigate to="profile" replace={true} />} />
+            {/* Navigating to orders when child path is empty */}
+            <Route path="" element={<Navigate to="orders" replace={true} />} />
           </Route>
       </Routes>
 

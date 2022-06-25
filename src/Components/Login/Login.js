@@ -7,6 +7,8 @@ import {useDispatch,useSelector} from 'react-redux'
 import {useNavigate} from 'react-router-dom'
 import {useEffect,useState} from 'react'
 import {userLogin} from '../../Slices/userSlics'
+import {CartItems} from '../../Slices/cartSlice'
+
 
 function Login() {
 
@@ -26,17 +28,8 @@ function Login() {
   
   //submit the form
   const onFormSubmit=(userCredObj)=>{
-    // console.log(userCredObj)
-    if (userCredObj.userType === "user") {
-      setSample("user");
+      setSample(userCredObj.userType);
       dispatch(userLogin(userCredObj));
-    }
-
-    if (userCredObj.userType === "admin") {
-      setSample("admin")
-      //alert("Admin devoloplment in progress...");
-      dispatch(userLogin(userCredObj));
-    }
   }
 
 
@@ -48,6 +41,7 @@ function Login() {
     if(isSuccess && sample==="user"){
         //console.log(sample);
         navigate("/userdashboard");
+        dispatch(CartItems(userObj.username));
     }
     if(isSuccess && sample==="admin"){
       //console.log(sample);
