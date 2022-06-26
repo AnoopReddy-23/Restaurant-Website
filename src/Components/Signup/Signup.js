@@ -49,9 +49,9 @@ function Signup() {
 
   return (
     <>
-      <div className="col-10 col-sm-8 mx-auto border border-2">
+      <div className="col-10 col-sm-8 col-md-7 mx-auto border border-2">
         {/* form */}
-        <Form onSubmit={handleSubmit(onFormSubmit)} className='p-3'>
+        <Form onSubmit={handleSubmit(onFormSubmit)} className='p-5'>
           {/* username */}
           <Form.Group className="mb-3">
             <Form.Label>Username</Form.Label>

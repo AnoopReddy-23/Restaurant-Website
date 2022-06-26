@@ -50,8 +50,8 @@ function Login() {
 
   return (
     <>
-        <div className="col-10 col-sm-8 mx-auto border border-2">
-          <Form onSubmit={handleSubmit(onFormSubmit)} className='p-3' >
+        <div className="col-10 col-sm-8 col-md-7 mx-auto border border-2">
+          <Form onSubmit={handleSubmit(onFormSubmit)} className='p-5' >
 
             {/* usertype */}
             <Form.Group className="mb-3">
