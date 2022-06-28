@@ -96,8 +96,6 @@ function Header() {
                       </Nav.Item>
                     </NavDropdown.Item>
                     <NavDropdown.Divider />
-                    <NavDropdown.Item>Change password</NavDropdown.Item>
-                    <NavDropdown.Divider />
                     <NavDropdown.Item onClick={userLogout}>
                       Logout
                     </NavDropdown.Item>
