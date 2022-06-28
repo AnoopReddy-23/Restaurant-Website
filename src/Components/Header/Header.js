@@ -7,7 +7,6 @@ import Login from '../Login/Login'
 import Contactus from '../Contactus/Contactus'
 import LoginSignup from '../LoginSignup/LoginSignup'
 import './Hearder.css'
-import Userdashboard from '../Userdashboard/Userdashboard'
 import { useDispatch, useSelector } from 'react-redux'
 import {useNavigate,Navigate} from 'react-router-dom'
 import {clearLoginStatus} from '../../Slices/userSlics'
@@ -16,15 +15,15 @@ import {clearCartItems} from '../../Slices/cartSlice'
 import Userprofile from '../Userprofile/Userprofile'
 import Cart from '../Cart/Cart'
 import Products from '../Viewproducts/Viewproducts'
-import Admindashboard from '.././Admindashboard/Admindashboard'
 import Addproduct from '../Addproduct/Addproduct'
-import Orders from '../Orders/Orders'
 import Gallery from '../Gallery/Gallery'
 import logo from '../../images/logo2.jpg'
 import {RiAccountCircleFill} from 'react-icons/ri'
 import {AiFillHome} from 'react-icons/ai'
 import {FcGallery,FcAbout} from 'react-icons/fc'
 import {MdSwitchAccount} from 'react-icons/md'
+import {FaCartArrowDown} from 'react-icons/fa'
+import {MdOutlineMenuBook,MdAddchart} from 'react-icons/md'
 
 
 function Header() {
@@ -33,6 +32,9 @@ function Header() {
   let {userObj,isError,isLoading,isSuccess,errMsg}=useSelector(
     (state)=>state.user
   )
+
+  //cartproducts from store  
+  let {cartItems}=useSelector(state=>state.cart)
 
   //get dispath function
   let dispath=useDispatch()
@@ -84,9 +86,32 @@ function Header() {
                     </Nav.Link>
                   </Nav.Item>
                 </>
-              ) : (
+              ) : ( 
                 <>
-                  {/* This dropdown is visible only when a user is logged in */}
+                  {/* This dropdown is visible only when a user is logged in */}  
+                  <Nav.Item>
+                      <Nav.Link to="/products" as={NavLink}>
+                        Menu <span className='text-muted'>
+                        <MdOutlineMenuBook size={30}/></span>
+                      </Nav.Link>
+                  </Nav.Item>
+                  {userObj.usertype==="user" ? 
+                  (
+                    <Nav.Item>
+                        <Nav.Link to="/cart" as={NavLink}>
+                          Cart <span className='text-warning'>
+                          <FaCartArrowDown size={30}/>{cartItems.length}</span>
+                        </Nav.Link>
+                    </Nav.Item>
+                  ) : (
+                  <Nav.Item>
+                      <Nav.Link to="/addproduct" as={NavLink}>
+                        <MdAddchart className='text-primary'/> Add Product
+                      </Nav.Link>
+                  </Nav.Item>
+                  
+                  )}
+
                   <NavDropdown title={userObj.username} id="collasible-nav-dropdown">
                     <NavDropdown.Item>
                       <Nav.Item>
@@ -100,6 +125,7 @@ function Header() {
                       Logout
                     </NavDropdown.Item>
                   </NavDropdown>
+
                 </>
               )}
               </Nav>
@@ -119,18 +145,9 @@ function Header() {
         <Route path='/gallery' element={<Gallery />}/>
         <Route path='/contactus' element={<Contactus />}/>
         <Route path="profile" element={<Userprofile />} />
-        <Route path='/userdashboard' element={<Userdashboard />} >
-            <Route path="cart" element={<Cart />} />
-            <Route path="products" element={<Products />} />
-            {/* Navigating to cart when child path is empty */}
-            <Route path="" element={<Navigate to="products" replace={true} />} />
-        </Route>
-        <Route path="/admindashboard" element={<Admindashboard />} >
-            <Route path="addproduct" element={<Addproduct />} />
-            <Route path="products" element={<Products />} />
-            {/* Navigating to orders when child path is empty */}
-            <Route path="" element={<Navigate to="addproduct" replace={true} />} />
-          </Route>
+        <Route path="/cart" element={<Cart />} />
+        <Route path="/products" element={<Products />} />
+        <Route path="/addproduct" element={<Addproduct />} />
       </Routes>
 
     </>

@@ -22,12 +22,9 @@ function Login() {
   //get navigate function
   let navigate=useNavigate()
 
-  //state
-  let [sample,setSample]=useState(null)
   
   //submit the form
   const onFormSubmit=(userCredObj)=>{
-      setSample(userCredObj.userType);
       dispatch(userLogin(userCredObj));
   }
 
@@ -37,15 +34,11 @@ function Login() {
     if(isError){
       alert(errMsg)
     }
-    if(isSuccess && sample==="user"){
+    if(isSuccess){
         //console.log(sample);
-        navigate("/userdashboard");
+        navigate("/products");
         dispatch(CartItems(userObj.username));
     }
-    if(isSuccess && sample==="admin"){
-      //console.log(sample);
-      navigate("/admindashboard");
-  }
   }, [isSuccess, isError]);
 
   return (

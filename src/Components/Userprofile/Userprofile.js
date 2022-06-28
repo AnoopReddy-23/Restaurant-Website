@@ -11,12 +11,7 @@ function Userprofile() {
   let navigate=useNavigate()
 
   let funNavigate=()=>{
-    if(userObj.usertype==="user"){
-      navigate("/userdashboard");
-    }
-    if(userObj.usertype==="admin"){
-      navigate("/admindashboard");
-    }
+      navigate("/products");
   }
 
   useEffect(()=>{
