@@ -4,7 +4,7 @@ import {Form, Button} from 'react-bootstrap'
 import {MdLogin} from 'react-icons/md'
 import {useDispatch,useSelector} from 'react-redux'
 import {useNavigate} from 'react-router-dom'
-import {useEffect,useState} from 'react'
+import {useEffect} from 'react'
 import {userLogin} from '../../Slices/userSlics'
 import {CartItems} from '../../Slices/cartSlice'
 

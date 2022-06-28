@@ -20,7 +20,7 @@ import Gallery from '../Gallery/Gallery'
 import logo from '../../images/logo2.jpg'
 import {RiAccountCircleFill} from 'react-icons/ri'
 import {AiFillHome} from 'react-icons/ai'
-import {FcGallery,FcAbout} from 'react-icons/fc'
+import {FcGallery,FcAbout,FcReadingEbook} from 'react-icons/fc'
 import {MdSwitchAccount} from 'react-icons/md'
 import {FaCartArrowDown} from 'react-icons/fa'
 import {MdOutlineMenuBook,MdAddchart} from 'react-icons/md'
@@ -53,7 +53,7 @@ function Header() {
 
   return (
     <>
-      <Navbar collapseOnSelect bg="dark" expand="md" variant='dark'>
+      <Navbar collapseOnSelect bg="dark" expand="md" variant='dark' sticky='top'>
           <Container>
             <Navbar.Brand href='#' className='me-auto'><img src={logo} alt="Logo" className='logo '/> Restaurant</Navbar.Brand>
             <Navbar.Toggle aria-controls="responsive-navbar-nav" />
@@ -90,33 +90,33 @@ function Header() {
                 <>
                   {/* This dropdown is visible only when a user is logged in */}  
                   <Nav.Item>
-                      <Nav.Link to="/products" as={NavLink}>
-                        Menu <span className='text-muted'>
+                      <Nav.Link eventKey={5} to="/products" as={NavLink}>
+                        Menu <span className='text-success'>
                         <MdOutlineMenuBook size={30}/></span>
                       </Nav.Link>
                   </Nav.Item>
                   {userObj.usertype==="user" ? 
                   (
                     <Nav.Item>
-                        <Nav.Link to="/cart" as={NavLink}>
+                        <Nav.Link eventKey={6} to="/cart" as={NavLink}>
                           Cart <span className='text-warning'>
                           <FaCartArrowDown size={30}/>{cartItems.length}</span>
                         </Nav.Link>
                     </Nav.Item>
                   ) : (
                   <Nav.Item>
-                      <Nav.Link to="/addproduct" as={NavLink}>
+                      <Nav.Link eventKey={7} to="/addproduct" as={NavLink}>
                         <MdAddchart className='text-primary'/> Add Product
                       </Nav.Link>
                   </Nav.Item>
                   
                   )}
-
-                  <NavDropdown title={userObj.username} id="collasible-nav-dropdown">
+                  
+                  <NavDropdown title={userObj.username}  id="collasible-nav-dropdown">
                     <NavDropdown.Item>
                       <Nav.Item>
-                        <Nav.Link  as={NavLink} to="/profile" className='text-dark'>
-                          Profile <span className='text-dark'><RiAccountCircleFill size={20}/></span>
+                        <Nav.Link eventKey={8} as={NavLink} to="/profile" className='text-dark'>
+                          Profile <span className='text-dark'><FcReadingEbook  size={20}/></span>
                         </Nav.Link>
                       </Nav.Item>
                     </NavDropdown.Item>
