@@ -36,7 +36,7 @@ function Userdashboard() {
               <Navbar.Brand href='#'>UserDashBoard</Navbar.Brand>
               <Navbar.Toggle aria-controls="responsive-navbar-nav" />
               <Navbar.Collapse id="responsive-navbar-nav">
-                <Nav className="ms-auto" defaultActiveKey="/cart">
+                <Nav className="ms-auto" defaultActiveKey="/products">
                   <Nav.Item>
                       <Nav.Link to="cart" as={NavLink}>Cart <span className='text-warning'><FaCartArrowDown size={30}/>{cartItems.length}</span></Nav.Link>
                   </Nav.Item>

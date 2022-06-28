@@ -33,7 +33,7 @@ function Admindashboard() {
               <Navbar.Brand href='#'>AdminDashBoard</Navbar.Brand>
               <Navbar.Toggle aria-controls="responsive-navbar-nav" />
               <Navbar.Collapse id="responsive-navbar-nav">
-                <Nav className="ms-auto" defaultActiveKey="/orders">    
+                <Nav className="ms-auto" defaultActiveKey="/addproduct">    
                   <Nav.Item>
                       <Nav.Link to="addproduct" as={NavLink}>
                         <MdAddchart className='text-primary'/> Add Product
@@ -43,9 +43,6 @@ function Admindashboard() {
                       <Nav.Link to="products" as={NavLink}>
                         <MdOutlineMenuBook className='text-warning'/> Menu
                       </Nav.Link>
-                  </Nav.Item>
-                  <Nav.Item>
-                      <Nav.Link to="orders" as={NavLink}>Orders</Nav.Link>
                   </Nav.Item>
                 </Nav>
               </Navbar.Collapse>

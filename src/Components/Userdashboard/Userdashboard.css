@@ -1,5 +1,4 @@
 .active{
-  background-color: rgb(189, 65, 86);
   color:white;
   font-weight: bold;
   text-decoration: none;
@@ -10,8 +9,4 @@
 a{
   color:aliceblue;
   text-decoration: none;
-}
-
-a:hover{
-  color:forestgreen;
 }

@@ -125,14 +125,13 @@ function Header() {
             <Route path="cart" element={<Cart />} />
             <Route path="products" element={<Products />} />
             {/* Navigating to cart when child path is empty */}
-            <Route path="" element={<Navigate to="cart" replace={true} />} />
+            <Route path="" element={<Navigate to="products" replace={true} />} />
         </Route>
         <Route path="/admindashboard" element={<Admindashboard />} >
             <Route path="addproduct" element={<Addproduct />} />
             <Route path="products" element={<Products />} />
-            <Route path="orders" element={<Orders />} />
             {/* Navigating to orders when child path is empty */}
-            <Route path="" element={<Navigate to="orders" replace={true} />} />
+            <Route path="" element={<Navigate to="addproduct" replace={true} />} />
           </Route>
       </Routes>
 
