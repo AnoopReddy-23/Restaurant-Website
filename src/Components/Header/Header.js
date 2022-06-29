@@ -24,12 +24,13 @@ import {FcGallery,FcAbout,FcReadingEbook} from 'react-icons/fc'
 import {MdSwitchAccount} from 'react-icons/md'
 import {FaCartArrowDown} from 'react-icons/fa'
 import {MdOutlineMenuBook,MdAddchart} from 'react-icons/md'
+import PageNotFound from '../PageNotFound/PageNotFound'
 
 
 function Header() {
 
   //get state from store
-  let {userObj,isError,isLoading,isSuccess,errMsg}=useSelector(
+  let {userObj,isuserError,isuserLoading,isuserSuccess,errMsg}=useSelector(
     (state)=>state.user
   )
 
@@ -59,7 +60,7 @@ function Header() {
             <Navbar.Toggle aria-controls="responsive-navbar-nav" />
             <Navbar.Collapse id="responsive-navbar-nav">
               <Nav className="ms-auto">
-              {isSuccess !== true ? (
+              {isuserSuccess !== true ? (
                 <>
                   {/* These links can be visible when no user logged in */}
                   <Nav.Item>
@@ -148,6 +149,7 @@ function Header() {
         <Route path="/cart" element={<Cart />} />
         <Route path="/products" element={<Products />} />
         <Route path="/addproduct" element={<Addproduct />} />
+        <Route path="/*" element={<PageNotFound />}/>
       </Routes>
 
     </>

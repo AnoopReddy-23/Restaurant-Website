@@ -1,19 +1,26 @@
 import React from 'react'
-import logo2 from '../../images/logo2.jpg'
+import './Home.css'
+import {Button} from 'react-bootstrap'
+import { useNavigate } from 'react-router'
 
 function Home() {
+
+  let navigate=useNavigate()
+
   return (
-    <>
-          {/* welcome image */}
-            <div className='row '>
-              <img className='col-12 col-md-10 p-5 d-block mx-auto' src={logo2} alt="Restarant Logo2" />
+    <div className='home'>
+      <div className="header">
+          <div className="overlay">
+            <div className="content">
+              <h1>Welcome to <br /><span>TastyNest</span></h1>
+              <p>Lorem ipsum, dolor sit amet consectetur adipisicing elit. Quibusdam, expedita quisquam? Maxime hic, 
+                ipsa qui tenetur quo fugiat doloribus iusto.</p>
+              <Button onClick={()=>navigate('/login')}>Order Now</Button>
             </div>
-            {/* some text about  */}
-            <div className="text p-3 container">
-              <p>Lorem ipsum dolor, sit amet consectetur adipisicing elit. Nulla ipsum officia aliquam enim dicta exercitationem necessitatibus ratione quo expedita ducimus molestiae recusandae, unde magni! Eaque, molestias! Dolores itaque vero facere dolorum tempora natus necessitatibus sequi quam a minima recusandae harum, molestiae consequatur obcaecati corporis animi ab ducimus nesciunt esse est asperiores alias sint ea. Autem nostrum, distinctio vel sed pariatur modi quo magnam quaerat totam esse, ullam fugiat dolore sit dolorem eligendi culpa consectetur maiores sunt enim asperiores illum tempora aspernatur beatae nihil? Blanditiis voluptas dolores pariatur possimus necessitatibus ducimus laudantium voluptatibus, doloribus magnam natus fugit odit accusantium esse officiis.</p>
-            </div>
-    </>
+          </div>
+      </div>
+    </div>
   )
 }
 
-export default Home
+export default Home;

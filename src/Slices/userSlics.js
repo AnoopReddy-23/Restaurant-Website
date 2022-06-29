@@ -22,17 +22,17 @@ let userSlice=createSlice({
     name:'user',
     initialState:{
         userObj:{},
-        isError:false,
-        isLoading:false,
-        isSuccess:false,
+        isuserError:false,
+        isuserLoading:false,
+        isuserSuccess:false,
         errMsg:'',
     },
     reducers:{
         clearLoginStatus:(state)=>{
-            state.isError=false;
+            state.isuserError=false;
             state.userObj={};
-            state.isLoading=false;
-            state.isSuccess=false;
+            state.isuserLoading=false;
+            state.isuserSuccess=false;
             state.errMsg='';
             return state;
         }
@@ -41,19 +41,19 @@ let userSlice=createSlice({
         
         //track life cycle of promise returned bt createAsyncThunk function
         [userLogin.pending]:(state,action)=>{
-            state.isLoading=true;
+            state.isuserLoading=true;
         },
         [userLogin.fulfilled]:(state,action)=>{
             state.userObj=action.payload;
-            state.isError=false;
-            state.isLoading=false;
-            state.isSuccess=true;
+            state.isuserError=false;
+            state.isuserLoading=false;
+            state.isuserSuccess=true;
             state.errMsg='';
         },
         [userLogin.rejected]:(state,action)=>{
-            state.isError=true;
-            state.isLoading=false;
-            state.isSuccess=false;
+            state.isuserError=true;
+            state.isuserLoading=false;
+            state.isuserSuccess=false;
             state.errMsg=action.payload.message;
         }
     }

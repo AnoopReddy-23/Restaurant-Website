@@ -1,0 +1,36 @@
+.home .header{
+    background-image: url('E:/REACT APPS/project/src/images/1.jpg');
+    background-position: center;
+    background-size: cover;
+    background-repeat: no-repeat;
+    height: 400px;
+}
+
+.home .header .content{
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%,-50%);
+    color: #fff;
+   text-align: center;
+}
+
+.home .header .content h1{
+    font-size: 35px;
+}
+
+
+.home .header .content span{
+    font-size: 50px;
+}
+
+.home .header .content p{
+    font-size: 15px;
+    padding: 0px 25px;
+}
+
+/* 
+.home .header .overlay{
+    background-color: rgba(0,0,1.2);
+    height: 100vh;
+} */

@@ -6,7 +6,7 @@ import { useNavigate } from 'react-router-dom';
 function Userprofile() {
 
   //get userObj from store
-  let {userObj,isSuccess}=useSelector(state=>state.user);
+  let {userObj,isuserSuccess}=useSelector(state=>state.user);
   //get navigate function
   let navigate=useNavigate()
 
@@ -15,14 +15,14 @@ function Userprofile() {
   }
 
   useEffect(()=>{
-    if(isSuccess===false){
+    if(isuserSuccess===false){
       navigate('/login')
     }
   },[])
 
   return (
     <>
-    {isSuccess===false 
+    {isuserSuccess===false 
       ? (
             alert("Please Login!!! After then you can see your profile.")
       ) 

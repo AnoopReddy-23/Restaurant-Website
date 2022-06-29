@@ -14,7 +14,7 @@ function Login() {
   const {register, handleSubmit,formState:{errors}}=useForm();
   
   //get state from store
-  let {userObj,isError,isLoading,isSuccess,errMsg}=useSelector(state=>state.user)
+  let {userObj,isuserError,isuserLoading,isuserSuccess,errMsg}=useSelector(state=>state.user)
 
   //get dispatch function
   let dispatch=useDispatch()
@@ -31,15 +31,15 @@ function Login() {
 
   //this to be executed when either isSuccess or isError changed
   useEffect(()=>{
-    if(isError){
+    if(isuserError){
       alert(errMsg)
     }
-    if(isSuccess){
+    if(isuserSuccess){
         //console.log(sample);
         navigate("/products");
         dispatch(CartItems(userObj.username));
     }
-  }, [isSuccess, isError]);
+  }, [isuserSuccess, isuserError]);
 
   return (
     <>

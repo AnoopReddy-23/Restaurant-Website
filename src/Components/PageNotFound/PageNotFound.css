@@ -1,0 +1,13 @@
+.pagenotfound{
+    text-align: center;
+}
+
+.pagenotfound .notfound h1{
+    font-weight: bold;
+    color: orangered;
+}
+
+.pagenotfound .notfound h3{
+    font-weight: bold;
+    color: black;
+}

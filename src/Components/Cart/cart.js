@@ -5,6 +5,8 @@ import CartCard from '../CartCard/CartCard'
 import {Button} from 'react-bootstrap'
 import { useSelector,useDispatch } from 'react-redux'
 import {CartItems} from '../../Slices/cartSlice'
+import { useNavigate } from 'react-router-dom';
+
 
 function Cart() {
 
@@ -12,12 +14,14 @@ function Cart() {
     let [price,setPrice]=useState(0)
 
     //state from store
-    let {userObj}=useSelector(state=>state.user)
+    let {userObj,isuserSuccess}=useSelector(state=>state.user)
     //cartproducts from store  
     let {cartItems,isError,isSuccess,errMsg}=useSelector(state=>state.cart)
 
     //dispatch fun
     let dispatch=useDispatch()
+
+    let navigate=useNavigate()
     
     useEffect(()=>{
       dispatch(CartItems(userObj.username))
@@ -82,21 +86,32 @@ function Cart() {
       handlePrice()
     )
 
-  return (
-    <div> 
-      
-      <div className='mt-5 mx-5 row'>
-        {
-          products.map((item)=><CartCard key={item._id} item={item} handleChange={handleChange} handleRemove={handleRemove}/>
-        )}
-      </div>
-      <div className="row text-center">
-        <span>Total Price of Products is </span>
-        <span className='text-danger'>Rs.{price}/-</span>
-        <Button className="bg-success p-3 mt-3 col-4 mx-auto" onClick={()=>console.log(products,price)}>CheckOut</Button>
-      </div>
+    useEffect(()=>{
+      if(isuserSuccess===false){
+        navigate('/login')
+      }
+    },[])
 
-    </div>
+  return (
+    <>
+     {isuserSuccess===false 
+      ? (
+            alert("Please Login!!! After then you can see your profile.")
+      ) 
+      : (<>
+          <div className='mt-5 mx-5 row'>
+          {
+            products.map((item)=><CartCard key={item._id} item={item} handleChange={handleChange} handleRemove={handleRemove}/>
+          )}
+          </div>
+          <div className="row text-center">
+            <span>Total Price of Products is </span>
+            <span className='text-danger'>Rs.{price}/-</span>
+            <Button className="bg-success p-3 mt-3 col-4 mx-auto" onClick={()=>console.log(products,price)}>CheckOut</Button>
+          </div>
+      </>)
+    }
+    </>
   )
 }
 
