@@ -6,6 +6,15 @@ import slider1 from '../../images/slider1.jpg'
 import slider2 from '../../images/slider4.jpg'
 import slider3 from '../../images/slider3.jpg'
 import homeImg from '../../images/home.jpg'
+import home1 from '../../images/home1.jpg'
+import home2 from '../../images/home2.jpg'
+import home3 from '../../images/home3.jpg'
+import home4 from '../../images/home4.jpg'
+import home5 from '../../images/home5.jpg'
+import home6 from '../../images/home6.jpg'
+import home7 from '../../images/home7.jpg'
+import home8 from '../../images/home8.jpg'
+
 
 
 // Import Swiper React components
@@ -71,13 +80,15 @@ function Home() {
           Libero, eaque sequi aspernatur omnis ducimus excepturi ipsum cum ea natus laboriosam.</p>
       </div>
       {/* part-3 */}
+      <h1 className="text-center text-warning d-lg-none d-xl-none">Our Restaurant's Top Rated Dishes</h1>
       <div className="body mt-5 p-4 bg-muted">
+        <h1 className="text-center text-warning d-none d-lg-block">Our Restaurant's Top Rated Dishes</h1>
         <Swiper
           effect='coverflow' 
           spaceBetween={10}
           breakpoints={{
-            800: { slidesPerView: 3},
-            600: {slidesPerView:2}
+            1150: { slidesPerView: 3},
+            600 : { slidesPerView: 2},
           }}
           navigation
           pagination={{ clickable: true }}
@@ -86,7 +97,7 @@ function Home() {
           <SwiperSlide>
           <div className="card p-4 m-5">
             <div className="card-img">
-              <img src={homeImg} alt="" />
+              <img src={home1} alt="" />
               <h3 className="card-title text-danger">Delicious Food</h3>
             </div>
             <div className="card-content">
@@ -99,7 +110,7 @@ function Home() {
           <SwiperSlide>
           <div className="card p-4 m-5">
             <div className="card-img">
-              <img src={homeImg} alt="" />
+              <img src={home2} alt="" />
               <h3 className="card-title text-danger">Delicious Food</h3>
             </div>
             <div className="card-content">
@@ -112,7 +123,7 @@ function Home() {
           <SwiperSlide>
           <div className="card p-4 m-5">
             <div className="card-img">
-              <img src={homeImg} alt="" />
+              <img src={home3} alt="" />
               <h3 className="card-title text-danger">Delicious Food</h3>
             </div>
             <div className="card-content">
@@ -125,7 +136,7 @@ function Home() {
           <SwiperSlide>
           <div className="card p-4 m-5">
             <div className="card-img">
-              <img src={homeImg} alt="" />
+              <img src={home4} alt="" />
               <h3 className="card-title text-danger">Delicious Food</h3>
             </div>
             <div className="card-content">
@@ -138,7 +149,7 @@ function Home() {
           <SwiperSlide>
           <div className="card p-4 m-5">
             <div className="card-img">
-              <img src={homeImg} alt="" />
+              <img src={home5} alt="" />
               <h3 className="card-title text-danger">Delicious Food</h3>
             </div>
             <div className="card-content">
@@ -159,13 +170,22 @@ function Home() {
       </div>
       {/* part-5 */}
       <div className="photos m-4">
+      <h1 className="text-center text-warning m-3 p-3"><span>TastyNest</span> Specials</h1>
         <div className="gallery">
           <img src={homeImg} alt="" />
-          <img src={homeImg} alt="" />
-          <img src={homeImg} alt="" />
-          <img src={homeImg} alt="" />
-          <img src={homeImg} alt="" />
+          <img src={home6} alt="" />
+          <img src={home7} alt="" />
+          <img src={home8} alt="" />
+          <img src={home5} alt="" />
         </div>
+      </div>
+
+      {/* part-6 */}
+      <div className="endpart br-muted text-center mt-3">
+          <h2>Hungry!! And want to try somthimg tasty and delicious.</h2>
+          <h2>TastyNest is the perfect place to order your food. </h2>
+          <h2>Click on the below button and order your food.</h2>
+          <Button variant='outline-warning m-3 p-3' onClick={()=>navigate('/login')}>Order Now</Button>
       </div>
 
       {/* <div className="headnext mt-3">

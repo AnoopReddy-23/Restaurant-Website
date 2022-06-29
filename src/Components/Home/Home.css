@@ -59,9 +59,9 @@
 
 .card-img img{
     display: block;
-    border-radius: 20px;
+    border-radius: 10px;
     width: 100%;
-    height: auto;
+    height: 50%;
 }
 
 .card .card-title{
@@ -124,4 +124,8 @@
 
 .home .photos .gallery img:hover{
     flex: 4;
+}
+
+.endpart h2{
+    font-size: 1.2rem;
 }
