@@ -139,9 +139,9 @@ function Header() {
         <Route path='/' element={<Home />}/>
         <Route path='/login' element={<LoginSignup />} >
             <Route path='signup' element={<Signup />}/>
-            <Route path='login' element={<Login />}/>
+            <Route path='' element={<Login />}/>
             {/* Navigating to cart when child path is empty */}
-            <Route path="" element={<Navigate to="login" replace={true} />} />
+            {/* <Route path="" element={<Navigate to="login" replace={true} />} /> */}
         </Route>
         <Route path='/gallery' element={<Gallery />}/>
         <Route path='/contactus' element={<Contactus />}/>

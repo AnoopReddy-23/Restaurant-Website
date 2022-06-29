@@ -89,7 +89,7 @@ function Viewproducts() {
 
     useEffect(()=>{
       if(isuserSuccess===false){
-        navigate('/')
+        navigate('/login')
       }
     },[])
 
