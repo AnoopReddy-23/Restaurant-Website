@@ -83,7 +83,7 @@ function Header() {
 
                   <Nav.Item>
                     <Nav.Link eventKey={4} as={NavLink} to="/contactus">
-                      <FcAbout/> AboutUs
+                      <FcAbout/> ContactUs
                     </Nav.Link>
                   </Nav.Item>
                 </>
