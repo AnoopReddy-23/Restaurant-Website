@@ -75,7 +75,7 @@ function Home() {
       <div className="head-2">
         {/* part-2 */}
       <div className="text">
-        <p className="lead p-3">Lorem ipsum dolor sit, amet consectetur adipisicing elit. 
+        <p className="lead mt-1 p-3">Lorem ipsum dolor sit, amet consectetur adipisicing elit. 
           Optio, ab voluptates aliquid et architecto deserunt doloribus, eum quis porro explicabo laborum voluptatem, 
           eaque ipsa.Tenetur ipsam tempora vitae! Sequi, architecto. Lorem ipsum dolor sit, amet consectetur adipisicing elit. 
           Libero, eaque sequi aspernatur omnis ducimus excepturi ipsum cum ea natus laboriosam.</p>
@@ -182,8 +182,8 @@ function Home() {
       </div>
 
       {/* part-6 */}
-      <div className="endpart br-muted text-center mt-3">
-          <h2>Hungry!! And want to try somthimg tasty and delicious.</h2>
+      <div className="endpart br-muted text-center my-3">
+          <h2>Hungry!! And want to try something tasty and delicious.</h2>
           <h2>TastyNest is the perfect place to order your food. </h2>
           <h2>Click on the below button and order your food.</h2>
           <Button variant='outline-warning m-3 p-3' onClick={()=>navigate('/login')}>Order Now</Button>
