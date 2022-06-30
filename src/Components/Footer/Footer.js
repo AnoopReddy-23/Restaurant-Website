@@ -7,9 +7,9 @@ import {FaFacebook} from 'react-icons/fa'
 function Footer() {
   return (
     <>
-      <div className='footer mt-3 pt-5'>
+      <div className='footer mt-1 pt-5'>
         <footer className="bg-dark text-center">
-          <div className="wrapper mt-3">
+          <div className="wrapper">
               <div className='box-container row'>
               <div className='box col-6'>
                   <h3 className='mt-3'>Contact Info</h3>

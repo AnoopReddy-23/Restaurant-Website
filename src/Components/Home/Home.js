@@ -72,8 +72,9 @@ function Home() {
           </Carousel>
         </div>
       </div>
-      {/* part-2 */}
-      <div className="text m-3">
+      <div className="head-2">
+        {/* part-2 */}
+      <div className="text">
         <p className="lead p-3">Lorem ipsum dolor sit, amet consectetur adipisicing elit. 
           Optio, ab voluptates aliquid et architecto deserunt doloribus, eum quis porro explicabo laborum voluptatem, 
           eaque ipsa.Tenetur ipsam tempora vitae! Sequi, architecto. Lorem ipsum dolor sit, amet consectetur adipisicing elit. 
@@ -188,6 +189,7 @@ function Home() {
           <Button variant='outline-warning m-3 p-3' onClick={()=>navigate('/login')}>Order Now</Button>
       </div>
 
+      </div>
       {/* <div className="headnext mt-3">
         <p>Lorem ipsum, dolor sit amet consectetur adipisicing elit. Quis necessitatibus quo illo aliquid dolorum totam?</p>
         <div className="image">

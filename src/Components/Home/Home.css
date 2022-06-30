@@ -1,12 +1,32 @@
 
 .home .head .heading{
-    color: red;
+    background-color:  #241f1c ;
+    color: #e7dac7;
     font-weight: bold;
     font-style: italic;
+    border: 2px solid #937047;
     display: flex;
     flex-direction: column;
     align-items: center;
     justify-content: center;
+}
+
+.home{
+    color: #e7dac7;
+}
+
+/* .head{ */
+    /* background-image: url('E:/REACT APPS/restaurant/src/images/background.png');
+    background-repeat: no-repeat;
+    background-size: cover; */
+    /* background-color:  #FEE715FF ; */
+    /* background-color: #E94B3CFF; */
+    /* background-color: #CFCAA8; */
+
+/* } */
+
+.head-2{
+    background-color: #0A0A0A;
 }
 
 /* 
@@ -32,7 +52,7 @@
 } */
 
 
- .card{
+.head-2 .card{
     width: 100%;
     height: 300px;
     max-width: 200px;
@@ -52,19 +72,19 @@
     background-image: linear-gradient(160deg,#8035f0 0%,#3bd9d9 100%);
 }
 
-.card, .card *{
+.head-2 .card, .card *{
     box-sizing: border-box;
     transition: 400ms;
 }
 
-.card-img img{
+.head-2 .card-img img{
     display: block;
     border-radius: 10px;
     width: 100%;
     height: 50%;
 }
 
-.card .card-title{
+.head-2 .card .card-title{
     text-align: center;
     margin-top: 8px;
     color: #ffffff;
@@ -72,7 +92,7 @@
     font-weight: 400px;
 }
 
-.card .card-content{
+.head-2 .card .card-content{
     position: absolute;
     color: black;
     right: 32px;
@@ -84,15 +104,15 @@
     opacity: 0;
 }
 
-.card:hover .card-img{
+.head-2 .card:hover .card-img{
     transform: translateY(-48px);
 }
 
-.card:hover .card-img img{
+.head-2 .card:hover .card-img img{
     transform: translate(-16px,-42px) rotate(-16deg) scale(1.4);
 }
 
-.card:hover .card-content{
+.head-2 .card:hover .card-content{
     opacity: 1;
     color: #0A0A0A;
 }
