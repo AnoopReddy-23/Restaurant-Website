@@ -41,7 +41,7 @@ function Addproduct() {
       //if user create
       if(response.data.message==="New Product created Successfully!"){
         //navigate to login page
-        navigate('/admindashboard/products')
+        navigate('/products')
       }
     })
     .catch(error=>{

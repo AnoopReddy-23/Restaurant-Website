@@ -1,4 +1,4 @@
-import React from 'react'
+import React,{useEffect} from 'react'
 import {Navbar, Container, Nav, NavDropdown} from 'react-bootstrap'
 import {Route, Routes, NavLink} from 'react-router-dom'
 import Home from '../Home/Home'
@@ -8,7 +8,7 @@ import Contactus from '../Contactus/Contactus'
 import LoginSignup from '../LoginSignup/LoginSignup'
 import './Hearder.css'
 import { useDispatch, useSelector } from 'react-redux'
-import {useNavigate,Navigate} from 'react-router-dom'
+import {useNavigate} from 'react-router-dom'
 import {clearLoginStatus} from '../../Slices/userSlics'
 import {clearProductsData} from '../../Slices/productSlice'
 import {clearCartItems} from '../../Slices/cartSlice'
@@ -18,7 +18,7 @@ import Products from '../Viewproducts/Viewproducts'
 import Addproduct from '../Addproduct/Addproduct'
 import Gallery from '../Gallery/Gallery'
 import logo from '../../images/logo2.jpg'
-import {RiAccountCircleFill} from 'react-icons/ri'
+import {BiLogOutCircle} from 'react-icons/bi'
 import {AiFillHome} from 'react-icons/ai'
 import {FcGallery,FcAbout,FcReadingEbook} from 'react-icons/fc'
 import {MdSwitchAccount} from 'react-icons/md'
@@ -56,7 +56,7 @@ function Header() {
     <>
       <Navbar collapseOnSelect bg="dark" expand="md" variant='dark' sticky='top'>
           <Container>
-            <Navbar.Brand href='#' className='me-auto'><img src={logo} alt="Logo" className='logo '/> Restaurant</Navbar.Brand>
+            <Navbar.Brand href='#' className='me-auto'><img src={logo} alt="Logo" className='logo '/> TastyNest</Navbar.Brand>
             <Navbar.Toggle aria-controls="responsive-navbar-nav" />
             <Navbar.Collapse id="responsive-navbar-nav">
               <Nav className="ms-auto">
@@ -98,12 +98,15 @@ function Header() {
                   </Nav.Item>
                   {userObj.usertype==="user" ? 
                   (
-                    <Nav.Item>
+                    <>
+                      <Nav.Item>
                         <Nav.Link eventKey={6} to="/cart" as={NavLink}>
                           Cart <span className='text-warning'>
                           <FaCartArrowDown size={30}/>{cartItems.length}</span>
                         </Nav.Link>
-                    </Nav.Item>
+                      </Nav.Item>
+
+                    </>
                   ) : (
                   <Nav.Item>
                       <Nav.Link eventKey={7} to="/addproduct" as={NavLink}>
@@ -113,17 +116,45 @@ function Header() {
                   
                   )}
                   
-                  <NavDropdown title={userObj.username}  id="collasible-nav-dropdown">
+                  <NavDropdown title={"Hello!! "+userObj.username}  id="collasible-nav-dropdown">
                     <NavDropdown.Item>
                       <Nav.Item>
                         <Nav.Link eventKey={8} as={NavLink} to="/profile" className='text-dark'>
-                          Profile <span className='text-dark'><FcReadingEbook  size={20}/></span>
+                        <FcReadingEbook  size={20}/> Profile 
                         </Nav.Link>
                       </Nav.Item>
                     </NavDropdown.Item>
                     <NavDropdown.Divider />
+
+                    <NavDropdown.Item>
+                        <Nav.Item>
+                          <Nav.Link eventKey={1} as={NavLink} to="/" className='text-dark'>
+                            <AiFillHome fill='orange'/> Home
+                          </Nav.Link>
+                       </Nav.Item>
+                    </NavDropdown.Item>
+                    <NavDropdown.Divider />
+
+                    <NavDropdown.Item>
+                        <Nav.Item>
+                          <Nav.Link eventKey={3} as={NavLink} to="/gallery" className='text-dark'>
+                            <FcGallery/> Gallery
+                          </Nav.Link>
+                        </Nav.Item>
+                    </NavDropdown.Item>
+                    <NavDropdown.Divider />
+
+                    <NavDropdown.Item>
+                        <Nav.Item>
+                          <Nav.Link eventKey={4} as={NavLink} to="/contactus" className='text-dark'>
+                            <FcAbout/> ContactUs
+                          </Nav.Link>
+                      </Nav.Item>
+                    </NavDropdown.Item>
+                    <NavDropdown.Divider />
+
                     <NavDropdown.Item onClick={userLogout}>
-                      Logout
+                      <BiLogOutCircle color='red'/> Logout
                     </NavDropdown.Item>
                   </NavDropdown>
 
