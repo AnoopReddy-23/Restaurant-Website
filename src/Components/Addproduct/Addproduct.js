@@ -3,10 +3,11 @@ import {useForm} from 'react-hook-form'
 import {Form, Button} from 'react-bootstrap'
 import axios from 'axios'
 import {useNavigate} from 'react-router-dom'
-import { useSelector } from 'react-redux'
+import { useSelector,useDispatch } from 'react-redux'
 import {useState,useEffect} from 'react'
 import addProduct from '../../images/addproduct.svg'
 import {MdAddTask} from 'react-icons/md'
+import {getProducts} from '../../Slices/productSlice'
 
 
 function Addproduct() {
@@ -16,6 +17,7 @@ function Addproduct() {
 
   const {register, handleSubmit,formState:{errors}}=useForm();
   const navigate=useNavigate();
+  const dispatch=useDispatch();
 
   //state for image
   let [img,setImg]=useState(null)
@@ -41,7 +43,9 @@ function Addproduct() {
       //if user create
       if(response.data.message==="New Product created Successfully!"){
         //navigate to login page
-        navigate('/products')
+        dispatch(getProducts());
+        window.location.reload(false)
+        //navigate('/products');
       }
     })
     .catch(error=>{
