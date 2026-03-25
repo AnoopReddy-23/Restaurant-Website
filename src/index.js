@@ -1,10 +1,11 @@
 import React from 'react';
 import ReactDOM from 'react-dom/client';
-import './index.css';
 import App from './App';
 import reportWebVitals from './reportWebVitals';
 //import bootstrap
 import 'bootstrap/dist/css/bootstrap.min.css'
+//import custom styles (after bootstrap to override)
+import './index.css';
 //import BrowserRouter
 import {BrowserRouter} from 'react-router-dom'
 //import store

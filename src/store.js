@@ -1,7 +1,7 @@
 //import configureStore
 import {configureStore} from '@reduxjs/toolkit'
 //import userSlice
-import userReducer from './Slices/userSlics'
+import userReducer from './Slices/userSlice'
 //import cartSlice
 import cartReducer from './Slices/cartSlice'
 //import cartSlice

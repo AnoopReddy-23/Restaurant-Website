@@ -1,9 +1,42 @@
-/* .modal{
-    border-radius: 4px;
-    background-image: url("E:/REACT APPS/restaurant/src/images/menu2.jpg");
-    background-size: cover;
-    box-shadow: 0 6px 10px rgba(0,0,0,.08), 0 0 6px rgba(0,0,0,.05);
-    transition: .3s transform cubic-bezier(.155,1.105,.295,1.12),.3s box-shadow,.3s -webkit-transform cubic-bezier(.155,1.105,.295,1.12);
-    padding: 14px 80px 18px 36px;
-    cursor: pointer;
-} */
+.modal-content {
+  background: var(--secondary) !important;
+  background-image: linear-gradient(rgba(18, 18, 18, 0.95), rgba(18, 18, 18, 0.95)), url('../../images/background.png') !important;
+  background-size: cover !important;
+  border: 1px solid var(--glass-border) !important;
+  border-radius: 25px !important;
+  box-shadow: 0 25px 50px rgba(0,0,0,0.8) !important;
+  color: var(--text-main) !important;
+}
+
+.modal-header .btn-close {
+  filter: invert(1) brightness(2);
+  opacity: 0.7;
+  transition: var(--transition);
+}
+
+.modal-header .btn-close:hover {
+  opacity: 1;
+  transform: rotate(90deg);
+}
+
+.modal-img-wrapper {
+  overflow: hidden;
+  border-radius: 15px;
+}
+
+.modal-img-wrapper img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  transition: var(--transition);
+}
+
+.modal-img-wrapper:hover img {
+  transform: scale(1.05);
+}
+
+@media (max-width: 991px) {
+  .modal-img-wrapper {
+    margin-bottom: 1.5rem;
+  }
+}

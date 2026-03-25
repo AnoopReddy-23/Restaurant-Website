@@ -83,31 +83,23 @@ userApp.post('/login',expressAsyncHandler(async (request,response)=>{
     let userOfDB=await userCollectionObject.findOne({username:newCredObj.username});
     //if userOfDB not existed
     if(userOfDB==null){
-        response.send({message:"Invalid username"})
+        response.status(401).send({message:"Invalid username"})
     }
     //if userOfDB exited
     else{
-        if(newCredObj.userType===userOfDB.usertype){
-
-            //compare passwords
-            let status=await bcryptjs.compare(newCredObj.password,userOfDB.password)
-            //if passwords not matched
-            if(status==false){
-                response.send({message:"Invalid Password"})
-            }
-            //if passwords matched
-            else{
-                //console.log(userOfDB)
-                //create token
-                let token=jwt.sign({username:userOfDB.username},process.env.SECRET_KEY,{expiresIn:60})
-                //send token
-                response.send({message:"Login Success",payload:token,userObj:userOfDB})
-            }
+        //compare passwords
+        let status=await bcryptjs.compare(newCredObj.password,userOfDB.password)
+        //if passwords not matched
+        if(status==false){
+            response.status(401).send({message:"Invalid Password"})
         }
+        //if passwords matched
         else{
-            response.send({message:"Wrong UserType"});
+            //create token
+            let token=jwt.sign({username:userOfDB.username},process.env.SECRET_KEY,{expiresIn:'1d'})
+            //send token
+            response.send({message:"Login Success",payload:token,userObj:userOfDB})
         }
-        
     }
 }))
 

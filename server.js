@@ -1,6 +1,9 @@
 //creating express app
 const exp=require('express') //returns functions
 const app=exp() //express obj--->contains http server object
+const cors = require('cors');
+
+app.use(cors());
 
 //importing MongoClient
 const mclient=require("mongodb").MongoClient;

@@ -6,6 +6,8 @@ import {MdOutlineMenuBook,MdAddchart} from 'react-icons/md'
 
 
 
+import { toast } from 'react-hot-toast'
+
 function Admindashboard() {
 
   //get state from store
@@ -16,17 +18,14 @@ function Admindashboard() {
 
   useEffect(()=>{
     if(isSuccess===false){
+      toast.error("Please Login to access the dashboard")
       navigate('/login')
     }
-  },[])
+  },[isSuccess, navigate])
 
   return (
     <>
-    {isSuccess===false 
-      ? (
-            alert("Please Login!!! After then u can use the dashboard")
-      ) 
-      : ( 
+    {isSuccess===true && (
       <>
           <Navbar collapseOnSelect bg="dark" expand="sm" variant='dark' className='mt-3'>
             <Container>

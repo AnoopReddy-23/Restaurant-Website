@@ -2,19 +2,19 @@ import logo from './logo.svg';
 import './App.css';
 import Header from './Components/Header/Header'
 import Footer from './Components/Footer/Footer'
+import { Toaster } from 'react-hot-toast'
 
 function App() {
-
-  
   window.addEventListener("scroll", function(){
     const upToTop = document.querySelector("a.bottom_to_top");
-     upToTop.classList.toggle("active", window.scrollY > 0)
+    if(upToTop) upToTop.classList.toggle("active", window.scrollY > 0)
   });
 
   return (
     <>
-      {/* Header */}
-      <div className="header">
+      <Toaster position="top-center" reverseOrder={false} />
+      {/* Header & Main Content */}
+      <div className="header flex-grow-1">
         <Header />
       </div>
 

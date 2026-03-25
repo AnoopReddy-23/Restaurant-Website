@@ -1,117 +1,146 @@
-import React from 'react'
-import {useState,useEffect} from 'react'
+import React, {useState,useEffect} from 'react'
 import axios from 'axios' 
 import CartCard from '../CartCard/CartCard'
 import {Button} from 'react-bootstrap'
 import { useSelector,useDispatch } from 'react-redux'
 import {CartItems} from '../../Slices/cartSlice'
 import { useNavigate } from 'react-router-dom';
+import './Cart.css'
 
+import { toast } from 'react-hot-toast'
 
 function Cart() {
-
     let [products,setProducts]=useState([])
     let [price,setPrice]=useState(0)
 
-    //state from store
-    let {userObj,isuserSuccess}=useSelector(state=>state.user)
-    //cartproducts from store  
+    let {userObj,isSuccess: isuserSuccess}=useSelector(state=>state.user)
     let {cartItems,isError,isSuccess,errMsg}=useSelector(state=>state.cart)
 
-    //dispatch fun
     let dispatch=useDispatch()
-
     let navigate=useNavigate()
     
     useEffect(()=>{
-      dispatch(CartItems(userObj.username))
+        if(userObj.username) {
+            dispatch(CartItems(userObj.username))
+        }
     },[])
 
-
-    //this to be executed when either isSuccess or isError changed
     useEffect(()=>{
       if(isError){
-        alert(errMsg)
+        console.error(errMsg)
       }
       if(isSuccess){
-        //getting the cart products only that belongs to the user logged in
         let newArray= cartItems.filter((item=> item.username===userObj.username))
         setProducts(newArray)
       }
-    }, [isSuccess, isError]);
+    }, [isSuccess, isError, cartItems]);
 
     const handlePrice=()=>{
       let ans=0;
-      products.map((item)=>(ans+=item.count*(+item.cost)))
+      products.forEach((item)=>(ans+=item.count*(+item.cost)))
       setPrice(ans)
     }
 
     const handleChange=async (item,d)=>{
-      let quantity=0;
-      const ind=products.indexOf(item)
-      const arr=products
-      const obj={
-        ...arr[ind]
-      };
-      quantity+=obj.count;
-      quantity+=d;
-      obj.count=quantity;
-      //http put req (updating the quantity)
-      //console.log(item)
-      let response=await axios.put('/cart-api/update-cartitem', obj)
-      alert(response.data.message)
-      //console.log(response)
-      arr[ind]=obj
-      setProducts([...arr])
-      if(arr[ind].count==0){
-        //delete req
-        handleRemove(item._id)
+      let quantity = item.count + d;
+      
+      if(quantity === 0) {
+          handleRemove(item._id);
+          return;
       }
-      handlePrice()
-      dispatch(CartItems(userObj.username))
+      
+      if(quantity < 0) return;
+
+      const obj = { ...item, count: quantity };
+      
+      try {
+          await axios.put('/cart-api/update-cartitem', obj)
+          dispatch(CartItems(userObj.username))
+      } catch(err) {
+          toast.error("Failed to update cart")
+      }
     }
 
-    const handleRemove=(id)=>{
-      //delete req
-      let response=axios.delete(`http://localhost:4000/cart-api/remove-cartitem/${id}`)
-      //console.log(id)
-      const arr=products.filter((item)=>item._id!=id)
-      setProducts([...arr])
-      handlePrice()
-
-      dispatch(CartItems(userObj.username))
+    const handleRemove=async (id)=>{
+      try {
+          await axios.delete(`/cart-api/remove-cartitem/${id}`)
+          dispatch(CartItems(userObj.username))
+          toast.success("Item removed from cart")
+      } catch(err) {
+          toast.error("Failed to remove item")
+      }
     }
 
-    useEffect(()=>
+    useEffect(()=> {
       handlePrice()
-    )
+    }, [products])
 
     useEffect(()=>{
       if(isuserSuccess===false){
         navigate('/login')
       }
-    },[])
+    },[isuserSuccess])
+
+    const handleCheckout = () => {
+        toast.success("Proceeding to secure checkout...", {
+            icon: '💳',
+            duration: 3000
+        });
+    }
 
   return (
-    <>
-     {isuserSuccess===false 
-      ? (
-            alert("Please Login!!! After then you can see your profile.")
-      ) 
-      : (<>
-          <div className='mt-5 mx-5 row'>
-          {
-            products.map((item)=><CartCard key={item._id} item={item} handleChange={handleChange} handleRemove={handleRemove}/>
-          )}
-          </div>
-          <div className="row text-center">
-            <span>Total Price of Products is </span>
-            <span className='text-danger'>Rs.{price}/-</span>
-            <Button className="bg-success p-3 mt-3 col-4 mx-auto" onClick={()=>console.log(products,price)}>CheckOut</Button>
-          </div>
-      </>)
-    }
-    </>
+    <div className='cart-container container'>
+     {isuserSuccess===true && (
+        <div className="row g-5">
+            <div className="col-lg-8">
+                <h2 className="section-title text-start">Your Selection</h2>
+                <div className="cart-items-section">
+                    {products.length > 0 ? (
+                        products.map((item)=><CartCard key={item._id} item={item} handleChange={handleChange} handleRemove={handleRemove}/>)
+                    ) : (
+                        <div className="empty-cart animate__animated animate__fadeIn">
+                            <h2>Your cart is currently empty</h2>
+                            <Button className="btn-premium" onClick={() => navigate('/products')}>Browse Menu</Button>
+                        </div>
+                    )}
+                </div>
+            </div>
+
+            {products.length > 0 && (
+                <div className="col-lg-4">
+                    <div className="cart-summary animate__animated animate__fadeInRight">
+                        <h3 className="summary-title">Order Summary</h3>
+                        <div className="summary-item">
+                            <span>Subtotal</span>
+                            <span>Rs. {price}</span>
+                        </div>
+                        <div className="summary-item">
+                            <span>Delivery Fee</span>
+                            <span className="text-success">FREE</span>
+                        </div>
+                        <div className="summary-item">
+                            <span>Service Charge</span>
+                            <span>Rs. 50</span>
+                        </div>
+                        
+                        <div className="total-price-row">
+                            <span>Total</span>
+                            <span className="text-gold">Rs. {price + 50}</span>
+                        </div>
+                        
+                        <Button className="btn-premium w-100 mt-4 py-3" onClick={handleCheckout}>
+                            Checkout Now
+                        </Button>
+                        
+                        <p className="text-center text-muted small mt-3">
+                            Secure payment powered by TastyNest Pay
+                        </p>
+                    </div>
+                </div>
+            )}
+        </div>
+      )}
+    </div>
   )
 }
 

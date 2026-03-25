@@ -1,33 +1,95 @@
-.footer {
-    /* position: absolute;
-    bottom: 0;
-    width: 100%; */
-    /* Set the fixed height of the footer here */
-    height: 50px;
-    /* line-height: 60px; */
-    color: azure;
-   
+.footer-premium {
+  background: linear-gradient(180deg, rgba(18, 18, 18, 0.8) 0%, rgba(18, 18, 18, 1) 100%);
+  border-top: 1px solid var(--glass-border);
+  backdrop-filter: blur(20px);
+  position: relative;
+  overflow: hidden;
+}
+
+.footer-brand h2 {
+  font-family: 'Playfair Display', serif;
+  font-weight: 700;
+  letter-spacing: 1px;
+}
+
+.footer-tagline {
+  line-height: 1.8;
+  font-size: 0.95rem;
+}
+
+.footer-heading {
+  font-family: 'Playfair Display', serif;
+  font-weight: 700;
+  position: relative;
+  display: inline-block;
+  padding-bottom: 10px;
+}
+
+.footer-heading::after {
+  content: '';
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  width: 40px;
+  height: 2px;
+  background: var(--accent);
+}
+
+@media (max-width: 767px) {
+  .footer-heading::after {
+    left: 50%;
+    transform: translateX(-50%);
   }
-
- 
-.box-container .box .list{
-    list-style-type: none;    
 }
 
-.box-container a{
-    text-decoration: none;
-    color: cornsilk;
+.footer-link {
+  color: var(--text-muted) !important;
+  text-decoration: none;
+  transition: var(--transition);
+  display: inline-block;
+  font-size: 0.95rem;
 }
 
-.box-container a:hover{
-    text-decoration: underline;
+.footer-link:hover {
+  color: var(--accent) !important;
+  transform: translateX(8px);
 }
 
-.credit{
-    font-size: 1.5rem;
+.contact-item {
+  font-size: 0.95rem;
+  transition: var(--transition);
 }
 
-span{
-    color:crimson ;
+.contact-item:hover {
+  color: var(--text-main);
 }
 
+.social-link-btn {
+  width: 45px;
+  height: 45px;
+  border-radius: 50%;
+  border: 1px solid var(--glass-border);
+  color: var(--text-main);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  text-decoration: none;
+  transition: var(--transition);
+  background: rgba(255, 255, 255, 0.03);
+}
+
+.social-link-btn:hover {
+  background: var(--accent);
+  color: var(--primary);
+  border-color: var(--accent);
+  transform: translateY(-5px);
+  box-shadow: 0 10px 20px rgba(212, 175, 55, 0.2);
+}
+
+.footer-bottom-bar {
+  opacity: 0.8;
+}
+
+.letter-spacing-1 {
+  letter-spacing: 1px;
+}

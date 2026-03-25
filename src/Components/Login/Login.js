@@ -5,87 +5,62 @@ import {MdLogin} from 'react-icons/md'
 import {useDispatch,useSelector} from 'react-redux'
 import {useNavigate} from 'react-router-dom'
 import {useEffect} from 'react'
-import {userLogin} from '../../Slices/userSlics'
+import {userLogin} from '../../Slices/userSlice'
 import {CartItems} from '../../Slices/cartSlice'
 
 
+import '../LoginSignup/Auth.css'
+
+import { toast } from 'react-hot-toast'
+
 function Login() {
-
   const {register, handleSubmit,formState:{errors}}=useForm();
-  
-  //get state from store
-  let {userObj,isuserError,isuserLoading,isuserSuccess,errMsg}=useSelector(state=>state.user)
-
-  //get dispatch function
+  let {isError,isSuccess,errMsg}=useSelector(state=>state.user)
   let dispatch=useDispatch()
-
-  //get navigate function
   let navigate=useNavigate()
 
-  
-  //submit the form
   const onFormSubmit=(userCredObj)=>{
       dispatch(userLogin(userCredObj));
   }
 
-
-  //this to be executed when either isSuccess or isError changed
   useEffect(()=>{
-    if(isuserError){
-      alert(errMsg)
+    if(isError){
+      toast.error(errMsg)
     }
-    if(isuserSuccess){
-        //console.log(sample);
+    if(isSuccess){
         navigate("/products");
-        dispatch(CartItems(userObj.username));
+        // dispatch(CartItems(userObj.username));
     }
-  }, [isuserSuccess, isuserError]);
+  }, [isSuccess, isError]);
 
   return (
-    <>
-        <div className="col-10 col-sm-8 col-md-7 mx-auto border border-2">
-          <Form onSubmit={handleSubmit(onFormSubmit)} className='p-5' >
+    <div className="auth-container">
+        <div className="auth-card animate__animated animate__fadeIn">
+          <h2 className="auth-title">Welcome Back</h2>
+          <Form onSubmit={handleSubmit(onFormSubmit)}>
 
-            {/* usertype */}
-            <Form.Group className="mb-3">
-              {/* Normal user */}
-              <Form.Label>Select type of User</Form.Label> <br />
-                <Form.Check inline type="radio" id="user">
-                  <Form.Check.Input type="radio" value="user" {...register("userType", { required: true })} />
-                <Form.Check.Label>User</Form.Check.Label>
-              </Form.Check>
-              {/* Admin */}
-              <Form.Check inline type="radio" id="admin">
-                <Form.Check.Input type="radio" value="admin" {...register("userType", { required: true })}/>
-                <Form.Check.Label>Admin</Form.Check.Label>
-              </Form.Check>
-               {/* validation error message for userType */}
-               {errors.userType && <p className='text-danger'>*UserType is required</p>}
-            </Form.Group>
-
-            {/* username */}
-            <Form.Group className="mb-3">
+            <Form.Group className="mb-4">
               <Form.Label>Username</Form.Label>
-              <Form.Control type="text" placeholder="Enter Username" {...register("username",{required:true})} />
-              {/* validation error message for username */}
-              {errors.username && <p className='text-danger'>*Username is required</p>}
+              <Form.Control type="text" placeholder="Your username" {...register("username",{required:true})} />
+              {errors.username && <p className='text-danger small mt-1'>* Username is required</p>}
             </Form.Group>
 
-            {/* password */}
-            <Form.Group className="mb-3" >
+            <Form.Group className="mb-4" >
               <Form.Label>Password</Form.Label>
-              <Form.Control type="password" placeholder="Password" {...register("password",{required:true})} />
-              {/* validation error message for password */}
-              {errors.password && <p className='text-danger'>*Password is required</p>}
+              <Form.Control type="password" placeholder="••••••••" {...register("password",{required:true})} />
+              {errors.password && <p className='text-danger small mt-1'>* Password is required</p>}
             </Form.Group>
             
-            {/* submit button */}
-            <Button variant="primary" type="submit">
-              Login <MdLogin />
+            <Button className="btn-premium w-100" type="submit">
+              Sign In <MdLogin className="ms-2"/>
             </Button>
+
+            <p className="auth-toggle">
+              Don't have an account? <span onClick={() => navigate('/login/signup')}>Register</span>
+            </p>
           </Form>
         </div>
-    </>
+    </div>
   )
 }
 

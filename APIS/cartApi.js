@@ -97,7 +97,7 @@ cartApp.put('/update-cartitem',expressAsyncHandler(async (request,response)=>{
     //update the user
     await cartCollectionObject.updateOne({username:modifiedItem.username,food:modifiedItem.food},{$set:{...modifiedItem}})
     //send response
-    response.send({message:"Producter details Modified"})
+    response.send({message:"Product details Modified"})
     
 }))
 

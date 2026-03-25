@@ -6,10 +6,10 @@ import Signup from '../Signup/Signup'
 import Login from '../Login/Login'
 import Contactus from '../Contactus/Contactus'
 import LoginSignup from '../LoginSignup/LoginSignup'
-import './Hearder.css'
+import './Header.css'
 import { useDispatch, useSelector } from 'react-redux'
 import {useNavigate} from 'react-router-dom'
-import {clearLoginStatus} from '../../Slices/userSlics'
+import {clearLoginStatus} from '../../Slices/userSlice'
 import {clearProductsData} from '../../Slices/productSlice'
 import {clearCartItems} from '../../Slices/cartSlice'
 import Userprofile from '../Userprofile/Userprofile'
@@ -30,7 +30,7 @@ import PageNotFound from '../PageNotFound/PageNotFound'
 function Header() {
 
   //get state from store
-  let {userObj,isuserError,isuserLoading,isuserSuccess,errMsg}=useSelector(
+  let {userObj,isSuccess}=useSelector(
     (state)=>state.user
   )
 
@@ -38,7 +38,7 @@ function Header() {
   let {cartItems}=useSelector(state=>state.cart)
 
   //get dispath function
-  let dispath=useDispatch()
+  let dispatch=useDispatch()
 
   //get navigate function
   let navigate=useNavigate()
@@ -46,9 +46,9 @@ function Header() {
   //logout user
   const  userLogout=()=>{
     localStorage.clear();
-    dispath(clearLoginStatus());
-    dispath(clearProductsData());
-    dispath(clearCartItems());
+    dispatch(clearLoginStatus());
+    dispatch(clearProductsData());
+    dispatch(clearCartItems());
     navigate("/login");
   }
 
@@ -60,7 +60,7 @@ function Header() {
             <Navbar.Toggle aria-controls="responsive-navbar-nav" />
             <Navbar.Collapse id="responsive-navbar-nav">
               <Nav className="ms-auto">
-              {isuserSuccess !== true ? (
+              {isSuccess !== true ? (
                 <>
                   {/* These links can be visible when no user logged in */}
                   <Nav.Item>
@@ -101,8 +101,8 @@ function Header() {
                     <>
                       <Nav.Item>
                         <Nav.Link eventKey={6} to="/cart" as={NavLink}>
-                          Cart <span className='text-warning'>
-                          <FaCartArrowDown size={30}/>{cartItems.length}</span>
+                          Cart <FaCartArrowDown size={22} className='text-gold'/>
+                          {cartItems.length > 0 && <span className='cart-count'>{cartItems.length}</span>}
                         </Nav.Link>
                       </Nav.Item>
 
@@ -110,7 +110,7 @@ function Header() {
                   ) : (
                   <Nav.Item>
                       <Nav.Link eventKey={7} to="/addproduct" as={NavLink}>
-                        <MdAddchart className='text-primary'/> Add Product
+                        <MdAddchart size={22} className='text-gold'/> Add Product
                       </Nav.Link>
                   </Nav.Item>
                   
@@ -119,7 +119,7 @@ function Header() {
                   <NavDropdown title={"Hello!! "+userObj.username}  id="collasible-nav-dropdown">
                     <NavDropdown.Item>
                       <Nav.Item>
-                        <Nav.Link eventKey={8} as={NavLink} to="/profile" className='text-dark'>
+                        <Nav.Link eventKey={8} as={NavLink} to="/profile">
                         <FcReadingEbook  size={20}/> Profile 
                         </Nav.Link>
                       </Nav.Item>
@@ -128,7 +128,7 @@ function Header() {
 
                     <NavDropdown.Item>
                         <Nav.Item>
-                          <Nav.Link eventKey={1} as={NavLink} to="/" className='text-dark'>
+                          <Nav.Link eventKey={1} as={NavLink} to="/">
                             <AiFillHome fill='orange'/> Home
                           </Nav.Link>
                        </Nav.Item>
@@ -137,7 +137,7 @@ function Header() {
 
                     <NavDropdown.Item>
                         <Nav.Item>
-                          <Nav.Link eventKey={3} as={NavLink} to="/gallery" className='text-dark'>
+                          <Nav.Link eventKey={3} as={NavLink} to="/gallery">
                             <FcGallery/> Gallery
                           </Nav.Link>
                         </Nav.Item>
@@ -146,7 +146,7 @@ function Header() {
 
                     <NavDropdown.Item>
                         <Nav.Item>
-                          <Nav.Link eventKey={4} as={NavLink} to="/contactus" className='text-dark'>
+                          <Nav.Link eventKey={4} as={NavLink} to="/contactus">
                             <FcAbout/> ContactUs
                           </Nav.Link>
                       </Nav.Item>

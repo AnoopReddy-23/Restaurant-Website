@@ -1,0 +1,187 @@
+@import url('https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;600&family=Playfair+Display:ital,wght@0,700;1,700&display=swap');
+
+:root {
+  --primary: #121212;
+  --secondary: #1e1e1e;
+  --accent: #d4af37;
+  --accent-hover: #b8962e;
+  --text-main: #f5f5f5;
+  --text-muted: #a0a0a0;
+  --glass: rgba(255, 255, 255, 0.05);
+  --glass-border: rgba(255, 255, 255, 0.1);
+  --transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+  --shadow: 0 10px 30px rgba(0, 0, 0, 0.5);
+}
+
+/* Global Overrides */
+.bg-primary {
+  background-color: var(--primary) !important;
+}
+
+.btn-primary {
+  background-color: var(--accent) !important;
+  border-color: var(--accent) !important;
+  color: var(--primary) !important;
+}
+
+.btn-primary:hover {
+  background-color: var(--accent-hover) !important;
+  border-color: var(--accent-hover) !important;
+}
+
+body {
+  margin: 0;
+  padding: 0;
+  font-family: 'Outfit', sans-serif;
+  background-color: var(--primary) !important;
+  color: var(--text-main);
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  overflow-x: hidden;
+  min-height: 100vh;
+}
+
+#root {
+  display: flex;
+  flex-direction: column;
+  min-height: 100vh;
+}
+
+h1, h2, h3, h4, h5, h6 {
+  font-family: 'Playfair Display', serif;
+  letter-spacing: 0.5px;
+}
+
+/* Custom Scrollbar */
+::-webkit-scrollbar {
+  width: 8px;
+}
+::-webkit-scrollbar-track {
+  background: var(--primary);
+}
+::-webkit-scrollbar-thumb {
+  background: var(--secondary);
+  border-radius: 10px;
+}
+::-webkit-scrollbar-thumb:hover {
+  background: var(--accent);
+}
+
+/* Global Utilities */
+.btn-premium {
+  background: var(--accent);
+  color: var(--primary);
+  border: none;
+  padding: 12px 28px;
+  font-weight: 600;
+  border-radius: 4px;
+  transition: var(--transition);
+  text-transform: uppercase;
+  letter-spacing: 1px;
+  font-size: 0.9rem;
+}
+
+.btn-premium:hover {
+  background: var(--accent-hover);
+  transform: translateY(-2px);
+  box-shadow: 0 5px 15px rgba(212, 175, 55, 0.3);
+  color: var(--primary);
+}
+
+.glass-card {
+  background: var(--glass);
+  backdrop-filter: blur(10px);
+  border: 1px solid var(--glass-border);
+  border-radius: 15px;
+  transition: var(--transition);
+}
+
+.glass-card:hover {
+  border-color: var(--accent);
+  transform: translateY(-5px);
+}
+
+.section-title {
+  text-align: center;
+  margin-bottom: 3rem;
+  position: relative;
+  padding-bottom: 1rem;
+}
+
+.section-title::after {
+  content: '';
+  position: absolute;
+  bottom: 0;
+  left: 50%;
+  transform: translateX(-50%);
+  width: 60px;
+  height: 2px;
+  background: var(--accent);
+}
+
+.text-gold {
+  color: var(--accent) !important;
+}
+
+/* Bootstrap Overrides */
+.navbar {
+  backdrop-filter: blur(15px);
+  background: rgba(18, 18, 18, 0.8) !important;
+  border-bottom: 1px solid var(--glass-border);
+  padding: 1rem 0;
+}
+
+.card {
+  background: var(--secondary);
+  border: 1px solid var(--glass-border);
+  color: var(--text-main);
+}
+
+.form-control, .form-select {
+  background-color: var(--secondary) !important;
+  border: 1px solid var(--glass-border) !important;
+  color: var(--text-main) !important;
+  border-radius: 4px !important;
+  padding: 12px !important;
+}
+
+.form-control:focus {
+  border-color: var(--accent) !important;
+  box-shadow: 0 0 0 0.25rem rgba(212, 175, 55, 0.25) !important;
+}
+
+/* Dropdown Overrides */
+.dropdown-menu {
+  background-color: var(--secondary) !important;
+  border: 1px solid var(--glass-border) !important;
+  box-shadow: var(--shadow) !important;
+}
+
+.dropdown-item {
+  color: var(--text-main) !important;
+  transition: var(--transition) !important;
+  padding: 10px 20px !important;
+}
+
+.dropdown-item:hover {
+  background-color: var(--glass) !important;
+  color: var(--accent) !important;
+  padding-left: 25px !important;
+}
+
+.dropdown-divider {
+  border-top: 1px solid var(--glass-border) !important;
+}
+
+.nav-link {
+  color: var(--text-main) !important;
+  transition: var(--transition) !important;
+}
+
+.nav-link:hover {
+  color: var(--accent) !important;
+}
+
+.nav-link.active {
+  color: var(--accent) !important;
+}

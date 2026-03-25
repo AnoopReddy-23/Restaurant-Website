@@ -1,27 +1,28 @@
 import React from 'react'
-import {Carousel} from 'react-bootstrap'
 import {data} from '../GalleryImages'
-
+import './Gallery.css'
 
 function Gallery() {
   return (
-    <div className='mt-4 p-5 gallery'>
-        <h1 className='text-info text-center'>Cute Little Kids dressed in the form of food items!!</h1>
-        <Carousel fade variant="dark">
-          {
-            data.map((item)=><Carousel.Item interval={2500}>
-            <img
-              className="d-block mx-auto w-100 image"
-              src={item.img}
-              alt="First slide"
-              style={{ height: "35rem" }}
-            />
-            <Carousel.Caption className='text-danger'>
-              <h1 className='display-3'>{item.text}</h1>
-            </Carousel.Caption>
-        </Carousel.Item>
-        )}
-        </Carousel> 
+    <div className='container py-5 mt-5'>
+        <div className="text-center mb-5 animate__animated animate__fadeIn">
+            <h2 className="section-title text-gold mt-5">The Visual Essence</h2>
+            <p className="text-muted letter-spacing-2 text-uppercase small">A journey through our culinary artistry and curated atmosphere</p>
+        </div>
+        
+        <div className="gallery-grid">
+            {data.map((item, index) => (
+                <div key={index} className="gallery-card animate__animated animate__fadeInUp" style={{ animationDelay: `${index * 0.1}s` }}>
+                    <div className="gallery-img-wrapper">
+                        <img src={item.img} alt={item.text} />
+                    </div>
+                    <div className="gallery-card-overlay">
+                        <h3>{item.text}</h3>
+                        <p>Experience the texture and taste of our signature {item.text.toLowerCase()}.</p>
+                    </div>
+                </div>
+            ))}
+        </div>
     </div>
   )
 }

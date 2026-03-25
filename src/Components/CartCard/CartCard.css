@@ -1,0 +1,80 @@
+.cart-card {
+  background: var(--secondary);
+  border: 1px solid var(--glass-border);
+  border-radius: 15px;
+  display: flex;
+  align-items: center;
+  padding: 1.5rem;
+  gap: 2rem;
+  transition: var(--transition);
+}
+
+.cart-card:hover {
+  border-color: var(--accent);
+  transform: translateX(10px);
+}
+
+.cart-card-img {
+  width: 120px;
+  height: 120px;
+  border-radius: 12px;
+  object-fit: cover;
+}
+
+.cart-card-info {
+  flex-grow: 1;
+}
+
+.cart-card-info h3 {
+  color: var(--text-main);
+  font-size: 1.3rem;
+  margin-bottom: 0.5rem;
+}
+
+.cart-card-info p {
+  color: var(--text-muted);
+  font-size: 0.9rem;
+}
+
+.quantity-controls {
+  display: flex;
+  align-items: center;
+  gap: 15px;
+  background: var(--glass);
+  padding: 5px 15px;
+  border-radius: 30px;
+  border: 1px solid var(--glass-border);
+}
+
+.qty-btn {
+  background: none;
+  border: none;
+  color: var(--accent);
+  font-size: 1.2rem;
+  cursor: pointer;
+  transition: var(--transition);
+}
+
+.qty-btn:hover {
+  transform: scale(1.2);
+}
+
+.qty-value {
+  font-weight: 700;
+  min-width: 20px;
+  text-align: center;
+}
+
+.remove-btn {
+  color: #ff4d4d;
+  background: none;
+  border: none;
+  font-size: 1.2rem;
+  cursor: pointer;
+  transition: var(--transition);
+}
+
+.remove-btn:hover {
+  color: #ff0000;
+  transform: rotate(90deg);
+}

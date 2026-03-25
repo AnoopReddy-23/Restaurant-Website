@@ -7,101 +7,79 @@ import {useNavigate} from 'react-router-dom'
 import {useState} from 'react'
 
 
-function Signup() {
+import '../LoginSignup/Auth.css'
 
+import { toast } from 'react-hot-toast'
+
+function Signup() {
   const {register,handleSubmit,formState:{errors}}=useForm();
   const navigate=useNavigate()
-
-  //state for image
   let [img,setImg]=useState(null)
 
-  //on image select
   const onImageSelect=(event)=>{
     setImg(event.target.files[0]);
   }
 
-  //submit form
   const onFormSubmit=(userObj)=>{
-    //console.log(userObj)
-    //create Formdata object
     let formData=new FormData()
-    //append values to it
     formData.append("userObj", JSON.stringify(userObj))
     formData.append("photo", img)
 
-    //HTTP POST request
-    axios.post('http://localhost:4000/user-api/create-user', formData)
+    axios.post('/user-api/create-user', formData)
     .then(response=>{
-      //console.log(response)
-      alert(response.data.message)
-      //if user created
       if(response.data.message==="New user craeted successfully!"){
-        //navigate to login
+        toast.success(response.data.message)
         navigate('/login')
-
+      } else {
+        toast.error(response.data.message)
       }
     })
     .catch(error=>{
       console.log(error)
-      alert("Something went wrong!! Please try again after sometime..")
+      toast.error("Something went wrong!! Please try again later.")
     })
   }
 
   return (
-    <>
-      <div className="col-10 col-sm-8 col-md-7 mx-auto border border-2">
-        {/* form */}
-        <Form onSubmit={handleSubmit(onFormSubmit)} className='p-5'>
-          {/* username */}
-          <Form.Group className="mb-3">
-            <Form.Label>Username</Form.Label>
-            <Form.Control type="text" placeholder="Enter username" {...register('username',{required:true})} />
-             {/* validation error message for username */}
-             {errors.username && <p className='text-danger'>*Username is required</p>}
-          </Form.Group>
-          {/* password */}
-          <Form.Group className="mb-3">
-            <Form.Label>Password</Form.Label>
-            <Form.Control type="password" placeholder="Password" {...register('password',{required:true})}/>
-             {/* validation error message for password */}
-             {errors.password && <p className='text-danger'>*password is required</p>}
-          </Form.Group>
-          {/* email */}
-          <Form.Group className="mb-3">
-            <Form.Label>Email address</Form.Label>
-            <Form.Control type="email" placeholder="Enter email" {...register('email',{required:true})} />
-             {/* validation error message for city */}
-             {errors.email && <p className='text-danger'>*Email is required</p>}
-          </Form.Group>
-           {/* city */}
-           <Form.Group className="mb-3">
-            <Form.Label>City</Form.Label>
-            <Form.Control type="text" placeholder="Enter City" {...register('city',{required:true})} />
-             {/* validation error message for city */}
-             {errors.city && <p className='text-danger'>*City is required</p>}
-          </Form.Group>
-          
+    <div className="auth-container">
+        <div className="auth-card animate__animated animate__fadeIn">
+          <h2 className="auth-title">Create Account</h2>
+          <Form onSubmit={handleSubmit(onFormSubmit)}>
+            
+            <Form.Group className="mb-3">
+              <Form.Label>Username</Form.Label>
+              <Form.Control type="text" placeholder="Choose a username" {...register('username',{required:true})} />
+              {errors.username && <p className='text-danger small mt-1'>* Username is required</p>}
+            </Form.Group>
 
-          {/* Profile image */}
-          <Form.Group className="mb-3">
-            <Form.Label>Select Profile Pic</Form.Label>
-            <Form.Control 
-              type="file" 
-              {...register("photo",{required:true})} 
-              onChange={(event)=>onImageSelect(event)}
-            />
-            {/* validation error message for photo */}
-            {errors.photo && <p className='text-danger'>*Profile pic is required</p>}
-          </Form.Group>
+            <Form.Group className="mb-3">
+              <Form.Label>Password</Form.Label>
+              <Form.Control type="password" placeholder="••••••••" {...register('password',{required:true})}/>
+              {errors.password && <p className='text-danger small mt-1'>* Password is required</p>}
+            </Form.Group>
 
-          {/* Button */}
-          <Button variant="primary" type="submit">
-            Submit <GoSignIn />
-          </Button>
-        </Form>
+            <Form.Group className="mb-3">
+              <Form.Label>Email Address</Form.Label>
+              <Form.Control type="email" placeholder="email@example.com" {...register('email',{required:true})} />
+              {errors.email && <p className='text-danger small mt-1'>* Email is required</p>}
+            </Form.Group>
 
+            <Form.Group className="mb-4">
+              <Form.Label>Select Profile Picture</Form.Label>
+              <Form.Control type="file" {...register("photo",{required:true})} onChange={(event)=>onImageSelect(event)} />
+              {errors.photo && <p className='text-danger small mt-1'>* Profile picture is required</p>}
+            </Form.Group>
+
+            <Button className="btn-premium w-100" type="submit">
+              Register <GoSignIn className="ms-2"/>
+            </Button>
+
+            <p className="auth-toggle">
+              Already have an account? <span onClick={() => navigate('/login')}>Sign In</span>
+            </p>
+          </Form>
         </div>
-    </>
+    </div>
   )
 }
 

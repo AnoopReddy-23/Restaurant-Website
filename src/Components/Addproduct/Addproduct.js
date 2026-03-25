@@ -5,152 +5,134 @@ import axios from 'axios'
 import {useNavigate} from 'react-router-dom'
 import { useSelector,useDispatch } from 'react-redux'
 import {useState,useEffect} from 'react'
-import addProduct from '../../images/addproduct.svg'
-import {MdAddTask} from 'react-icons/md'
+import {MdAddTask, MdRestaurantMenu} from 'react-icons/md'
 import {getProducts} from '../../Slices/productSlice'
 
+import { toast } from 'react-hot-toast'
 
 function Addproduct() {
-
-  //state from store
-  let {userObj,isuserSuccess}=useSelector(state=>state.user)
+  let {isSuccess}=useSelector(state=>state.user)
 
   const {register, handleSubmit,formState:{errors}}=useForm();
   const navigate=useNavigate();
   const dispatch=useDispatch();
 
-  //state for image
   let [img,setImg]=useState(null)
 
-  //on image select
   const onImageSelect=(event)=>{
     setImg(event.target.files[0]);
   }
 
-  //submit form
   const onFormSubmit=(productObj)=>{
-    //console.log(productObj)
-    //create Formdata object
     let formData=new FormData()
-    //append values to it
     formData.append("productObj", JSON.stringify(productObj))
     formData.append("foodphoto", img)
-    //http post req
-    axios.post('http://localhost:4000/product-api/create-product',formData)
+    
+    axios.post('/product-api/create-product',formData)
     .then(response=>{
-      //console.log(response)
-      alert(response.data.message)
-      //if user create
       if(response.data.message==="New Product created Successfully!"){
-        //navigate to login page
+        toast.success(response.data.message)
         dispatch(getProducts());
-        window.location.reload(false)
-        //navigate('/products');
+        navigate('/products');
+      } else {
+        toast.error(response.data.message)
       }
     })
     .catch(error=>{
-      console.log(error)
-      alert("Something went wrong....")
+      toast.error("Error adding product. Please try again.")
     })
   }
 
   useEffect(()=>{
-    if(isuserSuccess===false){
+    if(isSuccess===false){
       navigate('/login')
     }
-  },[])
+  },[isSuccess])
 
   return (
-    <>
-    {isuserSuccess===false 
-      ? (
-            alert("Please Login!!! After then you can see your profile.")
-      ) 
-      : (<>
-        <h1 className='text-warning text-center'>Add Product</h1>
-        <img src={addProduct} alt="signup image" width="300px" className='mx-auto d-none d-sm-block border border-2 border-light p-3 m-3'/>
-        <div className="row">
-          <div className="col-10 col-sm-8 col-md-6 mx-auto">
-            <Form onSubmit={handleSubmit(onFormSubmit)}>
-  
-            {/* FoodItem */}
-            <Form.Group className="mb-3">
-              <Form.Label>FoodItem </Form.Label>
-              <Form.Control type="text" placeholder="Enter FoodItem" {...register("food",{required:true})} />
-              {/* validation error message for fooditem */}
-              {errors.food && <p className='text-danger'>*Username is required</p>}
+    <div className='auth-container'>
+     {isSuccess===true && (
+        <div className="auth-card w-100" style={{ maxWidth: '800px' }}>
+          <div className="text-center mb-5">
+             <MdRestaurantMenu size={50} className="text-gold mb-3"/>
+             <h2 className="auth-title mb-0">Curate Your Menu</h2>
+             <p className="text-muted mt-2">Add a new gourmet masterpiece to TastyNest</p>
+          </div>
+          
+          <Form onSubmit={handleSubmit(onFormSubmit)}>
+            <div className="row">
+                <div className="col-md-6">
+                    <Form.Group className="mb-4">
+                      <Form.Label>Dish Name</Form.Label>
+                      <Form.Control type="text" placeholder="e.g. Truffle Risotto" {...register("food",{required:true})} />
+                      {errors.food && <p className='text-danger small mt-1'>* Name is required</p>}
+                    </Form.Group>
+                </div>
+                <div className="col-md-6">
+                    <Form.Group className="mb-4">
+                      <Form.Label>Price (Rs.)</Form.Label>
+                      <Form.Control type="number" placeholder="0.00" {...register("cost",{required:true})} />
+                      {errors.cost && <p className='text-danger small mt-1'>* Cost is required</p>}
+                    </Form.Group>
+                </div>
+            </div>
+            
+            <Form.Group className="mb-4">
+                <Form.Label>Course Category</Form.Label>
+                <div className="user-type-selector justify-content-start flex-wrap gap-2">
+                    {['starters', 'riceAndBiryani', 'snacks', 'drinks', 'desert'].map(type => (
+                        <Form.Check key={type} inline type="radio" id={type} className="custom-radio">
+                            <Form.Check.Input type="radio" value={type} {...register("foodType", { required: true })} />
+                            <Form.Check.Label className="text-muted text-capitalize">{type.replace('And', ' & ')}</Form.Check.Label>
+                        </Form.Check>
+                    ))}
+                </div>
+                {errors.foodType && <p className='text-danger small mt-1'>* Category is required</p>}
             </Form.Group>
             
-            {/* Cost */}
-            <Form.Group className="mb-3">
-              <Form.Label>Cost </Form.Label>
-              <Form.Control type="number" placeholder="Enter Cost" {...register("cost",{required:true})} />
-              {/* validation error message for cost */}
-              {errors.cost && <p className='text-danger'>*Cost is required</p>}
-            </Form.Group>
-            
-            {/* FoodItem Type */}
-            <Form.Group className="mb-3">
-                <Form.Label>Select type of Food</Form.Label> <br />
-                  {/* Starters */}
-                  <Form.Check inline type="radio" id="starters">
-                    <Form.Check.Input type="radio" value="starters" {...register("foodType", { required: true })} />
-                  <Form.Check.Label>Starters</Form.Check.Label>
-                </Form.Check>
-                {/* Rice and Biryani */}
-                <Form.Check inline type="radio" id="riceAndBiryani">
-                  <Form.Check.Input type="radio" value="riceAndBiryani" {...register("foodType", { required: true })}/>
-                  <Form.Check.Label>Rice and Biryani</Form.Check.Label>
-                </Form.Check>
-                {/* Snacks*/}
-                <Form.Check inline type="radio" id="snacks">
-                  <Form.Check.Input type="radio" value="snacks" {...register("foodType", { required: true })}/>
-                  <Form.Check.Label>Snacks</Form.Check.Label>
-                </Form.Check>
-                {/* Drinks*/}
-                <Form.Check inline type="radio" id="drinks">
-                  <Form.Check.Input type="radio" value="drinks" {...register("foodType", { required: true })}/>
-                  <Form.Check.Label>Drinks</Form.Check.Label>
-                </Form.Check>
-                {/* Deserts */}
-                <Form.Check inline type="radio" id="desert">
-                  <Form.Check.Input type="radio" value="desert" {...register("foodType", { required: true })}/>
-                  <Form.Check.Label>Deserts</Form.Check.Label>
-                </Form.Check>
-              </Form.Group>
-            
-            {/* Description */}
-            <Form.Group className="mb-3">
-              <Form.Label>Description</Form.Label>
-              <Form.Control as="textarea" rows={3} placeholder="Enter description" {...register("description",{required:true})}/>
-              {/* validation error message for description */}
-              {errors.description && <p className='text-danger'>*Description is required</p>}
+            <div className="row mb-4">
+                <div className="col-md-4">
+                    <Form.Group>
+                        <Form.Label>Dietary Type</Form.Label>
+                        <div className="d-flex gap-3 mt-2">
+                            <Form.Check type="radio" label="Veg" value="true" {...register("isVeg", { required: true })} className="text-muted" />
+                            <Form.Check type="radio" label="Non Veg" value="false" {...register("isVeg", { required: true })} className="text-muted" />
+                        </div>
+                    </Form.Group>
+                </div>
+                <div className="col-md-4">
+                    <Form.Group>
+                        <Form.Label>Highlights</Form.Label>
+                        <Form.Check type="checkbox" label="Best Seller" {...register("isBestSeller")} className="text-muted mt-2" />
+                    </Form.Group>
+                </div>
+                <div className="col-md-4">
+                    <Form.Group>
+                        <Form.Label>Rating (1-5)</Form.Label>
+                        <Form.Control type="number" step="0.1" min="1" max="5" defaultValue="4.5" {...register("rating")} />
+                    </Form.Group>
+                </div>
+            </div>
+
+            <Form.Group className="mb-4">
+              <Form.Label>Chef's Description</Form.Label>
+              <Form.Control as="textarea" rows={3} placeholder="Describe the flavors, ingredients and inspiration..." {...register("description",{required:true})}/>
+              {errors.description && <p className='text-danger small mt-1'>* Description is required</p>}
             </Form.Group>
   
-            {/* FoodItem image */}
-            <Form.Group className="mb-3">
-              <Form.Label>FoodItem Image</Form.Label>
-              <Form.Control 
-                type="file" 
-                {...register("foodphoto",{required:true})} 
-                onChange={(event)=>onImageSelect(event)}
-              />
-              {/* validation error message for photo */}
-              {errors.foodphoto && <p className='text-danger'>*FoodItem Image is required</p>}
+            <Form.Group className="mb-5">
+              <Form.Label>Signature Presentation Image</Form.Label>
+              <Form.Control type="file" {...register("foodphoto",{required:true})} onChange={(event)=>onImageSelect(event)} />
+              {errors.foodphoto && <p className='text-danger small mt-1'>* Image is required</p>}
             </Form.Group>
   
-            {/* submit button */}
-            <Button variant="primary" type="submit">
-              ADD ITEM <MdAddTask/>
+            <Button className="btn-premium w-100 py-3" type="submit">
+              Publish to Menu <MdAddTask className="ms-2"/>
             </Button>
           </Form>
-          </div>
         </div>
-        
-      </>)
-    }
-  </>
-    
+      )}
+    </div>
   )
 }
 
