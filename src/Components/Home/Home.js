@@ -101,18 +101,21 @@ function Home() {
             mousewheel={true}
             className="mySwiper py-5"
           >
-            {[home1, home2, home3, home4, home5].map((img, index) => (
+            {[
+              { img: home1, title: "Chef's Tasting Menu", desc: "A beautifully curated 7-course journey of our most celebrated and vibrant flavors." },
+              { img: home2, title: "Wood-Fired Specialties", desc: "Artisanal cuts and seasonal vegetables kissed by signature aromatic oak smoke." },
+              { img: home3, title: "Gourmet Appetizers", desc: "Delicate, handcrafted beginnings designed to perfectly awaken your palate." },
+              { img: home4, title: "Decadent Desserts", desc: "Exquisite sweet finales prepared daily by our master pastry artisans." },
+              { img: home5, title: "Signature Cocktails", desc: "Award-winning mixology blending fresh botanicals and premium imported spirits." }
+            ].map((item, index) => (
               <SwiperSlide key={index} style={{ width: '350px' }}>
                 <div className="dish-card">
                   <div className="dish-img-container">
-                    <img src={img} alt="Dish" />
+                    <img src={item.img} alt={item.title} />
                   </div>
                   <div className="dish-info">
-                    <h3>Signature Dish</h3>
-                    <p>
-                      A masterpiece of flavor and presentation, crafted to
-                      delight your palate.
-                    </p>
+                    <h3>{item.title}</h3>
+                    <p>{item.desc}</p>
                     <span className="text-gold font-weight-bold">
                       Premium Selection
                     </span>
@@ -145,12 +148,19 @@ function Home() {
         <div className="container">
           <h2 className="section-title text-gold">Atmosphere & Art</h2>
           <div className="gallery-grid">
-            {[home6, home7, home8, home5, home2, home3].map((img, i) => (
+            {[
+              { img: home6, tag: "Intimate Dining" },
+              { img: home7, tag: "The Wine Cellar" },
+              { img: home8, tag: "Private Events" },
+              { img: home5, tag: "Chef's Table" },
+              { img: home2, tag: "Ambient Lighting" },
+              { img: home3, tag: "Gourmet Plating" }
+            ].map((item, i) => (
               <div className="gallery-item" key={i}>
-                <img src={img} alt="Gallery" />
+                <img src={item.img} alt={item.tag} />
                 <div className="gallery-overlay">
                   <span className="text-primary font-weight-bold">
-                    View Details
+                    {item.tag}
                   </span>
                 </div>
               </div>
