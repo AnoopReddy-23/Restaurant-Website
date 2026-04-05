@@ -69,25 +69,25 @@ function Header() {
               {isSuccess !== true ? (
                 <>
                   <Nav.Item>
-                    <Nav.Link eventKey={1} as={NavLink} to="/">
+                    <Nav.Link eventKey={1} as={NavLink} to="/" end>
                       <AiFillHome fill="orange" /> Home
                     </Nav.Link>
                   </Nav.Item>
 
                   <Nav.Item>
-                    <Nav.Link eventKey={2} as={NavLink} to="/login">
+                    <Nav.Link eventKey={2} as={NavLink} to="/login" end>
                       <MdSwitchAccount color="blue" /> Login
                     </Nav.Link>
                   </Nav.Item>
 
                   <Nav.Item>
-                    <Nav.Link eventKey={3} as={NavLink} to="/gallery">
+                    <Nav.Link eventKey={3} as={NavLink} to="/gallery" end>
                       <FcGallery /> Gallery
                     </Nav.Link>
                   </Nav.Item>
 
                   <Nav.Item>
-                    <Nav.Link eventKey={4} as={NavLink} to="/contactus">
+                    <Nav.Link eventKey={4} as={NavLink} to="/contactus" end>
                       <FcAbout /> Contact
                     </Nav.Link>
                   </Nav.Item>
@@ -95,19 +95,20 @@ function Header() {
               ) : (
                 <>
                   <Nav.Item>
-                    <Nav.Link eventKey={5} to="/products" as={NavLink}>
+                    <Nav.Link eventKey={5} to="/products" as={NavLink} end>
                       Menu{' '}
                       <MdOutlineMenuBook size={22} className="text-gold ms-1" />
                     </Nav.Link>
                   </Nav.Item>
 
-                  {userObj.usertype === 'user' ? (
+                  {userObj?.usertype === 'user' ? (
                     <>
                       <Nav.Item>
                         <Nav.Link
                           eventKey={6}
                           to="/user-dashboard/orders"
                           as={NavLink}
+                          end
                         >
                           Orders{' '}
                           <FaClock size={20} className="text-gold ms-1" />
@@ -118,6 +119,7 @@ function Header() {
                           eventKey={7}
                           to="/user-dashboard/cart"
                           as={NavLink}
+                          end
                         >
                           Cart{' '}
                           <FaCartArrowDown
@@ -139,6 +141,7 @@ function Header() {
                           eventKey={8}
                           to="/admin-dashboard/orders"
                           as={NavLink}
+                          end
                         >
                           Live Orders{' '}
                           <FaConciergeBell
@@ -152,6 +155,7 @@ function Header() {
                           eventKey={10}
                           to="/admin-dashboard/analytics"
                           as={NavLink}
+                          end
                         >
                           Analytics{' '}
                           <FaChartLine
@@ -165,6 +169,7 @@ function Header() {
                           eventKey={9}
                           to="/admin-dashboard/addproduct"
                           as={NavLink}
+                          end
                         >
                           Add Dish{' '}
                           <MdAddchart size={22} className="text-gold ms-1" />
@@ -174,14 +179,14 @@ function Header() {
                   )}
 
                   <NavDropdown
-                    title={'Hi, ' + userObj.username}
+                    title={'Hi, ' + (userObj?.username || 'Guest')}
                     id="collasible-nav-dropdown"
                     align="end"
                   >
                     <NavDropdown.Item
                       as={NavLink}
                       to={
-                        userObj.usertype === 'admin'
+                        userObj?.usertype === 'admin'
                           ? '/admin-dashboard'
                           : '/user-dashboard/profile'
                       }

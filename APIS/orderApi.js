@@ -23,7 +23,7 @@ orderApp.post(
     orderObj.status = 'Placed'
     orderObj.orderDate = new Date()
 
-    // Insert order
+    // Insert order (including the deliveryAddress provided by client)
     await orderCollectionObject.insertOne(orderObj)
 
     // Clear user's cart after order is placed
