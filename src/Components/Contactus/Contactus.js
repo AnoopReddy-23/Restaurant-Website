@@ -34,7 +34,7 @@ function Contactus() {
                         </div>
                         <div>
                             <h3 className="text-gold mb-1">Our Location</h3>
-                            <p className="text-main mb-0">Plot 42, Jubilee Hills, Hyderabad – 500033</p>
+                            <p className="text-main mb-0">123, Golden Avenue, Food Street, Hyderabad - 500001</p>
                         </div>
                     </div>
 
@@ -44,7 +44,7 @@ function Contactus() {
                         </div>
                         <div>
                             <h3 className="text-gold mb-1">Phone Number</h3>
-                            <p className="text-main mb-0">+91 40 2354 6789</p>
+                            <p className="text-main mb-0">+91 12345 67890</p>
                         </div>
                     </div>
 
@@ -54,7 +54,7 @@ function Contactus() {
                         </div>
                         <div>
                             <h3 className="text-gold mb-1">Email Address</h3>
-                            <p className="text-main mb-0">concierge@tastynest.com</p>
+                            <p className="text-main mb-0">hello@tastynest.in</p>
                         </div>
                     </div>
                 </div>

@@ -4,6 +4,7 @@ import { Toaster } from 'react-hot-toast'
 
 // Layout/Common
 import Header from './Components/Header/Header'
+import Footer from './Components/Footer/Footer'
 import Home from './Components/Home/Home'
 import Gallery from './Components/Gallery/Gallery'
 import Contactus from './Components/Contactus/Contactus'
@@ -67,6 +68,9 @@ function App() {
           </Route>
         </Routes>
       </main>
+
+      {/* Global Footer */}
+      <Footer />
     </div>
   );
 }
