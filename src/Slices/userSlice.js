@@ -46,14 +46,16 @@ export const userLogin = createAsyncThunk(
 let userSlice = createSlice({
   name: 'user',
   initialState: {
-    userObj: {},
+    userObj: JSON.parse(localStorage.getItem('userObj')) || {},
     isError: false,
     isLoading: false,
-    isSuccess: false,
+    isSuccess: localStorage.getItem('userObj') ? true : false,
     errMsg: '',
   },
   reducers: {
     clearLoginStatus: (state) => {
+      localStorage.removeItem('userObj');
+      localStorage.removeItem('token');
       state.isError = false
       state.userObj = {}
       state.isLoading = false
@@ -68,6 +70,8 @@ let userSlice = createSlice({
       state.isLoading = true
     },
     [userLogin.fulfilled]: (state, action) => {
+      // Persist user object
+      localStorage.setItem('userObj', JSON.stringify(action.payload));
       state.userObj = action.payload
       state.isError = false
       state.isLoading = false
@@ -84,6 +88,8 @@ let userSlice = createSlice({
       state.isLoading = true
     },
     [updateUser.fulfilled]: (state, action) => {
+      // Update persisted user object
+      localStorage.setItem('userObj', JSON.stringify(action.payload));
       state.userObj = action.payload
       state.isLoading = false
       state.isError = false
