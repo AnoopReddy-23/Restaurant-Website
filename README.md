@@ -19,6 +19,11 @@
 - **Live Order Management**: Industrial-grade console for processing and tracking incoming gourmet requests.
 - **Advanced Inventory Suite**: Add dishes with specialized badges (Best Seller, Rating), popularity tags, and dietary markers.
 
+### 🔐 Enterprise Security
+- **JWT Protection Layer**: Centralized `verifyToken` middleware securing all private backend APIs.
+- **Global API Interceptor**: Customized `axiosInstance` for automatic authorization header injection across the application.
+- **Frontend Route Guards**: Rigorous `ProtectedRoute` wrappers that instantly deflect unauthorized access attempts to administrative dashboards.
+
 ---
 
 ## 🛠️ Technology Stack
