@@ -22,7 +22,7 @@ import { BiLogOutCircle } from 'react-icons/bi'
 import { AiFillHome } from 'react-icons/ai'
 import { FcGallery, FcAbout, FcReadingEbook } from 'react-icons/fc'
 import { MdSwitchAccount, MdOutlineMenuBook, MdAddchart } from 'react-icons/md'
-import { FaCartArrowDown, FaClock, FaConciergeBell } from 'react-icons/fa'
+import { FaCartArrowDown, FaClock, FaConciergeBell, FaChartLine } from 'react-icons/fa'
 
 function Header() {
   //get state from store
@@ -142,6 +142,19 @@ function Header() {
                         >
                           Live Orders{' '}
                           <FaConciergeBell
+                            size={20}
+                            className="text-gold ms-1"
+                          />
+                        </Nav.Link>
+                      </Nav.Item>
+                      <Nav.Item>
+                        <Nav.Link
+                          eventKey={10}
+                          to="/admin-dashboard/analytics"
+                          as={NavLink}
+                        >
+                          Analytics{' '}
+                          <FaChartLine
                             size={20}
                             className="text-gold ms-1"
                           />

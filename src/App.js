@@ -24,6 +24,7 @@ import Viewproducts from './Components/Viewproducts/Viewproducts'
 import Addproduct from './Components/Addproduct/Addproduct'
 import UserOrders from './Components/UserOrders/UserOrders'
 import AdminOrders from './Components/AdminOrders/AdminOrders'
+import SalesAnalytics from './Components/SalesAnalytics/SalesAnalytics'
 
 function App() {
   return (
@@ -61,6 +62,7 @@ function App() {
               <Route path='addproduct' element={<Addproduct/>} />
               <Route path='products' element={<Viewproducts/>} />
               <Route path='orders' element={<AdminOrders />} />
+              <Route path='analytics' element={<SalesAnalytics />} />
           </Route>
         </Routes>
       </main>

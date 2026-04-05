@@ -8,6 +8,8 @@ import cartReducer from './Slices/cartSlice'
 import productReducer from './Slices/productSlice'
 //import orderSlice
 import orderReducer from './Slices/orderSlice'
+//import salesSlice
+import salesReducer from './Slices/salesSlice'
 
 //export store
 export const store=configureStore({
@@ -15,6 +17,7 @@ export const store=configureStore({
         user:userReducer,
         cart:cartReducer,
         product:productReducer,
-        orders:orderReducer
+        orders:orderReducer,
+        sales:salesReducer
     }
 })
