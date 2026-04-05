@@ -43,10 +43,10 @@ function Home() {
         <div className="hero-content">
           <h1 className="animate__animated animate__fadeInDown">TastyNest</h1>
           <p className="animate__animated animate__fadeInUp">
-            Crafting Extraordinary Culinary Experiences
+            Where Tradition Meets Modern Gastronomy
           </p>
-          <Button className="btn-premium" onClick={() => navigate('/login')}>
-            Discover Menu
+          <Button className="btn-premium" onClick={() => navigate('/products')}>
+            Explore Our Menu
           </Button>
         </div>
       </section>
@@ -65,15 +65,15 @@ function Home() {
             <div className="col-lg-6 px-lg-5">
               <h2 className="section-title text-start text-gold">Our Story</h2>
               <p className="lead text-muted">
-                At TastyNest, we believe that dining is more than just a
-                meal—it's a journey of the senses. Our chefs combine traditional
-                techniques with modern culinary innovation to bring you flavors
-                that are as bold as they are refined.
+                Born from a love for authentic Indian cuisine, TastyNest brings
+                together the rich culinary heritage of Hyderabad with contemporary
+                dining innovation. Every recipe has been perfected over generations,
+                ensuring each bite carries the warmth of tradition.
               </p>
               <p className="text-muted">
-                Every dish is prepared with passion, using only the finest
-                seasonal ingredients sourced directly from local producers to
-                ensure a truly authentic gourmet experience.
+                From our slow-cooked Dum Biryanis to our hand-crafted desserts,
+                we use only farm-fresh ingredients and time-honored spice blends
+                to deliver a dining experience that feels like home—only better.
               </p>
             </div>
           </div>
@@ -102,22 +102,22 @@ function Home() {
             className="mySwiper py-5"
           >
             {[
-              { img: home1, title: "Chef's Tasting Menu", desc: "A beautifully curated 7-course journey of our most celebrated and vibrant flavors." },
-              { img: home2, title: "Wood-Fired Specialties", desc: "Artisanal cuts and seasonal vegetables kissed by signature aromatic oak smoke." },
-              { img: home3, title: "Gourmet Appetizers", desc: "Delicate, handcrafted beginnings designed to perfectly awaken your palate." },
-              { img: home4, title: "Decadent Desserts", desc: "Exquisite sweet finales prepared daily by our master pastry artisans." },
-              { img: home5, title: "Signature Cocktails", desc: "Award-winning mixology blending fresh botanicals and premium imported spirits." }
-            ].map((item, index) => (
+              { img: home1, name: 'Hyderabadi Dum Biryani', desc: 'Slow-cooked with 24 royal spices in a sealed clay pot.', tag: 'Best Seller' },
+              { img: home2, name: 'Paneer Butter Masala', desc: 'Cottage cheese simmered in a rich, buttery tomato gravy.', tag: 'Chef\'s Pick' },
+              { img: home3, name: 'Chicken Tikka Kebab', desc: 'Clay-oven roasted chicken marinated in aromatic spices.', tag: 'Most Popular' },
+              { img: home4, name: 'Royal Gulab Jamun', desc: 'Milk dumplings soaked in fragrant rose and cardamom syrup.', tag: 'Signature Sweet' },
+              { img: home5, name: 'Fresh Mango Lassi', desc: 'Chilled Alphonso mango blended with creamy yogurt.', tag: 'Refreshing' },
+            ].map((dish, index) => (
               <SwiperSlide key={index} style={{ width: '350px' }}>
                 <div className="dish-card">
                   <div className="dish-img-container">
-                    <img src={item.img} alt={item.title} />
+                    <img src={dish.img} alt={dish.name} />
                   </div>
                   <div className="dish-info">
-                    <h3>{item.title}</h3>
-                    <p>{item.desc}</p>
+                    <h3>{dish.name}</h3>
+                    <p>{dish.desc}</p>
                     <span className="text-gold font-weight-bold">
-                      Premium Selection
+                      {dish.tag}
                     </span>
                   </div>
                 </div>
@@ -131,14 +131,14 @@ function Home() {
       <section className="luxury-banner">
         <div className="container">
           <h2 className="display-4 text-gold mb-4">
-            Ready to Taste Perfection?
+            Your Table Awaits
           </h2>
           <p className="lead text-main mb-5">
-            Join us for an unforgettable evening of fine dining and exceptional
-            service.
+            Experience the finest flavors of India. Sign in to explore our
+            curated menu, place orders, and enjoy doorstep delivery.
           </p>
-          <Button className="btn-premium" onClick={() => navigate('/login')}>
-            Reserve Your Table
+          <Button className="btn-premium" onClick={() => navigate('/products')}>
+            Order Now
           </Button>
         </div>
       </section>
@@ -148,19 +148,12 @@ function Home() {
         <div className="container">
           <h2 className="section-title text-gold">Atmosphere & Art</h2>
           <div className="gallery-grid">
-            {[
-              { img: home6, tag: "Intimate Dining" },
-              { img: home7, tag: "The Wine Cellar" },
-              { img: home8, tag: "Private Events" },
-              { img: home5, tag: "Chef's Table" },
-              { img: home2, tag: "Ambient Lighting" },
-              { img: home3, tag: "Gourmet Plating" }
-            ].map((item, i) => (
+            {[home6, home7, home8, home5, home2, home3].map((img, i) => (
               <div className="gallery-item" key={i}>
-                <img src={item.img} alt={item.tag} />
+                <img src={img} alt="Gallery" />
                 <div className="gallery-overlay">
                   <span className="text-primary font-weight-bold">
-                    {item.tag}
+                    View Details
                   </span>
                 </div>
               </div>

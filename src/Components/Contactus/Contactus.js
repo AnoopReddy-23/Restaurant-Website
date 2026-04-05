@@ -21,7 +21,7 @@ function Contactus() {
     <div className='auth-container' style={{ flexDirection: 'column', gap: '4rem' }}>
         <div className="text-center mb-5 animate__animated animate__fadeIn">
           <h1 className="display-3 text-gold">Get In Touch</h1>
-          <p className="text-muted letter-spacing-2">Reserved for your questions and reservations</p>
+          <p className="text-muted letter-spacing-2">We'd love to hear from you — questions, feedback, or catering inquiries</p>
         </div>
 
         <div className="container">
@@ -34,7 +34,7 @@ function Contactus() {
                         </div>
                         <div>
                             <h3 className="text-gold mb-1">Our Location</h3>
-                            <p className="text-main mb-0">Road No 12, Banjara Hills, Hyderabad</p>
+                            <p className="text-main mb-0">Plot 42, Jubilee Hills, Hyderabad – 500033</p>
                         </div>
                     </div>
 
@@ -44,7 +44,7 @@ function Contactus() {
                         </div>
                         <div>
                             <h3 className="text-gold mb-1">Phone Number</h3>
-                            <p className="text-main mb-0">+91 98765 43210</p>
+                            <p className="text-main mb-0">+91 40 2354 6789</p>
                         </div>
                     </div>
 

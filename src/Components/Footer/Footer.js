@@ -16,7 +16,7 @@ function Footer() {
               <h2 className="text-gold mb-0">TastyNest</h2>
             </div>
             <p className="footer-tagline text-muted">
-              Crafting extraordinary culinary moments where every flavor tells a story of passion and excellence.
+              Authentic Indian flavors, crafted with love. From our kitchen to your table — a dining experience worth savoring.
             </p>
           </div>
 
@@ -44,7 +44,7 @@ function Footer() {
             <h4 className="text-gold mb-4 footer-heading">Get in Touch</h4>
             <div className="contact-item d-flex align-items-center justify-content-center justify-content-md-start mb-3">
               <FaPhoneAlt className="text-gold me-3" />
-              <span>+91 98765 43210</span>
+              <span>+91 40 2354 6789</span>
             </div>
             <div className="contact-item d-flex align-items-center justify-content-center justify-content-md-start mb-3">
               <FaEnvelope className="text-gold me-3" />
@@ -52,14 +52,14 @@ function Footer() {
             </div>
             <div className="contact-item d-flex align-items-center justify-content-center justify-content-md-start mb-3 text-start">
               <FaMapMarkerAlt className="text-gold me-3 flex-shrink-0" />
-              <span>Road No 12, Banjara Hills, Hyderabad - 500034</span>
+              <span>Plot 42, Jubilee Hills, Hyderabad – 500033</span>
             </div>
           </div>
 
           {/* Section 4: Social Media */}
           <div className="col-lg-3 col-md-6 text-center text-md-start">
             <h4 className="text-gold mb-4 footer-heading">Follow Us</h4>
-            <p className="text-muted mb-4">Stay updated with our latest gourment creations.</p>
+            <p className="text-muted mb-4">Stay updated with our latest gourmet creations.</p>
             <div className="social-links d-flex justify-content-center justify-content-md-start gap-3">
               <a href="#" className="social-link-btn" aria-label="Facebook"><FaFacebookF /></a>
               <a href="#" className="social-link-btn" aria-label="Instagram"><FaInstagram /></a>
