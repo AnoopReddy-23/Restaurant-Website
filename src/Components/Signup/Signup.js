@@ -2,7 +2,7 @@ import React from 'react'
 import {useForm} from 'react-hook-form'
 import {Form, Button,Card} from 'react-bootstrap'
 import {GoSignIn} from 'react-icons/go'
-import axios from 'axios'
+import axios from '../../utils/axiosInstance'
 import {useNavigate} from 'react-router-dom'
 import {useState} from 'react'
 

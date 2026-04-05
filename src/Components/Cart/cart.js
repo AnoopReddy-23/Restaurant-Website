@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from 'react'
-import axios from 'axios'
+import axios from '../../utils/axiosInstance'
 import CartCard from '../CartCard/CartCard'
 import { Button, Form, Row, Col, Card } from 'react-bootstrap'
 import { useSelector, useDispatch } from 'react-redux'

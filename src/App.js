@@ -25,6 +25,7 @@ import Addproduct from './Components/Addproduct/Addproduct'
 import UserOrders from './Components/UserOrders/UserOrders'
 import AdminOrders from './Components/AdminOrders/AdminOrders'
 import SalesAnalytics from './Components/SalesAnalytics/SalesAnalytics'
+import ProtectedRoute from './Components/ProtectedRoute/ProtectedRoute'
 
 function App() {
   return (
@@ -50,7 +51,7 @@ function App() {
           <Route path='/products' element={<Viewproducts/>}/>
           
           {/* User Dashboard */}
-          <Route path='/user-dashboard' element={<Userdashboard/>}>
+          <Route path='/user-dashboard' element={<ProtectedRoute allowedRole="user"><Userdashboard/></ProtectedRoute>}>
              <Route path='profile' element={<Userprofile/>} />
              <Route path='cart' element={<Cart/>} />
              <Route path='products' element={<Viewproducts/>} />
@@ -58,7 +59,7 @@ function App() {
           </Route>
 
           {/* Admin Dashboard */}
-          <Route path='/admin-dashboard' element={<Admindashboard/>}>
+          <Route path='/admin-dashboard' element={<ProtectedRoute allowedRole="admin"><Admindashboard/></ProtectedRoute>}>
               <Route path='addproduct' element={<Addproduct/>} />
               <Route path='products' element={<Viewproducts/>} />
               <Route path='orders' element={<AdminOrders />} />

@@ -4,6 +4,7 @@ const cartApp=exp.Router()
 
 //import express-async-handler to handler async errors
 const expressAsyncHandler=require('express-async-handler')
+const verifyToken = require('./middlewares/verifyToken')
 
 
 //import dotenv which gives "process.env"
@@ -50,7 +51,7 @@ cartApp.use(exp.json());  //inbuit middleware ----> this middleware executes for
 //create route to handle '/create-cartItem' path
 //here we have inserted cartObj using async/await
 //handling aynchronous errors using express-async-handler
-cartApp.post('/create-cart',expressAsyncHandler(async (request,response)=>{
+cartApp.post('/create-cart', verifyToken, expressAsyncHandler(async (request,response)=>{
    
     //get productCollectionObject from app.js
     let cartCollectionObject=request.app.get("cartCollectionObject");
@@ -73,7 +74,7 @@ cartApp.post('/create-cart',expressAsyncHandler(async (request,response)=>{
 
 
 //create route to handle '/getcartitems' path   
-cartApp.get('/getcartitems/:name', expressAsyncHandler(async (request,response)=>{
+cartApp.get('/getcartitems/:name', verifyToken, expressAsyncHandler(async (request,response)=>{
    
     //get productCollectionObject from app.js
     let cartCollectionObject=request.app.get("cartCollectionObject");
@@ -87,7 +88,7 @@ cartApp.get('/getcartitems/:name', expressAsyncHandler(async (request,response)=
 
 
 //create route to handle '/update-user' path
-cartApp.put('/update-cartitem',expressAsyncHandler(async (request,response)=>{
+cartApp.put('/update-cartitem', verifyToken, expressAsyncHandler(async (request,response)=>{
     //get userCollectionObject from app.js
     let cartCollectionObject=request.app.get("cartCollectionObject");
     //get modified user Obj from request
@@ -103,7 +104,7 @@ cartApp.put('/update-cartitem',expressAsyncHandler(async (request,response)=>{
 
 
 //create route to handle '/remove-cartitem' path
-cartApp.delete('/remove-cartitem/:id', expressAsyncHandler(async (request,response)=>{
+cartApp.delete('/remove-cartitem/:id', verifyToken, expressAsyncHandler(async (request,response)=>{
 
     //get productCollectionObject from app.js
     let cartCollectionObject=request.app.get("cartCollectionObject");

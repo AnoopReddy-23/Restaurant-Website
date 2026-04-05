@@ -7,16 +7,17 @@
 ## ✨ Key Features
 
 ### 🛒 Customer Experience
-- **Gourmet Menu**: Interactive, category-based food browsing with horizontal Swiper sliders.
-- **Glassmorphic UI**: Modern, translucent design elements with gold accents for a premium feel.
-- **Smart Cart System**: Real-time cart management with automatic item removal and live price calculation.
-- **Order History**: Personal dashboard to track past gourmet journeys with real-time status updates (Placed → Cooking → Out for Delivery → Delivered).
-- **Modern Notifications**: Professional, non-intrusive feedback using `react-hot-toast`.
+- **Gourmet Menu**: Interactive browsing with horizontal Swiper sliders and "Veg-Only" dietary toggles.
+- **Smart Search & Discovery**: Instant real-time filtering to find dishes as you type.
+- **Persistent Address Management**: Profile-based logistics system to store and manage delivery details (Street, City, Pincode).
+- **Verified Checkout**: Mandatory delivery verification during the checkout workflow for error-free logistics.
+- **Glassmorphic UI**: Modern, translucent design with gold accents and smooth `Animate.css` transitions.
+- **Session Persistence**: Robust state re-hydration using `localStorage` to prevent logout on page refresh.
 
-### 🛠️ Admin Management
-- **Live Order Dashboard**: Real-time management console to track and process incoming orders.
-- **Product Management**: Robust "Add Product" suite with dietary indicators (Veg/Non-Veg), Best Seller badges, and customizable popularity ratings.
-- **Automated Workflows**: Intelligent user role detection and secure session management.
+### 🛠️ Admin & Business Intelligence
+- **Sales Analytics Dashboard**: Visual intelligence suite with Area, Bar, and Pie charts using `Recharts` for real-time performance tracking.
+- **Live Order Management**: Industrial-grade console for processing and tracking incoming gourmet requests.
+- **Advanced Inventory Suite**: Add dishes with specialized badges (Best Seller, Rating), popularity tags, and dietary markers.
 
 ---
 
@@ -58,7 +59,6 @@ Create a `.env` file in the root directory:
 ```env
 PORT=4000
 DATABASE_CONNECTION=your_mongodb_uri
-PORT=your_port
 CLOUD_NAME=your_cloud_name
 API_KEY=your_api_key
 API_SECRET=your_api_secret

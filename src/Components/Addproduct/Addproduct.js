@@ -1,7 +1,7 @@
 import React from 'react'
 import {useForm} from 'react-hook-form'
 import {Form, Button} from 'react-bootstrap'
-import axios from 'axios'
+import axios from '../../utils/axiosInstance'
 import {useNavigate} from 'react-router-dom'
 import { useSelector,useDispatch } from 'react-redux'
 import {useState,useEffect} from 'react'

@@ -1,5 +1,5 @@
 import { createSlice, createAsyncThunk } from '@reduxjs/toolkit';
-import axios from 'axios';
+import axios from '../utils/axiosInstance';
 
 // Thunk to fetch user's orders
 export const getUserOrders = createAsyncThunk(

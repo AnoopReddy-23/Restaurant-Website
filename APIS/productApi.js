@@ -4,6 +4,7 @@ const productApp=exp.Router()
 
 //import express-async-handler to handler async errors
 const expressAsyncHandler=require('express-async-handler')
+const verifyToken = require('./middlewares/verifyToken')
 
 
 //import dotenv which gives "process.env"
@@ -139,7 +140,7 @@ productApp.get('/getproduct/:id',expressAsyncHandler(async (request,response)=>{
 //create route to handle '/create-product' path
 //here we have inserted productObj using async/await
 //handling aynchronous errors using express-async-handler
-productApp.post('/create-product',upload.single("foodphoto"),expressAsyncHandler(async (request,response)=>{
+productApp.post('/create-product', upload.single("foodphoto"), verifyToken, expressAsyncHandler(async (request,response)=>{
    
         //get productCollectionObject from app.js
         let productCollectionObject=request.app.get("productCollectionObject");
@@ -165,7 +166,7 @@ productApp.post('/create-product',upload.single("foodphoto"),expressAsyncHandler
 
 
 //create route to handle '/update-product' path
-productApp.put('/update-product', expressAsyncHandler(async (request,response)=>{
+productApp.put('/update-product', verifyToken, expressAsyncHandler(async (request,response)=>{
 
         //get productCollectionObject from app.js
         let productCollectionObject=request.app.get("productCollectionObject");
@@ -178,7 +179,7 @@ productApp.put('/update-product', expressAsyncHandler(async (request,response)=>
 }))
 
 //create route to handle '/remove-product' path
-productApp.delete('/remove-product/:id', expressAsyncHandler(async (request,response)=>{
+productApp.delete('/remove-product/:id', verifyToken, expressAsyncHandler(async (request,response)=>{
 
     //get productCollectionObject from app.js
     let productCollectionObject=request.app.get("productCollectionObject");

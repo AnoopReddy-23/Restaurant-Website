@@ -1,5 +1,5 @@
 import {createSlice,createAsyncThunk} from '@reduxjs/toolkit'
-import axios from 'axios'
+import axios from '../utils/axiosInstance'
 
 //http req to get products
 export const getProducts=createAsyncThunk('productsdata', async()=>{

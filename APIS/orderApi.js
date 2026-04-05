@@ -3,8 +3,10 @@ const exp = require('express')
 const orderApp = exp.Router()
 
 //import express-async-handler to handle async errors
+//import express-async-handler to handle async errors
 const expressAsyncHandler = require('express-async-handler')
 const { ObjectId } = require('mongodb')
+const verifyToken = require('./middlewares/verifyToken')
 
 //to extract body of request object
 orderApp.use(exp.json())
@@ -14,6 +16,7 @@ orderApp.use(exp.json())
 // POST /create-order: Save a new order
 orderApp.post(
   '/create-order',
+  verifyToken,
   expressAsyncHandler(async (request, response) => {
     let orderCollectionObject = request.app.get('orderCollectionObject')
     let cartCollectionObject = request.app.get('cartCollectionObject')
@@ -36,6 +39,7 @@ orderApp.post(
 // GET /get-orders/:username: Get orders for a specific user
 orderApp.get(
   '/get-orders/:username',
+  verifyToken,
   expressAsyncHandler(async (request, response) => {
     let orderCollectionObject = request.app.get('orderCollectionObject')
     let username = request.params.username
@@ -51,6 +55,7 @@ orderApp.get(
 // GET /all-orders: Get all orders (Admin only)
 orderApp.get(
   '/all-orders',
+  verifyToken,
   expressAsyncHandler(async (request, response) => {
     let orderCollectionObject = request.app.get('orderCollectionObject')
 
@@ -65,6 +70,7 @@ orderApp.get(
 // PUT /update-status: Update order status (Admin only)
 orderApp.put(
   '/update-status',
+  verifyToken,
   expressAsyncHandler(async (request, response) => {
     let orderCollectionObject = request.app.get('orderCollectionObject')
     let { orderId, status } = request.body
@@ -80,6 +86,7 @@ orderApp.put(
 // GET /sales-stats: Advanced Aggregate data for Admin Analytics
 orderApp.get(
   '/sales-stats',
+  verifyToken,
   expressAsyncHandler(async (request, response) => {
     let orderCollectionObject = request.app.get('orderCollectionObject')
     const { timeframe } = request.query

@@ -4,6 +4,7 @@ const userApp=exp.Router()
 
 //import express-async-handler to handler async errors
 const expressAsyncHandler=require('express-async-handler')
+const verifyToken = require('./middlewares/verifyToken')
 
 //import bcryptjs for hashing password
 const bcryptjs=require('bcryptjs')
@@ -62,7 +63,7 @@ userApp.use(exp.json());  //inbuit middleware ----> this middleware executes for
 //create REST API
 
 //create route to handle '/getusers' path   //middleware2 --> to execute for a specific request
-userApp.get('/getusers',expressAsyncHandler(async (request,response)=>{
+userApp.get('/getusers', verifyToken, expressAsyncHandler(async (request,response)=>{
     
     //get userCollectionObject from app.js
     let userCollectionObject=request.app.get("userCollectionObject");
@@ -137,7 +138,7 @@ userApp.post('/create-user',upload.single("photo"),expressAsyncHandler(async (re
 
 
 //create route to handle '/update-user' path
-userApp.put('/update-user',expressAsyncHandler(async (request,response)=>{
+userApp.put('/update-user', verifyToken, expressAsyncHandler(async (request,response)=>{
     //get userCollectionObject from app.js
     let userCollectionObject=request.app.get("userCollectionObject");
     //get modified user Obj from request
@@ -151,7 +152,7 @@ userApp.put('/update-user',expressAsyncHandler(async (request,response)=>{
 
 
 //create route to handle '/remove-user/id' path
-userApp.delete('/remove-user/:username',expressAsyncHandler(async (request,response)=>{
+userApp.delete('/remove-user/:username', verifyToken, expressAsyncHandler(async (request,response)=>{
 
     //get userCollectionObject from app.js
     let userCollectionObject=request.app.get("userCollectionObject");
