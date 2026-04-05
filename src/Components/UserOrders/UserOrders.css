@@ -1,0 +1,26 @@
+.order-item-card {
+    transition: var(--transition);
+    border: 1px solid var(--glass-border);
+}
+
+.order-item-card:hover {
+    transform: translateY(-3px);
+    border-color: var(--accent);
+}
+
+.order-icon-wrapper {
+    font-size: 2.5rem;
+    margin-bottom: 0.5rem;
+}
+
+.order-items-preview .preview-item {
+    background: rgba(255, 255, 255, 0.05);
+    padding: 6px 12px;
+    border-radius: 20px;
+    font-size: 0.85rem;
+    border: 1px solid rgba(255, 255, 255, 0.1);
+}
+
+.empty-orders {
+    padding: 100px 20px;
+}

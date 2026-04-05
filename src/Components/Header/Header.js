@@ -1,6 +1,6 @@
-import React,{useEffect} from 'react'
-import {Navbar, Container, Nav, NavDropdown} from 'react-bootstrap'
-import {Route, Routes, NavLink} from 'react-router-dom'
+import React, { useEffect } from 'react'
+import { Navbar, Container, Nav, NavDropdown } from 'react-bootstrap'
+import { Route, Routes, NavLink } from 'react-router-dom'
 import Home from '../Home/Home'
 import Signup from '../Signup/Signup'
 import Login from '../Login/Login'
@@ -8,181 +8,194 @@ import Contactus from '../Contactus/Contactus'
 import LoginSignup from '../LoginSignup/LoginSignup'
 import './Header.css'
 import { useDispatch, useSelector } from 'react-redux'
-import {useNavigate} from 'react-router-dom'
-import {clearLoginStatus} from '../../Slices/userSlice'
-import {clearProductsData} from '../../Slices/productSlice'
-import {clearCartItems} from '../../Slices/cartSlice'
+import { useNavigate } from 'react-router-dom'
+import { clearLoginStatus } from '../../Slices/userSlice'
+import { clearProductsData } from '../../Slices/productSlice'
+import { clearCartItems } from '../../Slices/cartSlice'
 import Userprofile from '../Userprofile/Userprofile'
 import Cart from '../Cart/Cart'
 import Products from '../Viewproducts/Viewproducts'
 import Addproduct from '../Addproduct/Addproduct'
 import Gallery from '../Gallery/Gallery'
 import logo from '../../images/logo2.jpg'
-import {BiLogOutCircle} from 'react-icons/bi'
-import {AiFillHome} from 'react-icons/ai'
-import {FcGallery,FcAbout,FcReadingEbook} from 'react-icons/fc'
-import {MdSwitchAccount} from 'react-icons/md'
-import {FaCartArrowDown} from 'react-icons/fa'
-import {MdOutlineMenuBook,MdAddchart} from 'react-icons/md'
-import PageNotFound from '../PageNotFound/PageNotFound'
-
+import { BiLogOutCircle } from 'react-icons/bi'
+import { AiFillHome } from 'react-icons/ai'
+import { FcGallery, FcAbout, FcReadingEbook } from 'react-icons/fc'
+import { MdSwitchAccount, MdOutlineMenuBook, MdAddchart } from 'react-icons/md'
+import { FaCartArrowDown, FaClock, FaConciergeBell } from 'react-icons/fa'
 
 function Header() {
-
   //get state from store
-  let {userObj,isSuccess}=useSelector(
-    (state)=>state.user
-  )
+  let { userObj, isSuccess } = useSelector((state) => state.user)
 
-  //cartproducts from store  
-  let {cartItems}=useSelector(state=>state.cart)
+  //cartproducts from store
+  let { cartItems } = useSelector((state) => state.cart)
 
   //get dispath function
-  let dispatch=useDispatch()
+  let dispatch = useDispatch()
 
   //get navigate function
-  let navigate=useNavigate()
+  let navigate = useNavigate()
 
   //logout user
-  const  userLogout=()=>{
-    localStorage.clear();
-    dispatch(clearLoginStatus());
-    dispatch(clearProductsData());
-    dispatch(clearCartItems());
-    navigate("/login");
+  const userLogout = () => {
+    localStorage.clear()
+    dispatch(clearLoginStatus())
+    dispatch(clearProductsData())
+    dispatch(clearCartItems())
+    navigate('/login')
   }
 
   return (
     <>
-      <Navbar collapseOnSelect bg="dark" expand="md" variant='dark' sticky='top'>
-          <Container>
-            <Navbar.Brand href='#' className='me-auto'><img src={logo} alt="Logo" className='logo '/> TastyNest</Navbar.Brand>
-            <Navbar.Toggle aria-controls="responsive-navbar-nav" />
-            <Navbar.Collapse id="responsive-navbar-nav">
-              <Nav className="ms-auto">
+      <Navbar
+        collapseOnSelect
+        bg="dark"
+        expand="md"
+        variant="dark"
+        sticky="top"
+      >
+        <Container>
+          <Navbar.Brand
+            href="#"
+            className="me-auto"
+            onClick={() => navigate('/')}
+          >
+            <img src={logo} alt="Logo" className="logo " /> TastyNest
+          </Navbar.Brand>
+          <Navbar.Toggle aria-controls="responsive-navbar-nav" />
+          <Navbar.Collapse id="responsive-navbar-nav">
+            <Nav className="ms-auto">
               {isSuccess !== true ? (
                 <>
-                  {/* These links can be visible when no user logged in */}
                   <Nav.Item>
                     <Nav.Link eventKey={1} as={NavLink} to="/">
-                      <AiFillHome fill='orange'/> Home
+                      <AiFillHome fill="orange" /> Home
                     </Nav.Link>
                   </Nav.Item>
 
                   <Nav.Item>
                     <Nav.Link eventKey={2} as={NavLink} to="/login">
-                      <MdSwitchAccount color='blue'/> Login/Signup
+                      <MdSwitchAccount color="blue" /> Login
                     </Nav.Link>
                   </Nav.Item>
 
                   <Nav.Item>
                     <Nav.Link eventKey={3} as={NavLink} to="/gallery">
-                     <FcGallery/> Gallery
+                      <FcGallery /> Gallery
                     </Nav.Link>
                   </Nav.Item>
 
                   <Nav.Item>
                     <Nav.Link eventKey={4} as={NavLink} to="/contactus">
-                      <FcAbout/> ContactUs
+                      <FcAbout /> Contact
                     </Nav.Link>
                   </Nav.Item>
                 </>
-              ) : ( 
+              ) : (
                 <>
-                  {/* This dropdown is visible only when a user is logged in */}  
                   <Nav.Item>
-                      <Nav.Link eventKey={5} to="/products" as={NavLink}>
-                        Menu <span className='text-success'>
-                        <MdOutlineMenuBook size={30}/></span>
-                      </Nav.Link>
+                    <Nav.Link eventKey={5} to="/products" as={NavLink}>
+                      Menu{' '}
+                      <MdOutlineMenuBook size={22} className="text-gold ms-1" />
+                    </Nav.Link>
                   </Nav.Item>
-                  {userObj.usertype==="user" ? 
-                  (
+
+                  {userObj.usertype === 'user' ? (
                     <>
                       <Nav.Item>
-                        <Nav.Link eventKey={6} to="/cart" as={NavLink}>
-                          Cart <FaCartArrowDown size={22} className='text-gold'/>
-                          {cartItems.length > 0 && <span className='cart-count'>{cartItems.length}</span>}
+                        <Nav.Link
+                          eventKey={6}
+                          to="/user-dashboard/orders"
+                          as={NavLink}
+                        >
+                          Orders{' '}
+                          <FaClock size={20} className="text-gold ms-1" />
                         </Nav.Link>
                       </Nav.Item>
-
+                      <Nav.Item>
+                        <Nav.Link
+                          eventKey={7}
+                          to="/user-dashboard/cart"
+                          as={NavLink}
+                        >
+                          Cart{' '}
+                          <FaCartArrowDown
+                            size={22}
+                            className="text-gold ms-1"
+                          />
+                          {cartItems.length > 0 && (
+                            <span className="cart-count">
+                              {cartItems.length}
+                            </span>
+                          )}
+                        </Nav.Link>
+                      </Nav.Item>
                     </>
                   ) : (
-                  <Nav.Item>
-                      <Nav.Link eventKey={7} to="/addproduct" as={NavLink}>
-                        <MdAddchart size={22} className='text-gold'/> Add Product
-                      </Nav.Link>
-                  </Nav.Item>
-                  
-                  )}
-                  
-                  <NavDropdown title={"Hello!! "+userObj.username}  id="collasible-nav-dropdown">
-                    <NavDropdown.Item>
+                    <>
                       <Nav.Item>
-                        <Nav.Link eventKey={8} as={NavLink} to="/profile">
-                        <FcReadingEbook  size={20}/> Profile 
+                        <Nav.Link
+                          eventKey={8}
+                          to="/admin-dashboard/orders"
+                          as={NavLink}
+                        >
+                          Live Orders{' '}
+                          <FaConciergeBell
+                            size={20}
+                            className="text-gold ms-1"
+                          />
                         </Nav.Link>
                       </Nav.Item>
-                    </NavDropdown.Item>
-                    <NavDropdown.Divider />
-
-                    <NavDropdown.Item>
-                        <Nav.Item>
-                          <Nav.Link eventKey={1} as={NavLink} to="/">
-                            <AiFillHome fill='orange'/> Home
-                          </Nav.Link>
-                       </Nav.Item>
-                    </NavDropdown.Item>
-                    <NavDropdown.Divider />
-
-                    <NavDropdown.Item>
-                        <Nav.Item>
-                          <Nav.Link eventKey={3} as={NavLink} to="/gallery">
-                            <FcGallery/> Gallery
-                          </Nav.Link>
-                        </Nav.Item>
-                    </NavDropdown.Item>
-                    <NavDropdown.Divider />
-
-                    <NavDropdown.Item>
-                        <Nav.Item>
-                          <Nav.Link eventKey={4} as={NavLink} to="/contactus">
-                            <FcAbout/> ContactUs
-                          </Nav.Link>
+                      <Nav.Item>
+                        <Nav.Link
+                          eventKey={9}
+                          to="/admin-dashboard/addproduct"
+                          as={NavLink}
+                        >
+                          Add Dish{' '}
+                          <MdAddchart size={22} className="text-gold ms-1" />
+                        </Nav.Link>
                       </Nav.Item>
+                    </>
+                  )}
+
+                  <NavDropdown
+                    title={'Hi, ' + userObj.username}
+                    id="collasible-nav-dropdown"
+                    align="end"
+                  >
+                    <NavDropdown.Item
+                      as={NavLink}
+                      to={
+                        userObj.usertype === 'admin'
+                          ? '/admin-dashboard'
+                          : '/user-dashboard/profile'
+                      }
+                    >
+                      <FcReadingEbook size={18} className="me-2" /> Dashboard
                     </NavDropdown.Item>
                     <NavDropdown.Divider />
-
-                    <NavDropdown.Item onClick={userLogout}>
-                      <BiLogOutCircle color='red'/> Logout
+                    <NavDropdown.Item as={NavLink} to="/gallery">
+                      <FcGallery size={18} className="me-2" /> Gallery
+                    </NavDropdown.Item>
+                    <NavDropdown.Item as={NavLink} to="/contactus">
+                      <FcAbout size={18} className="me-2" /> Help & Contact
+                    </NavDropdown.Item>
+                    <NavDropdown.Divider />
+                    <NavDropdown.Item
+                      onClick={userLogout}
+                      className="text-danger"
+                    >
+                      <BiLogOutCircle size={18} className="me-2" /> Logout
                     </NavDropdown.Item>
                   </NavDropdown>
-
                 </>
               )}
-              </Nav>
-            </Navbar.Collapse>
-          </Container>
-        </Navbar>
-
-      {/* Routes */}
-      <Routes>
-        <Route path='/' element={<Home />}/>
-        <Route path='/login' element={<LoginSignup />} >
-            <Route path='signup' element={<Signup />}/>
-            <Route path='' element={<Login />}/>
-            {/* Navigating to cart when child path is empty */}
-            {/* <Route path="" element={<Navigate to="login" replace={true} />} /> */}
-        </Route>
-        <Route path='/gallery' element={<Gallery />}/>
-        <Route path='/contactus' element={<Contactus />}/>
-        <Route path="profile" element={<Userprofile />} />
-        <Route path="/cart" element={<Cart />} />
-        <Route path="/products" element={<Products />} />
-        <Route path="/addproduct" element={<Addproduct />} />
-        <Route path="/*" element={<PageNotFound />}/>
-      </Routes>
-
+            </Nav>
+          </Navbar.Collapse>
+        </Container>
+      </Navbar>
     </>
   )
 }

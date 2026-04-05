@@ -6,12 +6,15 @@ import userReducer from './Slices/userSlice'
 import cartReducer from './Slices/cartSlice'
 //import cartSlice
 import productReducer from './Slices/productSlice'
+//import orderSlice
+import orderReducer from './Slices/orderSlice'
 
 //export store
 export const store=configureStore({
     reducer:{
         user:userReducer,
         cart:cartReducer,
-        product:productReducer
+        product:productReducer,
+        orders:orderReducer
     }
 })

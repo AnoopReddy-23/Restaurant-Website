@@ -8,6 +8,8 @@ import { useNavigate } from 'react-router-dom';
 import './Cart.css'
 
 import { toast } from 'react-hot-toast'
+import { createOrder } from '../../Slices/orderSlice'
+import { clearCartItems } from '../../Slices/cartSlice'
 
 function Cart() {
     let [products,setProducts]=useState([])
@@ -82,9 +84,28 @@ function Cart() {
     },[isuserSuccess])
 
     const handleCheckout = () => {
-        toast.success("Proceeding to secure checkout...", {
-            icon: '💳',
-            duration: 3000
+        if(products.length === 0) return;
+
+        const orderObj = {
+            username: userObj.username,
+            items: products,
+            totalAmount: price + 50
+        };
+
+        dispatch(createOrder(orderObj))
+        .unwrap()
+        .then(() => {
+            dispatch(clearCartItems());
+            toast.success("Order placed successfully! Redirecting to your history...", {
+                icon: '🛍️',
+                duration: 4000
+            });
+            setTimeout(() => {
+                navigate('/user-dashboard/orders');
+            }, 2000);
+        })
+        .catch((err) => {
+            toast.error(err.message || "Failed to place order. Please try again.");
         });
     }
 

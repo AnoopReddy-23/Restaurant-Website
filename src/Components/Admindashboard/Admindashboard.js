@@ -3,6 +3,7 @@ import { Nav,Navbar,Container } from "react-bootstrap";
 import { useSelector } from 'react-redux';
 import { Outlet, NavLink , useNavigate} from "react-router-dom";
 import {MdOutlineMenuBook,MdAddchart} from 'react-icons/md'
+import {FaConciergeBell} from 'react-icons/fa'
 
 
 
@@ -26,34 +27,13 @@ function Admindashboard() {
   return (
     <>
     {isSuccess===true && (
-      <>
-          <Navbar collapseOnSelect bg="dark" expand="sm" variant='dark' className='mt-3'>
-            <Container>
-              <Navbar.Brand href='#'>AdminDashBoard</Navbar.Brand>
-              <Navbar.Toggle aria-controls="responsive-navbar-nav" />
-              <Navbar.Collapse id="responsive-navbar-nav">
-                <Nav className="ms-auto" defaultActiveKey="/addproduct">    
-                  <Nav.Item>
-                      <Nav.Link to="addproduct" as={NavLink}>
-                        <MdAddchart className='text-primary'/> Add Product
-                      </Nav.Link>
-                  </Nav.Item>
-                  <Nav.Item>
-                      <Nav.Link to="products" as={NavLink}>
-                        <MdOutlineMenuBook className='text-warning'/> Menu
-                      </Nav.Link>
-                  </Nav.Item>
-                </Nav>
-              </Navbar.Collapse>
-          </Container>
-        </Navbar>
-
-            {/* outlet */}
-            <div className="mt-3">
-              <Outlet />
-            </div>
-        </> )
-    }
+      <div className="dashboard-content animate__animated animate__fadeIn">
+          {/* outlet */}
+          <div className="mt-3">
+            <Outlet />
+          </div>
+      </div>
+    )}
    </>
   )
 }

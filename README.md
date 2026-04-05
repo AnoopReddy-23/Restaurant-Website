@@ -1,42 +1,94 @@
-# Project Title: `TastyNest - Restaurant Website`
+# 🍽️ TastyNest - Premium Restaurant Marketplace
 
-## Project Description
+**TastyNest** is a high-end, full-stack restaurant management and ordering platform. Designed with a "Charcoal & Gold" premium aesthetic, it offers a seamless gourmet dining experience from discovery to delivery.
 
-* This is a basic website for restaurant. These kind of websites are helpful for the restaurant owners who want their business to grow. 
-* This application contains two interfaces. They are 
-    1. User Interface
-    2. Admin Interface
-* Once, when we enter the wesite url in browser, we are directed to the home page of the website. And there, we can also find links to Login or SignUp page, ContactUs page and Gallery in the navbar.
-* If the user has an account, then he/she can directly login to the application. Otherwise, he has to create an account first and then he can login to the application.
-* If the user logged into the application, then he/she will be directed to the menu page. They can view the food items accordingly and if they want to order any item, then they have to add the item to cart. After that, they can go to cart and order the food.
-* If the Admin logged into the account, he will directed to menu page. Here, admin can add new food item to the menu by clicking on Add product.
+---
 
-## Technologies Used
-1. Html
-2. CSS
-3. Bootstrap
-4. Javascript
-5. React
-6. Nodejs
-7. Express
-8. MongoDB
+## ✨ Key Features
 
+### 🛒 Customer Experience
+- **Gourmet Menu**: Interactive, category-based food browsing with horizontal Swiper sliders.
+- **Glassmorphic UI**: Modern, translucent design elements with gold accents for a premium feel.
+- **Smart Cart System**: Real-time cart management with automatic item removal and live price calculation.
+- **Order History**: Personal dashboard to track past gourmet journeys with real-time status updates (Placed → Cooking → Out for Delivery → Delivered).
+- **Modern Notifications**: Professional, non-intrusive feedback using `react-hot-toast`.
 
-### `How to View the Application ?`
+### 🛠️ Admin Management
+- **Live Order Dashboard**: Real-time management console to track and process incoming orders.
+- **Product Management**: Robust "Add Product" suite with dietary indicators (Veg/Non-Veg), Best Seller badges, and customizable popularity ratings.
+- **Automated Workflows**: Intelligent user role detection and secure session management.
 
-Runs the app in the development mode.\
-Open [http://localhost:4000](http://localhost:4000) to view it in your browser.
+---
 
+## 🛠️ Technology Stack
 
-### `nodemon server`
+**Frontend:**
+- **React.js**: Functional components with Hooks.
+- **Redux Toolkit**: Centralized state management for Users, Cart, and Orders.
+- **Bootstrap 5**: Responsive layout and base components.
+- **Vanilla CSS**: Custom premium theme overrides and glassmorphism.
+- **Swiper.js**: Modern touch-enabled sliders for the menu.
 
-First, we have to run the server.
+**Backend:**
+- **Node.js & Express**: Industrial-grade RESTful API architecture.
+- **MongoDB**: Highly scalable NoSQL database for products, users, and transactions.
+- **Cloudinary**: Cloud storage for signature dish imagery.
+- **JWT**: Secure token-based authentication.
 
-### `npm run build`
+---
 
-Builds the app for production to the `build` folder.\
-It correctly bundles React in production mode and optimizes the build for the best performance.
+## 🚀 Getting Started
 
-The build is minified and the filenames include the hashes.\
-Your app is ready to be deployed!
+### 1. Prerequisites
+- Node.js (v16.x or higher)
+- MongoDB Connection String
+- Cloudinary Account (for image uploads)
 
+### 2. Installation
+```bash
+# Clone the repository
+git clone <your-repo-url>
+
+# Install dependencies
+npm install
+```
+
+### 3. Environment Setup
+Create a `.env` file in the root directory:
+```env
+PORT=4000
+DATABASE_CONNECTION=your_mongodb_uri
+PORT=your_port
+CLOUD_NAME=your_cloud_name
+API_KEY=your_api_key
+API_SECRET=your_api_secret
+```
+
+### 4. Running the Application
+
+**Development Mode:**
+```bash
+# Start the backend server (using nodemon)
+nodemon server.js
+
+# The application will be accessible at:
+http://localhost:4000
+```
+
+**Production Build:**
+```bash
+npm run build
+```
+
+---
+
+## 🎨 Design Philosophy
+The UI follows the **"Gourmet Dark"** design language:
+- **Primary Color**: `#121212` (Deep Charcoal)
+- **Accent Color**: `#d4af37` (Aesthetic Gold)
+- **Typography**: `Playfair Display` for headings and `Outfit` for body text.
+- **Effects**: Heavy use of `backdrop-filter: blur()`, subtle 1.02x scales on hover, and smooth cubic-bezier transitions.
+
+---
+
+Developed with ❤️ for the future of Gourmet Dining.

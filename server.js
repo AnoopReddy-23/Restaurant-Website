@@ -20,12 +20,10 @@ require('dotenv').config()
 const userApp=require('./APIS/userApi');
 const productApp=require('./APIS/productApi');
 const cartApp=require('./APIS/cartApi')
-
+const orderApp=require('./APIS/orderApi')
 
 //DB connection URL
 const DBurl=process.env.DATABASE_CONNECTION
-
-
 
 //connect with mongodb server
 mclient.connect(DBurl)
@@ -38,22 +36,23 @@ mclient.connect(DBurl)
     let userCollectionObject=dbObj.collection("usercollection");
     let productCollectionObject=dbObj.collection("productcollection");
     let cartCollectionObject=dbObj.collection("cartCollectionObject")
+    let orderCollectionObject=dbObj.collection("orderCollectionObject")
 
     //sharing collection objects with API's
     app.set("userCollectionObject", userCollectionObject) 
     app.set("productCollectionObject", productCollectionObject)
     app.set("cartCollectionObject", cartCollectionObject)
+    app.set("orderCollectionObject", orderCollectionObject)
 
     console.log("DB connection success")
 })
 .catch(err=>console.log("Error in DB connection", err))
 
-
-
 //use middleware to execute for a specific path
 app.use('/user-api',userApp)
 app.use('/product-api',productApp)
 app.use('/cart-api',cartApp)
+app.use('/order-api',orderApp)
 
 
 //dealing with page refersh

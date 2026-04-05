@@ -4,7 +4,7 @@ import { Nav,Navbar,Container } from "react-bootstrap";
 import { useSelector } from 'react-redux';
 import { Outlet, NavLink, useNavigate } from "react-router-dom";
 import './Userdashboard.css'
-import {FaCartArrowDown} from 'react-icons/fa'
+import {FaCartArrowDown, FaClock} from 'react-icons/fa'
 import {MdOutlineMenuBook} from 'react-icons/md'
 
 import { toast } from 'react-hot-toast'
@@ -29,30 +29,13 @@ function Userdashboard() {
   return (
    <>
     {isSuccess===true && (
-      <>  
-        <Navbar collapseOnSelect bg="dark" expand="sm" variant='dark' className='mt-3'>
-            <Container>
-              <Navbar.Brand href='#'>UserDashBoard</Navbar.Brand>
-              <Navbar.Toggle aria-controls="responsive-navbar-nav" />
-              <Navbar.Collapse id="responsive-navbar-nav">
-                <Nav className="ms-auto" defaultActiveKey="/products">
-                  <Nav.Item>
-                      <Nav.Link to="cart" as={NavLink}>Cart <span className='text-warning'><FaCartArrowDown size={30}/>{cartItems.length}</span></Nav.Link>
-                  </Nav.Item>
-                  <Nav.Item>
-                      <Nav.Link to="products" as={NavLink}>Menu <span className='text-muted'><MdOutlineMenuBook size={30}/></span></Nav.Link>
-                  </Nav.Item>
-                </Nav>
-              </Navbar.Collapse>
-          </Container>
-        </Navbar>
-
-            {/* outlet */}
-            <div className="mt-3">
-              <Outlet />
-            </div>
-        </>)
-    }
+      <div className="dashboard-content animate__animated animate__fadeIn">
+          {/* outlet */}
+          <div className="mt-3">
+            <Outlet />
+          </div>
+      </div>
+    )}
    </>
   )
 }
