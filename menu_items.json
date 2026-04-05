@@ -1,142 +1,102 @@
 [
   {
-    "food": "Truffle Mushroom Arancini",
+    "food": "Paneer Butter Masala",
     "cost": 450,
     "foodType": "starters",
-    "description": "Crispy risotto balls infused with black truffle oil and creamy forest mushrooms, served with roasted garlic aioli.",
-    "foodImg": "https://images.unsplash.com/photo-1541529086526-db283c563270?auto=format&fit=crop&q=80&w=800"
+    "isVeg": true,
+    "isBestSeller": true,
+    "rating": 4.8,
+    "description": "Rich and creamy curry made with cottage cheese tossed in a buttery tomato gravy.",
+    "foodImg": "/menu_images/1.jpg"
   },
   {
-    "food": "Honey Glazed Salmon Skewers",
+    "food": "Chicken Tikka Kebab",
     "cost": 550,
     "foodType": "starters",
-    "description": "Atlantic salmon cubes marinated in wild honey and soy, grilled to perfection over charcoal.",
-    "foodImg": "https://images.unsplash.com/photo-1519708227418-c8fd9a32b7a2?auto=format&fit=crop&q=80&w=800"
+    "isVeg": false,
+    "isBestSeller": true,
+    "rating": 4.9,
+    "description": "Juicy chunks of chicken marinated in spiced yogurt and roasted in a traditional clay oven.",
+    "foodImg": "/menu_images/2.jpg"
   },
   {
-    "food": "Garlic Butter Jumbo Prawns",
-    "cost": 750,
-    "foodType": "starters",
-    "description": "Sizzling prawns tossed in a rich brown butter sauce with roasted garlic and fresh parsley.",
-    "foodImg": "https://images.unsplash.com/photo-1559742811-824289511f48?auto=format&fit=crop&q=80&w=800"
-  },
-  {
-    "food": "Classic Caprese Bruschetta",
+    "food": "Tandoori Soya Chaap",
     "cost": 380,
     "foodType": "starters",
-    "description": "Toasted sourdough topped with heirloom tomatoes, fresh buffalo mozzarella, and a balsamic glaze reduction.",
-    "foodImg": "https://images.unsplash.com/photo-1572656631137-7935297eff55?auto=format&fit=crop&q=80&w=800"
+    "isVeg": true,
+    "isBestSeller": false,
+    "rating": 4.5,
+    "description": "Succulent soya chaap beautifully marinated in a tandoori masala and char-grilled.",
+    "foodImg": "/menu_images/3.jpg"
   },
   {
-    "food": "Royal Hyderabadi Dum Biryani",
+    "food": "Hyderabadi Dum Biryani",
     "cost": 650,
     "foodType": "riceAndBiryani",
-    "description": "Fragrant Basmati rice and tender lamb slow-cooked in a sealed clay pot with 24 secret Nawabi spices.",
-    "foodImg": "https://images.unsplash.com/photo-1563379091339-03b21bc4a4f8?auto=format&fit=crop&q=80&w=800"
+    "isVeg": false,
+    "isBestSeller": true,
+    "rating": 5.0,
+    "description": "Fragrant basmati rice layered with tender lamb, authentic nawabi spices, and golden fried onions.",
+    "foodImg": "/menu_images/4.jpg"
   },
   {
-    "food": "Saffron Infused Pulav",
-    "cost": 420,
+    "food": "Vegetable Dum Biryani",
+    "cost": 450,
     "foodType": "riceAndBiryani",
-    "description": "Long-grain rice delicately flavored with Kashmiri saffron, toasted nuts, and dried barberries.",
-    "foodImg": "https://images.unsplash.com/photo-1589302168068-1c4991185e35?auto=format&fit=crop&q=80&w=800"
+    "isVeg": true,
+    "isBestSeller": true,
+    "rating": 4.7,
+    "description": "Aromatic rice layered with garden-fresh vegetables and exquisite saffron-infused spices.",
+    "foodImg": "/menu_images/5.jpg"
   },
   {
-    "food": "Paneer Tikka Dum Biryani",
-    "cost": 480,
-    "foodType": "riceAndBiryani",
-    "description": "Char-grilled paneer cubes layered with aromatic rice, fried onions, and fresh mint leaves.",
-    "foodImg": "https://images.unsplash.com/photo-1645177623570-5283995861ab?auto=format&fit=crop&q=80&w=800"
-  },
-  {
-    "food": "Persian Zereshk Polo",
-    "cost": 520,
-    "foodType": "riceAndBiryani",
-    "description": "Traditional Iranian saffron rice with dried barberries, served with slow-roasted saffron chicken.",
-    "foodImg": "https://images.unsplash.com/photo-1633945274405-b6c8069047b0?auto=format&fit=crop&q=80&w=800"
-  },
-  {
-    "food": "Wagyu Beef Sliders",
-    "cost": 850,
+    "food": "Crispy Onion Pakoda",
+    "cost": 250,
     "foodType": "snacks",
-    "description": "Miniature brioche buns hosting premium Wagyu patties, caramelized onions, and aged Gruyère cheese.",
-    "foodImg": "https://images.unsplash.com/photo-1521305916504-4a1121188589?auto=format&fit=crop&q=80&w=800"
+    "isVeg": true,
+    "isBestSeller": false,
+    "rating": 4.4,
+    "description": "Deep-fried, ultra-crispy onion fritters served with fresh mint chutney.",
+    "foodImg": "/menu_images/6.jpg"
   },
   {
-    "food": "Truffle Parmesan Fries",
+    "food": "Spicy Keema Samosa",
     "cost": 320,
     "foodType": "snacks",
-    "description": "Hand-cut golden fries tossed in aromatic truffle oil, fresh parsley, and 24-month aged Parmesan.",
-    "foodImg": "https://images.unsplash.com/photo-1573080496219-bb080dd4f877?auto=format&fit=crop&q=80&w=800"
+    "isVeg": false,
+    "isBestSeller": true,
+    "rating": 4.8,
+    "description": "Triangle pastries stuffed with spiced minced meat, perfectly crispy on the outside.",
+    "foodImg": "/menu_images/7.jpg"
   },
   {
-    "food": "Crispy Korean Wings",
-    "cost": 420,
-    "foodType": "snacks",
-    "description": "Double-fried chicken wings glazed in a spicy-sweet gochujang sauce and white sesame seeds.",
-    "foodImg": "https://images.unsplash.com/photo-1567620832903-9fc6debc209f?auto=format&fit=crop&q=80&w=800"
-  },
-  {
-    "food": "Loaded Nachos Grande",
-    "cost": 390,
-    "foodType": "snacks",
-    "description": "Stone-ground corn chips topped with melted cheddar, black beans, jalapeños, and house-made guacamole.",
-    "foodImg": "https://images.unsplash.com/photo-1513456852971-30c0b8199d4d?auto=format&fit=crop&q=80&w=800"
-  },
-  {
-    "food": "Golden Midnight Mojito",
-    "cost": 350,
+    "food": "Fresh Mango Lassi",
+    "cost": 220,
     "foodType": "drinks",
-    "description": "A refreshing blend of fresh mint, lime, and organic cane sugar, topped with edible 24k gold flakes.",
-    "foodImg": "https://images.unsplash.com/photo-1513558161293-cdaf765ed2fd?auto=format&fit=crop&q=80&w=800"
+    "isVeg": true,
+    "isBestSeller": true,
+    "rating": 4.9,
+    "description": "A traditional, creamy, and chilled Indian yogurt drink blended with sweet Alphonso mangoes.",
+    "foodImg": "/menu_images/8.jpg"
   },
   {
-    "food": "Aged Espresso Martini",
-    "cost": 450,
-    "foodType": "drinks",
-    "description": "Crafted with single-origin shade-grown coffee, premium vodka, and a hint of vanilla bean liqueur.",
-    "foodImg": "https://images.unsplash.com/photo-1545438102-793c79d3baad?auto=format&fit=crop&q=80&w=800"
-  },
-  {
-    "food": "Wild Berry Hibiscus Cooler",
+    "food": "Iced Lemon Mojito",
     "cost": 280,
     "foodType": "drinks",
-    "description": "Steeped hibiscus tea infused with fresh raspberries, blueberries, and a splash of sparkling water.",
-    "foodImg": "https://images.unsplash.com/photo-1553530666-ba11a7da3888?auto=format&fit=crop&q=80&w=800"
+    "isVeg": true,
+    "isBestSeller": false,
+    "rating": 4.5,
+    "description": "Refreshing mocktail infused with fresh lemon wedges, organic mint, and chilled sparkling water.",
+    "foodImg": "/menu_images/9.jpg"
   },
   {
-    "food": "Artisan Matcha Latte",
-    "cost": 320,
-    "foodType": "drinks",
-    "description": "Ceremonial grade Uji matcha whisked with creamy oat milk and a touch of organic honey.",
-    "foodImg": "https://images.unsplash.com/photo-1515823064-d6e0c04616a7?auto=format&fit=crop&q=80&w=800"
-  },
-  {
-    "food": "Deconstructed Tiramisu",
-    "cost": 480,
+    "food": "Royal Gulab Jamun",
+    "cost": 350,
     "foodType": "desert",
-    "description": "Mascarpone mousse, espresso-soaked ladyfingers, and dark chocolate soil, elegantly presented in a glass sphere.",
-    "foodImg": "https://images.unsplash.com/photo-1571877227200-a0d98ea607e9?auto=format&fit=crop&q=80&w=800"
-  },
-  {
-    "food": "Velvety Lava Fondant",
-    "cost": 520,
-    "foodType": "desert",
-    "description": "Warm Belgian chocolate cake with a molten center, served with house-made Madagascan vanilla gelato.",
-    "foodImg": "https://images.unsplash.com/photo-1624353365286-3f8d62daad51?auto=format&fit=crop&q=80&w=800"
-  },
-  {
-    "food": "Exotic Mango Cheesecake",
-    "cost": 450,
-    "foodType": "desert",
-    "description": "New York style cheesecake topped with fresh Alfonso mango purée and mint-infused mango chunks.",
-    "foodImg": "https://images.unsplash.com/photo-1533134242443-d4fd215305ad?auto=format&fit=crop&q=80&w=800"
-  },
-  {
-    "food": "Dark Chocolate Sea Salt Tart",
-    "cost": 420,
-    "foodType": "desert",
-    "description": "Silky 70% dark chocolate ganache in a cocoa crust, finished with a sprinkle of Maldon sea salt.",
-    "foodImg": "https://images.unsplash.com/photo-1519915028121-7d3463d20b13?auto=format&fit=crop&q=80&w=800"
+    "isVeg": true,
+    "isBestSeller": true,
+    "rating": 4.8,
+    "description": "Soft and spongy milk-based dumplings soaked in a warm, fragrant rose and cardamom syrup.",
+    "foodImg": "/menu_images/10.jpg"
   }
 ]
