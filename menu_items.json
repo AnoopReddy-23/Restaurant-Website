@@ -7,7 +7,7 @@
     "isBestSeller": true,
     "rating": 4.8,
     "description": "Rich and creamy curry made with cottage cheese tossed in a buttery tomato gravy.",
-    "foodImg": "/menu_images/1.jpg"
+    "foodImg": "/menu/paneer-butter-masala.jpg"
   },
   {
     "food": "Chicken Tikka Kebab",
@@ -17,7 +17,7 @@
     "isBestSeller": true,
     "rating": 4.9,
     "description": "Juicy chunks of chicken marinated in spiced yogurt and roasted in a traditional clay oven.",
-    "foodImg": "/menu_images/2.jpg"
+    "foodImg": "/menu/chicken-tikka-kebab.jpg"
   },
   {
     "food": "Tandoori Soya Chaap",
@@ -27,7 +27,7 @@
     "isBestSeller": false,
     "rating": 4.5,
     "description": "Succulent soya chaap beautifully marinated in a tandoori masala and char-grilled.",
-    "foodImg": "/menu_images/3.jpg"
+    "foodImg": "/menu/tandoori-soya-chaap.jpg"
   },
   {
     "food": "Hyderabadi Dum Biryani",
@@ -37,7 +37,7 @@
     "isBestSeller": true,
     "rating": 5.0,
     "description": "Fragrant basmati rice layered with tender lamb, authentic nawabi spices, and golden fried onions.",
-    "foodImg": "/menu_images/4.jpg"
+    "foodImg": "/menu/Hyderabadi-chicken-Biryani.jpg"
   },
   {
     "food": "Vegetable Dum Biryani",
@@ -47,7 +47,7 @@
     "isBestSeller": true,
     "rating": 4.7,
     "description": "Aromatic rice layered with garden-fresh vegetables and exquisite saffron-infused spices.",
-    "foodImg": "/menu_images/5.jpg"
+    "foodImg": "/menu/vegetable-dum-biryani.jpg"
   },
   {
     "food": "Crispy Onion Pakoda",
@@ -57,7 +57,7 @@
     "isBestSeller": false,
     "rating": 4.4,
     "description": "Deep-fried, ultra-crispy onion fritters served with fresh mint chutney.",
-    "foodImg": "/menu_images/6.jpg"
+    "foodImg": "/menu/Onion-Pakora.jpg"
   },
   {
     "food": "Spicy Keema Samosa",
@@ -67,7 +67,7 @@
     "isBestSeller": true,
     "rating": 4.8,
     "description": "Triangle pastries stuffed with spiced minced meat, perfectly crispy on the outside.",
-    "foodImg": "/menu_images/7.jpg"
+    "foodImg": "/menu/Mutton-Keema-Samosa.jpg"
   },
   {
     "food": "Fresh Mango Lassi",
@@ -77,7 +77,7 @@
     "isBestSeller": true,
     "rating": 4.9,
     "description": "A traditional, creamy, and chilled Indian yogurt drink blended with sweet Alphonso mangoes.",
-    "foodImg": "/menu_images/8.jpg"
+    "foodImg": "/menu/mango-lassi.jpg"
   },
   {
     "food": "Iced Lemon Mojito",
@@ -87,7 +87,7 @@
     "isBestSeller": false,
     "rating": 4.5,
     "description": "Refreshing mocktail infused with fresh lemon wedges, organic mint, and chilled sparkling water.",
-    "foodImg": "/menu_images/9.jpg"
+    "foodImg": "/menu/lemon-mojito.jpg"
   },
   {
     "food": "Royal Gulab Jamun",
@@ -97,6 +97,6 @@
     "isBestSeller": true,
     "rating": 4.8,
     "description": "Soft and spongy milk-based dumplings soaked in a warm, fragrant rose and cardamom syrup.",
-    "foodImg": "/menu_images/10.jpg"
+    "foodImg": "/menu/gulab-jamun.jpg"
   }
 ]
